@@ -1,0 +1,94 @@
+<ng-container>
+    <div class="modal lg" id="offerDetails" tabindex="-1" aria-labelledby="offerDetailsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <app-offer-details-modal [offer_id]="offer_id" *ngIf="offerdetails" (closeModalPopup)="closeModalPopup()">
+            </app-offer-details-modal>
+        </div>
+    </div>
+</ng-container>
+
+
+<div class="latest-offers">
+    <div class="container">
+        <!-- <h3 class="secondary-title">{{"Label.Latest" | translate}} <span> {{"Label.Offers" | translate}} </span></h3> -->
+         <h3 class="secondary-title">{{"Label.LatestOffers" | translate}}</h3>
+        <div class="offer-tags">
+            <a href="javascript:void(0)" class="tags" *ngFor="let category of generalCategories"
+                (click)="getGetOfferByCategory(category)"
+                [ngClass]="{'active': category.name == currentCategory}">{{category.name}}</a>
+        </div>
+        <div class="latest-offers-main">
+            <div class="row">
+
+                <ng-container *ngIf="offers && offers.length > 0">
+
+                    <ng-container *ngFor="let offerModel of offers;let indexOfelement=index;">
+
+                        <div class="col-xl-9" *ngIf="indexOfelement == 0" (click)="showDetails(offerModel._id)"
+                            data-bs-toggle="modal" data-bs-target="#offerDetails">
+                            <div class="latest-offer-one freeoff">
+                                <!-- <div > -->
+                                <img class="first-free-img" src="{{offerModel.banner_image}}" alt="">
+                                <div class="offer-discount-tag"
+                                    *ngIf="offerModel.discount != 0 && offerModel.price == 0">
+                                    <div>
+                                        <h4>
+                                            -{{offerModel.discount}}%</h4>
+                                    </div>
+                                </div>
+                                <div class="first-free-info">
+                                    <h4 class="offer-title">{{offerModel.name}}</h4>
+                                    <p>
+                                        {{offerModel.description}}
+                                    </p>
+                                </div>
+                                <span class="addtocart"><img src="assets/images/big-cart.png" alt=""></span>
+                            </div>
+                        </div>
+
+                        <div *ngIf="indexOfelement > 0" class="col-lg-3 col-md-6" (click)="showDetails(offerModel._id)"
+                            data-bs-toggle="modal" data-bs-target="#offerDetails">
+                            <div class="latest-offer-one"
+                                [ngClass]="{'discounted' : (+offerModel.discount && !+offerModel.price)}">
+                                <div class="offer-img">
+                                    <div class="thumbnail-container object-fit">
+                                        <div class="thumbnail">
+                                            <img src="{{offerModel?.banner_image}}" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="offer-discount-tag"
+                                        *ngIf="(offerModel.discount != 0 && offerModel.price == 0)">
+                                        <div>
+                                            <span>JUSQU’À</span>
+                                            <h4>-{{offerModel.discount}}%</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="offer-info">
+                                    <span class="addtocart"><img src="assets/images/addtocart.png" alt=""></span>
+                                    <h4 class="offer-title">{{offerModel.name}}</h4>
+                                    <p class="offer-desc">{{offerModel.description}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-container>
+
+
+                    <div class="col-12">
+                        <div class="see-all">
+                            <a *ngIf="offers.length < totalRecords" role="button" (click)="getOffers()"
+                                class="green-btn see-all-posts">{{"ButtonLabel.SeemoreOffer" | translate}}</a>
+                        </div>
+                    </div>
+                </ng-container>
+
+                <ng-container *ngIf="offers && offers.length == 0">
+                    <h2>No Offers Available</h2>
+                </ng-container>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>

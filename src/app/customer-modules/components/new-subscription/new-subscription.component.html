@@ -1,0 +1,197 @@
+<div class="custom_subscription">
+    <form (keydown.enter)="false">
+        <div class="row mb-4">
+            <div class="col-6">
+                <div class="form-group mb-1">
+                    <label for="first_name" class="form-label">First name<span
+                            class="text-danger">*</span></label>
+                    <input type="text" id="first_name" name="first_name" class="form-control"
+                        #first_name="ngModel" ngModel pattern="^[a-zA-Z ]+$" required
+                        autocomplete="off" [(ngModel)]="indivisualSubDetail.first_name"
+                        [ngClass]="{'is-invalid':(first_name.invalid && first_name.touched),
+                        'is-valid':(first_name.valid && first_name.touched)}">
+                    <div class="invalid-feedback"
+                        *ngIf="(first_name.invalid && (first_name.dirty || first_name.touched ))">
+                        <div *ngIf="first_name.errors?.['required']" class="red-color">
+                            First Name is required.
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="form-group mb-1">
+                    <label for="last_name" class="form-label">Last name <span
+                            class="text-danger">*</span></label>
+                    <input type="text" id="last_name" name="last_name" class="form-control"
+                        #last_name="ngModel" ngModel pattern="^[a-zA-Z ]+$" required
+                        autocomplete="off" [(ngModel)]="indivisualSubDetail.last_name"
+                        [ngClass]="{'is-invalid':(last_name.invalid && last_name.touched),
+                        'is-valid':(last_name.valid && last_name.touched)}">
+                    <div *ngIf="(last_name.invalid && (last_name.dirty || last_name.touched ))"
+                        class="invalid-feedback">
+                        <div *ngIf="last_name.errors?.['required']" class="red-color">
+                            Last Name is required.
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="form-group mb-1">
+                    <label for="user_name" class="form-label">User name <span
+                            class="text-danger">*</span></label>
+                    <input type="text" id="user_name" name="user_name" class="form-control"
+                        #user_name="ngModel" (keydown.space)="$event.preventDefault()"
+                        pattern="^[a-zA-Z]([._-](?![._-])|[a-zA-Z0-9]){1,18}[a-zA-Z0-9]$"
+                        ngModel required autocomplete="off"
+                        [(ngModel)]="indivisualSubDetail.user_name" [ngClass]="{'is-invalid':(user_name.invalid && user_name.touched),
+                        'is-valid':(user_name.valid && user_name.touched)}">
+                    <div *ngIf="(user_name.invalid && (user_name.dirty || user_name.touched ))"
+                        class="invalid-feedback">
+                        <div *ngIf="user_name.errors?.['required']" class="red-color">
+                            User Name is required.
+                        </div>
+                        <div *ngIf="user_name.errors?.['pattern']" class="red-color">
+                            User Name is invalid.
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="form-group mb-1">
+                    <label for="birthdate" class="form-label"> Birth Date <span
+                            class="text-danger">*</span></label>
+                    <input type="date" id="birthdate" name="birthdate" class="form-control"
+                        [ngClass]="{'is-invalid':(birthdate.invalid && birthdate.touched),
+                    'is-valid':(birthdate.valid && birthdate.touched)}" #birthdate="ngModel"
+                        ngModel required autocomplete="off" max="{{bodMinDate}}"
+                        [(ngModel)]="indivisualSubDetail.birthdate">
+                    <div class="invalid-feedback"
+                        *ngIf="(birthdate.invalid && (birthdate.dirty || birthdate.touched))">
+                        <div *ngIf="birthdate.errors?.['required']" class="fv-help-block">
+                            Birthdate is required
+                        </div>
+                        <!-- <div *ngIf="birthdate.errors?.pattern" class="fv-help-block">
+                            Birthdate is invalid
+                        </div> -->
+                    </div>
+                </div>
+    
+                <div class="form-group mb-1">
+                    <label for="reference_source" class="form-label">How did you know us? <span
+                            class="text-danger">*</span></label>
+                    <select id="reference_source" class="form-control"
+                        #reference_source="ngModel" ngModel
+                        [(ngModel)]="indivisualSubDetail.reference_source"
+                        name="reference_source" required [ngClass]="{'is-invalid':(reference_source.invalid && reference_source.touched),
+                        'is-valid':(reference_source.valid && reference_source.touched)}">
+                        <option value="undefined" disabled>Select the option that suits you
+                        </option>
+                        <option value="FACEBOOK">FACEBOOK</option>
+                        <option value="SNAPCHAT">SNAPCHAT</option>
+                        <option value="INSTAGRAM">INSTAGRAM</option>
+                        <option value="GOOGLE">GOOGLE</option>
+                    </select>
+                    <div class="invalid-feedback"
+                        *ngIf="(reference_source.invalid && (reference_source.dirty || reference_source.touched))">
+                        <div *ngIf="reference_source.errors?.['required']"
+                            class="fv-help-block">
+                            You must select an option
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="form-group mb-1">
+                    <label for="country_code" class="form-label"> Country Code <span
+                            class="text-danger">*</span></label>
+                    <input type="text" id="country_code" name="country_code"
+                        class="form-control" #country_code="ngModel" ngModel
+                        pattern="^\+?\d{1,4}$" (keypress)="numberOnly($event)" required
+                        autocomplete="off" [(ngModel)]="indivisualSubDetail.country_code"
+                        [ngClass]="{'is-invalid':(country_code.invalid && country_code.touched),
+                        'is-valid':(country_code.valid && country_code.touched)}">
+    
+                    <div *ngIf="(country_code.invalid && (country_code.dirty || country_code.touched ))"
+                        class="invalid-feedback">
+                        <div *ngIf="country_code.errors?.['required']" class="red-color">
+                            Country Code is required.
+                        </div>
+                        <div *ngIf="country_code.errors?.['pattern']" class="red-color">
+                            Country Code is invalid.
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group mb-1">
+                    <label for="mobile_no" class="form-label"> Mobile No <span
+                            class="text-danger">*</span></label>
+                    <input type="text" id="mobile_no" name="mobile_no" class="form-control"
+                        #mobile_no="ngModel" ngModel pattern="^\+?\d{8,14}$" required
+                        autocomplete="off" [(ngModel)]="indivisualSubDetail.mobile_no"
+                        [ngClass]="{'is-invalid':(mobile_no.invalid && mobile_no.touched),
+                        'is-valid':(mobile_no.valid && mobile_no.touched)}">
+    
+                    <div *ngIf="(mobile_no.invalid && (mobile_no.dirty || mobile_no.touched ))"
+                        class="invalid-feedback">
+                        <div *ngIf="mobile_no.errors?.['required']" class="red-color">
+                            Mobile Number is required.
+                        </div>
+                        <div *ngIf="mobile_no.errors?.['pattern']" class="red-color">
+                            Mobile Number is invalid.
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group mb-1">
+                    <label for="email" class="form-label"> Email <span
+                            class="text-danger">*</span></label>
+                    <input type="email" id="email" name="email" class="form-control"
+                        #email="ngModel" ngModel required autocomplete="off"
+                        pattern="[a-zA-Z0-9.-_+]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"
+                        [(ngModel)]="indivisualSubDetail.email" [ngClass]="{'is-invalid':(email.invalid && email.touched),
+                        'is-valid':(email.valid && email.touched)}">
+                    <div *ngIf="(email.invalid && (email.dirty || email.touched ))"
+                        class="invalid-feedback">
+                        <div *ngIf="email.errors?.['required']" class="red-color">
+                            Email is required.
+                        </div>
+                        <div *ngIf="email.errors?.['pattern']" class="red-color">
+                            Please enter valid email address.
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="form-group mb-1">
+                    <label for="password" class="form-label"> Password <span
+                            class="text-danger">*</span></label>
+                    <input type="password" id="password" name="password" class="form-control"
+                        [ngClass]="{'is-invalid':(password.invalid && password.touched),
+                    'is-valid':(password.valid && password.touched)}" #password="ngModel"
+                        ngModel required autocomplete="off"
+                        [(ngModel)]="indivisualSubDetail.password">
+                    <div *ngIf="(password.invalid && (password.dirty || password.touched ))"
+                        class="invalid-feedback">
+                        <div *ngIf="password.errors?.['required']" class="red-color">
+                            Password is required.
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="form-group mb-1">
+                    <label for="conform_password" class="form-label">Confirm Password <span
+                            class="text-danger">*</span></label>
+                    <input type="password" id="conform_password" name="conform_password"
+                        class="form-control" #conform_password="ngModel" ngModel required
+                        autocomplete="off" [(ngModel)]="indivisualSubDetail.conform_password"
+                        [ngClass]="{'is-invalid':(conform_password.invalid && conform_password.touched),
+                    'is-valid':(conform_password.valid && conform_password.touched)}">
+                    <div *ngIf="(conform_password.invalid && (conform_password.dirty || conform_password.touched ))"
+                        class="invalid-feedback">
+                        <div *ngIf="conform_password.errors?.['required']" class="red-color">
+                            Confirm Password is required.
+                        </div>
+                        <div *ngIf="conform_password.errors?.['mustMatch']" class="red-color">
+                            Password and confirm password must be match
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary" style="float: right;" (click)="SubmitWebhookDetails()">Submit</button>
+    </form>
+</div>

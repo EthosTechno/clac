@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AACI,cADU,CACV,WAAW,AAAA,aAAa,CAAC;EACrB,KAAK,EAAE,IAAI;EACX,OAAO,EAAE,QAAQ;EACjB,SAAS,EAAE,IAAI;EACf,WAAW,EAAE,CAAC;CAMjB;;AAJG,MAAM,EAAE,SAAS,EAAE,KAAK;EAPhC,AACI,cADU,CACV,WAAW,AAAA,aAAa,CAAC;IAOjB,OAAO,EAAE,QAAQ;IACjB,SAAS,EAAE,IAAI;GAEtB",
+    "sources": [
+        "cancel-my-subscription.component.scss"
+    ],
+    "names": [],
+    "file": "cancel-my-subscription.component.css"
+}

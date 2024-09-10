@@ -1,0 +1,267 @@
+<!------more service modal-->
+<form #serviceForm="ngForm" (ngSubmit)="serviceForm.form.valid && submit()">
+
+    <div class="modal fade" id="moreService" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered more-service">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div>
+                        <h5 class="modal-title" id="exampleModalLabel">{{"Label.OrderInquiry" | translate}}</h5>
+                    </div>
+                    <button type="button" class="btn-close" #closeBtn data-bs-dismiss="modal" aria-label="Close"
+                        (click)="serviceForm.resetForm()"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+
+                        <div class="col-md-12">
+                            <p> {{"Label.OurServicesrates" | translate}}.</p>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="mb-4">
+                                <label for="category_name" class="form-label">{{"FormLabel.ChooseYourCategory" |
+                                    translate}}</label>
+                                <div class="selection">
+                                    <select id="category_name" class="form-control" #category_name="ngModel" ngModel
+                                        [(ngModel)]="serviceModel.category_name" name="category_name" required
+                                        [ngClass]="{'is-invalid':serviceForm.submitted && (category_name.invalid),
+                                'is-valid':serviceForm.submitted || (category_name.valid && category_name.touched)}"
+                                        (change)="getServiceCategories(category_name.value)">
+                                        <option value="" selected="selected" disabled>{{'Placeholder.selectCategory' | translate}}
+                                        </option>
+                                        <option *ngFor="let generalCategoryVal of generalCategories"
+                                            value="{{generalCategoryVal._id}}">
+                                            {{generalCategoryVal.name}}
+                                        </option>
+                                    </select>
+                                    <div class="invalid-feedback"
+                                        *ngIf="serviceForm.submitted || (category_name.invalid && (category_name.dirty || category_name.touched))">
+                                        <div *ngIf="category_name.errors?.['required']" class="fv-help-block">
+                                            {{'ErrorMessage.category' | translate}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-8">
+                            <div class="mb-4">
+                                <label for="category" class="form-label">{{"FormLabel.ChooseYourService" |
+                                    translate}}</label>
+                                <div class="selection">
+                                    <select id="service_name" class="form-control" #serverdata #service_name="ngModel"
+                                        ngModel (change)="getServicePrice(serverdata.value)"
+                                        [(ngModel)]="serviceModel.service_name" name="service_name" required [ngClass]="{'is-invalid':serviceForm.submitted && (service_name.invalid),
+                            'is-valid':serviceForm.submitted || (service_name.valid && service_name.touched)}">
+                                        <option value="" selected="selected" disabled>{{'Placeholder.service' | translate}}
+                                        </option>
+                                        <option *ngFor="let ServiceName of serviceCategories"
+                                            value="{{ServiceName?._id}},{{ServiceName?.price}}">
+                                            {{ServiceName.name}}
+                                        </option>
+                                    </select>
+                                    <div class="invalid-feedback"
+                                        *ngIf="serviceForm.submitted || (service_name.invalid && (service_name.dirty || category_name.touched))">
+                                        <div *ngIf="service_name.errors?.['required']" class="fv-help-block">
+                                            {{'Placeholder.service1' | translate}}
+                                        </div>
+                                    </div>
+                                    <!-- {{serviceCategories | json}} -->
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="mb-4">
+                                <label for="item_number" class="form-label">{{"FormLabel.Itemsnumber" |
+                                    translate}}</label>
+                                <input type="tel" id="item_number" class="form-control" [placeholder]="'Placeholder.Itemsnumber' | translate"
+                                    name="item_number" #item_number="ngModel" [(ngModel)]="serviceModel.item_number"
+                                    required>
+                                <div *ngIf="serviceForm.submitted || (item_number.invalid && (item_number.dirty && item_number.touched))"
+                                    class="fv-plugins-message-container">
+                                    <div *ngIf="item_number.errors?.['required']" class="fv-help-block">
+                                       {{'ErrorMessage.Itemsnumber' | translate}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <h5 class="second-ttl">{{"Label.Contact" | translate}}</h5>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="first_name" class="form-label">{{"FormLabel.FirstName" | translate}}</label>
+
+                                <input type="text" id="first_name" class="form-control" [placeholder]= "'Placeholder.FirstName' | translate"
+                                    name="first_name" #first_name="ngModel" [(ngModel)]="serviceModel.first_name"
+                                    required>
+                                <div *ngIf="serviceForm.submitted || (first_name.invalid && (first_name.dirty && first_name.touched))"
+                                    class="fv-plugins-message-container">
+                                    <div *ngIf="first_name.errors?.['required']" class="fv-help-block">
+                                        {{"ErrorMessage.FirstName" | translate}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="first-name" class="form-label">{{"FormLabel.LastName" | translate}}</label>
+                                <input type="text" id="last-name" class="form-control" [placeholder]= "'Placeholder.LastName' | translate" 
+                                    name="last_name" #last_name="ngModel" [(ngModel)]="serviceModel.last_name" required>
+                                <div *ngIf="serviceForm.submitted || (last_name.invalid && (last_name.dirty && last_name.touched))"
+                                    class="fv-plugins-message-container">
+                                    <div *ngIf="last_name.errors?.['required']" class="fv-help-block">
+                                        {{"ErrorMessage.LastName" | translate}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="first-name" class="form-label">{{"FormLabel.Email-Id" | translate}}</label>
+                                <input type="email" id="email" class="form-control" [placeholder]= "'Placeholder.Email-Id' | translate"
+                                    name="email" #email="ngModel" [(ngModel)]="serviceModel.email" required
+                                    pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$">
+                                <div *ngIf="serviceForm.submitted || (email.invalid && (email.dirty && email.touched))"
+                                    class="fv-plugins-message-container">
+                                    <div *ngIf="email.errors?.['required']" class="fv-help-block">
+                                        {{"ErrorMessage.Email-Id" | translate}}
+                                    </div>
+                                    <div *ngIf="email.errors?.['pattern']" class="fv-help-block">
+                                        {{"ErrorMessage.Email-IdValid" | translate}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="first-name" class="form-label">{{"FormLabel.Phone" | translate}}</label>
+                                <input type="tel" id="phone" class="form-control" [placeholder]= "'Placeholder.Phone' | translate"
+                                    name="phone" #phone="ngModel" [(ngModel)]="serviceModel.phone" required>
+                                <div *ngIf="serviceForm.submitted || (phone.invalid && (phone.dirty && phone.touched))"
+                                    class="fv-plugins-message-container">
+                                    <div *ngIf="phone.errors?.['required']" class="fv-help-block">
+                                        {{"ErrorMessage.Phone" | translate}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <h5 class="second-ttl">{{"Label.YourService" | translate}}</h5>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="mb-4">
+                                <label for="category" class="form-label">{{"FormLabel.Pickupaddress" |
+                                    translate}}</label>
+                                <input name="" id="pick_up_address" name="pick_up_address" #pick_up_address="ngModel"
+                                    ngModel [(ngModel)]="serviceModel.pick_up_address" required
+                                    [placeholder]="'Placeholder.Pickupaddress' | translate" [ngClass]="{'is-invalid':(pick_up_address.invalid && pick_up_address.touched),
+                                  'is-valid':(pick_up_address.valid && pick_up_address.touched)}">
+                                <div class="fv-plugins-message-container"
+                                    *ngIf="serviceForm.submitted || (pick_up_address.invalid && (pick_up_address.dirty || pick_up_address.touched))">
+                                    <div class="fv-help-block" *ngIf="pick_up_address.errors?.['required']">{{'ErrorMessage.Pickupaddress' | translate}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="mb-4">
+                                <label for="category" class="form-label">{{"FormLabel.Pickuptime" | translate}}</label>
+                                <input type="time" id="pick_up_time" name="pick_up_time" ngModel class="form-control"
+                                    [(ngModel)]="serviceModel.pick_up_time" required #pick_up_time="ngModel" [ngClass]="{'is-invalid':(pick_up_time.invalid && pick_up_time.touched),
+                          'is-valid':(pick_up_time.valid && pick_up_time.touched)}">
+                                <div class="fv-plugins-message-container"
+                                    *ngIf="serviceForm.submitted || (pick_up_time.invalid && (pick_up_time.dirty || pick_up_time.touched))">
+                                    <div class="fv-help-block" *ngIf="pick_up_time.errors?.['required']">{{'ErrorMessage.Pickuptime' | translate}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="mb-4">
+                                <label for="category" class="form-label">{{"FormLabel.Deliveryaddress" |
+                                    translate}}</label>
+                                <input name="" id="delivery_address" name="delivery_address" #delivery_address="ngModel"
+                                    [(ngModel)]="serviceModel.delivery_address" ngModel required
+                                    [placeholder]="'Placeholder.Deliveryaddress' | translate" [ngClass]="{'is-invalid':(delivery_address.invalid && delivery_address.touched),
+                                  'is-valid':(delivery_address.valid && delivery_address.touched)}">
+                                <div class="fv-plugins-message-container"
+                                    *ngIf="serviceForm.submitted || (delivery_address.invalid && (delivery_address.dirty || delivery_address.touched))">
+                                    <div class="fv-help-block" *ngIf="delivery_address.errors?.['required']">
+                                       {{'ErrorMessage.Deliveryaddress' | translate}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="mb-4">
+                                <label for="category" class="form-label">{{"FormLabel.Deliverytime" |
+                                    translate}}</label>
+                                <input type="time" id="delivery_time" name="delivery_time" ngModel class="form-control"
+                                    [(ngModel)]="serviceModel.delivery_time" required #delivery_time="ngModel"
+                                    [ngClass]="{'is-invalid':(delivery_time.invalid && delivery_time.touched),
+                          'is-valid':(delivery_time.valid && delivery_time.touched)}">
+                                <div class="fv-plugins-message-container"
+                                    *ngIf="serviceForm.submitted || (delivery_time.invalid && (delivery_time.dirty || delivery_time.touched))">
+                                    <div class="fv-help-block" *ngIf="delivery_time.errors?.['required']">{{'ErrorMessage.Deliverytime' | translate}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="mb-sm-0 mb-3">
+                                <label for="category" class="form-label">{{"FormLabel.Details" | translate}}</label>
+                                <!-- <textarea name="" id="" cols="30" rows="10"></textarea> -->
+                                <textarea name="" id="description" cols="30" rows="10" name="description"
+                                    #description="ngModel" ngModel required placeholder="Describe..." [ngClass]="{'is-invalid':(description.invalid && description.touched),
+                                  'is-valid':(description.valid && description.touched)}"></textarea>
+                                <div class="fv-plugins-message-container"
+                                    *ngIf="serviceForm.submitted || (description.invalid && (description.dirty || description.touched))">
+                                    <div class="fv-help-block" *ngIf="description.errors?.['required']">{{'ErrorMessage.YourSuggestion' | translate}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-sm-0 mb-3">
+                                <label for="promo_code" class="form-label">{{"FormLabel.Promocode" | translate}}</label>
+                                <input type="text" id="promo_code" class="form-control" [placeholder]="'Placeholder.Promocode' | translate"
+                                    name="promo_code" #promo_code="ngModel" [(ngModel)]="serviceModel.promo_code"
+                                    >
+                                <!-- <div *ngIf="serviceForm.submitted || (promo_code.invalid && (promo_code.dirty && promo_code.touched))"
+                                    class="fv-plugins-message-container">
+                                    <div *ngIf="promo_code.errors?.['required']" class="fv-help-block">
+                                       {{'ErrorMessage.Promocode' | translate}}
+                                    </div>
+                                </div> -->
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="mb-sm-0 mb-3">
+                                <label for="category" class="form-label">{{"FormLabel.Price" | translate}}</label>
+
+                                <input type="text" id="price" class="form-control price-input" [placeholder]="'Placeholder.Price' | translate"
+                                    readonly name="price" #price="ngModel" [(ngModel)]="serviceModel.price" required>
+                                <div *ngIf="serviceForm.submitted || (price.invalid && (price.dirty && price.touched))"
+                                    class="fv-plugins-message-container">
+                                    <div *ngIf="price.errors?.['required']" class="fv-help-block">
+                                        {{'ErrorMessage.Price' | translate}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 d-flex align-items-center">
+                            <div class="">
+                                <button type="submit" class="btn green-btn">{{"ButtonLabel.Order" | translate}}</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="modal-footer">
+                </div> -->
+            </div>
+        </div>
+    </div>
+</form>

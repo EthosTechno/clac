@@ -1,0 +1,226 @@
+/*# sourceMappingURL=login.component.css.map */per .side-wrapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 33vw;
+  height: 100vh;
+}
+.login-wrapper .side-wrapper .side-graphics {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-image: url("../../../assets/images/login-graphic.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-y: bottom;
+  height: 100vh;
+  width: 100%;
+}
+@media (max-width: 768px) {
+  .login-wrapper .side-wrapper .side-graphics {
+    background: #30c8b1;
+    transform: skewY(-6deg);
+    top: 10%;
+  }
+}
+.login-wrapper .side-wrapper .side-human-graphics {
+  position: absolute;
+  left: 0;
+  bottom: 15px;
+  background-image: url("../../../assets/images/login-human-graphics.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  width: 360px;
+  height: 285px;
+}
+@media (max-width: 768px) {
+  .login-wrapper .side-wrapper .side-human-graphics {
+    display: none;
+  }
+}
+.login-wrapper .side-wrapper .side-content {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 9;
+  color: #fff;
+  width: 65%;
+}
+.login-wrapper .side-wrapper .side-content h2 {
+  font-size: 36px;
+  font-weight: 300;
+  font-family: "Interstate";
+}
+.login-wrapper .side-wrapper .side-content a {
+  position: relative;
+  display: inline-block;
+  margin-top: 20px;
+  width: 171px;
+  padding: 15px 0;
+  background-color: #fff;
+  border: 2px solid #fff;
+  border-radius: 50px;
+  color: #00c8b1;
+  text-align: center;
+  font-weight: bold;
+  font-size: 14px;
+}
+.login-wrapper .side-wrapper .side-content a::before {
+  content: "";
+  border: 1px solid #fff;
+  border-radius: inherit;
+  transform: scale(0.6);
+  transition: 0.3s;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.login-wrapper .side-wrapper .side-content a:hover {
+  background-color: transparent;
+  color: #fff;
+  border: 2px solid #fff;
+}
+.login-wrapper .side-wrapper .side-content a:hover::before {
+  transform: scale(1);
+}
+@media (max-width: 768px) {
+  .login-wrapper .side-wrapper .side-content {
+    width: 75%;
+    transform: skewY(6deg);
+  }
+}
+@media (max-width: 768px) {
+  .login-wrapper .side-wrapper {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+}
+.login-wrapper .login-form {
+  width: 100%;
+}
+@media (max-width: 768px) {
+  .login-wrapper .login-form .container > div {
+    align-items: center;
+  }
+}
+.login-wrapper .login-form h1 {
+  font-size: 36px;
+  font-weight: 300;
+  font-family: "Interstate";
+}
+.login-wrapper .login-form h1 span {
+  color: #00ab97;
+}
+@media (max-width: 768px) {
+  .login-wrapper .login-form h1 {
+    text-align: center;
+  }
+}
+.login-wrapper .login-form .login-content img {
+  width: 20px;
+  margin-right: 10px;
+}
+.login-wrapper .login-form .form-container {
+  width: 100%;
+  max-width: 450px;
+  text-align: left;
+  font-size: 15px;
+}
+.login-wrapper .login-form .form-container .form-label {
+  font-weight: bold;
+}
+.login-wrapper .login-form .form-container input[type=email], .login-wrapper .login-form .form-container input[type=password] {
+  width: 100%;
+  border: 1px solid #ebebeb;
+  border-radius: 5px;
+  padding: 15px 20px;
+  height: auto;
+  font-family: "Lato", sans-serif;
+  box-shadow: none;
+}
+.login-wrapper .login-form .form-container input[type=email]:focus, .login-wrapper .login-form .form-container input[type=password]:focus {
+  border: 1px solid #bbb;
+}
+.login-wrapper .login-form .form-container .form-check {
+  display: flex;
+  align-items: center;
+}
+.login-wrapper .login-form .form-container .form-check input[type=checkbox] {
+  box-shadow: none;
+  width: 22px;
+  height: 22px;
+  margin-right: 5px;
+  border: 2px solid #ebebeb;
+}
+.login-wrapper .login-form .form-container .form-check input[type=checkbox]:hover {
+  border: 2px solid #bbb;
+}
+.login-wrapper .login-form .form-container .form-check .form-check-input:checked {
+  background-color: #30c8b1;
+  border-color: #30c8b1;
+}
+.login-wrapper .login-form .form-container .form-check .form-check-input:checked:hover {
+  border-color: #30c8b1;
+}
+.login-wrapper .login-form .form-container .btn-container button {
+  background-color: #30c8b1;
+  border-color: #30c8b1;
+  color: #fff;
+  padding: 11px;
+  border-radius: 50px;
+  width: 250px;
+  text-align: center;
+}
+.login-wrapper .login-form .form-container .btn-container button:hover {
+  color: #30c8b1;
+  background-color: #fff;
+  border-color: #30c8b1;
+}
+@media (max-width: 768px) {
+  .login-wrapper .login-form .form-container .btn-container {
+    text-align: center;
+  }
+}
+.login-wrapper .login-form .form-container a {
+  display: block;
+  text-decoration: none;
+  color: #888;
+  font-weight: normal;
+}
+.login-wrapper .login-form .form-container a:hover {
+  text-decoration: underline;
+  color: inherit;
+}
+@media (max-width: 768px) {
+  .login-wrapper .login-form .form-container a {
+    text-align: center;
+  }
+}
+.login-wrapper .login-form .form-container .error-msg {
+  background-color: #C74A4A;
+  border-radius: 3px;
+  color: #fff;
+  box-sizing: border-box;
+  position: relative;
+  padding: 12px;
+  font-size: 14px;
+  line-height: 20px !important;
+  margin: 12px 0 0 0;
+}
+.login-wrapper .login-form .form-container .error-msg span {
+  position: absolute;
+  top: -14px;
+  color: #C74A4A;
+  font-size: 22px;
+}
+@media (max-width: 768px) {
+  .login-wrapper {
+    flex-direction: column-reverse;
+  }
+}/*# sourceMappingURL=login.component.css.map */

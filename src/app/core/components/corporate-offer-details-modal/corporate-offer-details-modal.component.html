@@ -1,0 +1,180 @@
+<!--Suggestion button Modal -->
+<div class="modal-content modal-lg">
+    <div class="modal-header">
+        <div class="d-flex flex-wrap align-items-center">
+            <h2 class="modal-title">{{'Label.OfferDetails' | translate}}</h2>
+        </div>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+            (click)="closeOffer()"></button>
+    </div>
+    <div class="modal-body">
+        <form action="">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="order-image-gallery">
+                        <swiper [spaceBetween]="10" [navigation]="true" [thumbs]="{ swiper: thumbsSwiper }"
+                            class="mainslider">
+                            <ng-template swiperSlide *ngFor="let imgSlider of offerDetail?.image">
+                                <div class="top-image">
+                                    <div class="thumbnail-container object-fit">
+                                        <div class="thumbnail">
+                                            <img src="{{offerDetail?.image_url}}{{imgSlider.image}}">
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-template>
+
+                        </swiper>
+                        <swiper (swiper)="thumbsSwiper = $event" [spaceBetween]="10" [slidesPerView]="4"
+                            [watchSlidesProgress]="true" class="thumbslider" [breakpoints]="{
+                                '640': {
+                                  slidesPerView: 2
+                                },
+                                '768': {
+                                  slidesPerView: 4
+                                },
+                                '1024': {
+                                  slidesPerView: 4
+                                }
+                              }">
+                            <ng-template swiperSlide *ngFor="let imgSlider of offerDetail?.image">
+                                <div class="top-image">
+                                    <div class="thumbnail-container object-fit">
+                                        <div class="thumbnail">
+                                            <img src="{{offerDetail?.image_url}}{{imgSlider.image}}">
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-template>
+                        </swiper>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <h2>{{offerDetail?.name}}</h2>
+                    <h6>{{offerDetail?.offer_category_name}}</h6>
+                    <hr>
+                    <p>{{offerDetail?.description}}</p>
+                    <a href="javascript:void(0)" (click)="showFrom()" class="green-btn" *ngIf="!formShow">
+                        More Details
+                    </a>
+                </div>
+                <div class="col-md-12">
+                    <div class="contact-form" *ngIf="formShow">
+                        <br>
+                        <form #corporateForm="ngForm"
+                            (ngSubmit)="corporateForm.form.valid && submit(corporateForm.value)">
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6">
+                                    <div class="form-group mb-1">
+                                        <label for="name" class="form-label">{{'FormLabel.ContactName' | translate}}<span
+                                                class="text-danger">*</span></label>
+                                        <input type="text" #ContactName="ngModel" class="form-control" required
+                                            id="ContactName" ngModel name="name" [placeholder]= "'FormLabel.ContactName' | translate"
+                                            [ngClass]="{'is-invalid':corporateForm.submitted && (ContactName.invalid),
+                                            'is-valid':corporateForm.submitted || (ContactName.valid && ContactName.touched)}">
+                                        <div *ngIf="corporateForm.submitted || (ContactName.invalid && (ContactName.dirty || ContactName.touched ))"
+                                            class="invalid-feedback">
+                                            <div *ngIf="ContactName.errors?.['required']" class="red-color">
+                                                {{"ErrorMessage.ContactName" | translate}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-6">
+                                    <div class="form-group mb-1">
+                                        <label for="name" class="form-label">{{'FormLabel.NoPeople' | translate}} <span
+                                                class="text-danger">*</span></label>
+                                        <input type="number" class="form-control" required id="noofpeople"
+                                            name="no_of_people" #noofpeople="ngModel" ngModel
+                                            [placeholder]= "'FormLabel.NoPeople' | translate" 
+                                            [ngClass]="{'is-invalid':corporateForm.submitted && (noofpeople.invalid),
+                                            'is-valid':corporateForm.submitted || (noofpeople.valid && noofpeople.touched)}">
+                                        <div *ngIf="corporateForm.submitted || (noofpeople.invalid && (noofpeople.dirty || noofpeople.touched ))"
+                                            class="invalid-feedback">
+                                            <div *ngIf="noofpeople.errors?.['required']" class="red-color">
+                                                {{"ErrorMessage.NoPeople" | translate}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-6">
+                                    <div class="form-group mb-1">
+                                        <label for="name" class="form-label">{{'Label.Date' | translate}} <span
+                                                class="text-danger">*</span></label>
+                                        <input type="date" class="form-control" required id="date" name="date" ngModel
+                                            placeholder="date" #date="ngModel" ngModel [placeholder]="'Label.Date' | translate"
+                                            [ngClass]="{'is-invalid':corporateForm.submitted && (date.invalid),
+                                            'is-valid':corporateForm.submitted || (date.valid && date.touched)}">
+                                        <div *ngIf="corporateForm.submitted || (date.invalid && (date.dirty || date.touched ))"
+                                            class="invalid-feedback">
+                                            <div *ngIf="date.errors?.['required']" class="red-color">
+                                                {{"ErrorMessage.EventDate" | translate}}                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-6">
+                                    <div class="form-group mb-1">
+                                        <label for="name" class="form-label">{{'FormLabel.approxBudget' | translate}} <span
+                                                class="text-danger">*</span></label>
+                                        <input type="text" required pattern="^\+?\d{1,10}$" maxlength="10"
+                                            class="form-control" id="budget" #budget="ngModel" name="budget" ngModel
+                                            [placeholder]="'FormLabel.approxBudget' | translate" [ngClass]="{'is-invalid':corporateForm.submitted && (budget.invalid),
+                                        'is-valid':corporateForm.submitted || (budget.valid && budget.touched)}">
+                                        <div *ngIf="corporateForm.submitted || (budget.invalid && (budget.dirty || budget.touched ))"
+                                            class="invalid-feedback">
+                                            <div *ngIf="budget.errors?.['required']" class="red-color">
+                                                {{"ErrorMessage.approxBudget" | translate}}
+                                            </div>
+                                            <div *ngIf="budget.errors?.['pattern']" class="red-color">
+                                                {{"ErrorMessage.validapproxBudget" | translate}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-6">
+                                    <div class="form-group mb-1">
+                                        <label for="name" class="form-label">{{'FormLabel.Address' | translate}} <span
+                                                class="text-danger">*</span></label>
+                                        <textarea class="form-control" required id="address" rows="3" name="address"
+                                            ngModel #address="ngModel" name="address" [placeholder]="'FormLabel.Address' | translate"
+                                            [ngClass]="{'is-invalid':corporateForm.submitted && (address.invalid),
+                                        'is-valid':corporateForm.submitted || (address.valid && address.touched)}"></textarea>
+                                        <div *ngIf="corporateForm.submitted || (address.invalid && (address.dirty || address.touched ))"
+                                            class="invalid-feedback">
+                                            <div *ngIf="address.errors?.['required']" class="red-color">
+                                                {{"ErrorMessage.Address" | translate}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-6">
+                                    <div class="form-group mb-1">
+                                        <label for="name" class="form-label">{{'FormLabel.specificNeeds' | translate}} <span
+                                                class="text-danger">*</span></label>
+                                        <textarea class="form-control" required id="description" rows="3"
+                                            name="description" #description="ngModel" ngModel
+                                            [placeholder]="'FormLabel.specificNeeds' | translate"
+                                            [ngClass]="{'is-invalid':corporateForm.submitted && (description.invalid),
+                                        'is-valid':corporateForm.submitted || (description.valid && description.touched)}"></textarea>
+                                        <div *ngIf="corporateForm.submitted || (description.invalid && (description.dirty || description.touched ))"
+                                            class="invalid-feedback">
+                                            <div *ngIf="description.errors?.['required']" class="red-color">
+                                               {{'ErrorMessage.YourSuggestion' | translate}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="submit-button mb-4">
+                                <hr>
+                                <input type="submit" class="green-btn" [value]= "'ButtonLabel.Save' | translate">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>

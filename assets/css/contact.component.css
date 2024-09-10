@@ -1,0 +1,278 @@
+.contact-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.contact-wrapper .side-wrapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 30vw;
+  height: 100vh;
+}
+.contact-wrapper .side-wrapper .side-graphics {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-image: url("../../../assets/images/login-graphic1.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-y: bottom;
+  height: 100vh;
+  width: 100%;
+}
+.contact-wrapper .side-wrapper .side-graphics .side-content {
+  max-width: 75%;
+  margin-bottom: 56px;
+  z-index: 9;
+}
+.contact-wrapper .side-wrapper .side-graphics .side-content h2 {
+  color: #fff;
+  font-size: 28px;
+  line-height: 35px;
+  font-family: interstate;
+  font-weight: 300;
+}
+.contact-wrapper .side-wrapper .side-graphics .side-content h2 span {
+  font-weight: bold;
+}
+@media (max-width: 992px) {
+  .contact-wrapper .side-wrapper .side-graphics .side-content h2 {
+    font-size: 18px;
+  }
+}
+.contact-wrapper .side-wrapper .side-graphics .side-content .get-in-touch {
+  font-size: 18px;
+  color: #fff;
+}
+@media (max-width: 992px) {
+  .contact-wrapper .side-wrapper .side-graphics .side-content .get-in-touch {
+    font-size: 14px;
+  }
+}
+.contact-wrapper .side-wrapper .side-graphics .side-content .book-meeting-wrapper {
+  color: #fff;
+}
+.contact-wrapper .side-wrapper .side-graphics .side-content .book-meeting-wrapper .book-meeting-content {
+  margin-bottom: 30px;
+  font-size: 14px;
+  line-height: 23px;
+}
+@media (max-width: 992px) {
+  .contact-wrapper .side-wrapper .side-graphics .side-content .book-meeting-wrapper .book-meeting-content {
+    font-size: 12px;
+  }
+}
+.contact-wrapper .side-wrapper .side-graphics .side-content .book-meeting-wrapper .meeting-list {
+  display: flex;
+  flex-direction: column;
+}
+.contact-wrapper .side-wrapper .side-graphics .side-content .book-meeting-wrapper .meeting-list .meeting-item {
+  display: flex;
+  align-items: center;
+  color: #fff;
+  margin-bottom: 15px;
+}
+.contact-wrapper .side-wrapper .side-graphics .side-content .book-meeting-wrapper .meeting-list .meeting-item .meeting-image {
+  position: relative;
+  max-width: 80px;
+  max-height: 80px;
+}
+.contact-wrapper .side-wrapper .side-graphics .side-content .book-meeting-wrapper .meeting-list .meeting-item .meeting-image img {
+  width: 100%;
+  max-width: 80px;
+  border-radius: 50px;
+}
+.contact-wrapper .side-wrapper .side-graphics .side-content .book-meeting-wrapper .meeting-list .meeting-item .meeting-image i {
+  position: absolute;
+  right: -10px;
+  bottom: -2px;
+  background: #fff;
+  padding: 8px;
+  color: #40c8b1;
+  border-radius: 20px;
+}
+.contact-wrapper .side-wrapper .side-graphics .side-content .book-meeting-wrapper .meeting-list .meeting-item .meeting-image i:hover {
+  color: #fff;
+  background: #40c8b1;
+}
+.contact-wrapper .side-wrapper .side-graphics .side-content .book-meeting-wrapper .meeting-list .meeting-item .meeting-person {
+  max-width: 200px;
+  font-size: 18px;
+  font-weight: 900;
+  line-height: 30px;
+  padding-left: 26px;
+}
+@media (max-width: 992px) {
+  .contact-wrapper .side-wrapper .side-graphics .side-content .book-meeting-wrapper .meeting-list .meeting-item .meeting-person {
+    font-size: 14px;
+    line-height: 25px;
+  }
+}
+.contact-wrapper .side-wrapper .side-graphics .side-content .book-meeting-wrapper .meeting-list .meeting-item:hover {
+  color: #fff;
+}
+@media (max-width: 768px) {
+  .contact-wrapper .side-wrapper {
+    display: none;
+  }
+}
+.contact-wrapper .mobile-view {
+  display: none;
+}
+.contact-wrapper .mobile-view h2 {
+  color: #32325D;
+  font-size: 28px;
+  line-height: 35px;
+  font-family: interstate;
+  font-weight: 300;
+  text-align: center;
+}
+.contact-wrapper .mobile-view h2 span {
+  font-weight: bold;
+}
+@media (max-width: 480px) {
+  .contact-wrapper .mobile-view h2 {
+    font-size: 24px;
+  }
+}
+.contact-wrapper .mobile-view .get-in-touch {
+  font-size: 18px;
+  color: #32325D;
+  text-align: center;
+}
+.contact-wrapper .mobile-view .book-meeting-wrapper {
+  color: #32325D;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.contact-wrapper .mobile-view .book-meeting-wrapper .book-meeting-content {
+  margin-bottom: 30px;
+  font-size: 14px;
+  line-height: 23px;
+  text-align: center;
+}
+.contact-wrapper .mobile-view .book-meeting-wrapper .meeting-list {
+  display: flex;
+  flex-direction: column;
+}
+.contact-wrapper .mobile-view .book-meeting-wrapper .meeting-list .meeting-item {
+  display: flex;
+  align-items: center;
+  color: #32325D;
+  margin-bottom: 15px;
+}
+.contact-wrapper .mobile-view .book-meeting-wrapper .meeting-list .meeting-item .meeting-image {
+  position: relative;
+  max-width: 80px;
+  max-height: 80px;
+}
+.contact-wrapper .mobile-view .book-meeting-wrapper .meeting-list .meeting-item .meeting-image img {
+  width: 100%;
+  max-width: 80px;
+  border-radius: 50px;
+}
+.contact-wrapper .mobile-view .book-meeting-wrapper .meeting-list .meeting-item .meeting-image i {
+  position: absolute;
+  right: -10px;
+  bottom: -2px;
+  background: #fff;
+  padding: 8px;
+  color: #40c8b1;
+  border-radius: 20px;
+}
+.contact-wrapper .mobile-view .book-meeting-wrapper .meeting-list .meeting-item .meeting-image i:hover {
+  color: #fff;
+  background: #40c8b1;
+}
+@media (max-width: 480px) {
+  .contact-wrapper .mobile-view .book-meeting-wrapper .meeting-list .meeting-item .meeting-image {
+    max-width: 60px;
+    max-height: 60px;
+  }
+}
+.contact-wrapper .mobile-view .book-meeting-wrapper .meeting-list .meeting-item .meeting-person {
+  max-width: 200px;
+  font-size: 18px;
+  font-weight: 900;
+  line-height: 30px;
+  padding-left: 26px;
+}
+@media (max-width: 768px) {
+  .contact-wrapper .mobile-view .book-meeting-wrapper .meeting-list .meeting-item .meeting-person {
+    font-size: 14px;
+    line-height: 25px;
+  }
+}
+.contact-wrapper .mobile-view .book-meeting-wrapper .meeting-list .meeting-item:hover {
+  color: #fff;
+}
+@media (max-width: 768px) {
+  .contact-wrapper .mobile-view {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+.contact-wrapper .contact-main {
+  width: 100%;
+}
+.contact-wrapper .contact-main .contact-form {
+  width: 50%;
+}
+.contact-wrapper .contact-main .contact-form .form-control {
+  padding: 15px;
+  box-shadow: none;
+}
+.contact-wrapper .contact-main .contact-form .form-label {
+  font-weight: bold;
+  font-size: 15px;
+}
+.contact-wrapper .contact-main .contact-form select {
+  border: 2px solid #ddd !important;
+  width: 100%;
+  display: block !important;
+  border-radius: 2px;
+  outline: none !important;
+  cursor: text !important;
+  font-size: 15px !important;
+  box-sizing: border-box !important;
+  box-shadow: none !important;
+  margin: 0 !important;
+  position: static;
+  outline: none !important;
+  background: #fff;
+  padding: 15px !important;
+}
+.contact-wrapper .contact-main .contact-form .submit-button button {
+  font-size: 1em;
+  text-transform: uppercase;
+  color: #fff;
+  padding: 10px 50px;
+  background-color: #3D7DEB;
+  border: 2px solid #3D7DEB;
+  box-shadow: none;
+  border-radius: 40px;
+  box-shadow: none;
+}
+.contact-wrapper .contact-main .contact-form .submit-button button:hover {
+  background-color: #ddd;
+  border: 1px solid #ccc;
+}
+@media (max-width: 768px) {
+  .contact-wrapper .contact-main .contact-form .submit-button {
+    text-align: center;
+  }
+}
+.contact-wrapper .contact-main .contact-form .error-msg {
+  color: #ff0000;
+  font-size: 15px;
+}
+@media (max-width: 768px) {
+  .contact-wrapper .contact-main .contact-form {
+    width: 100%;
+  }
+}/*# sourceMappingURL=contact.component.css.map */

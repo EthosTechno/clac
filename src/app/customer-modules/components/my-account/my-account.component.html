@@ -1,0 +1,100 @@
+<section class="my-account-wrapper">
+    <div class="container">
+        <h2 class="section-title">{{"Label.My" | translate}} <span>{{"Label.Account" | translate}}</span></h2>
+        <div class="main-content">
+            <div class="left-sidebar">
+                <!-- assets/images/dummy-user.png -->
+                <img src="{{userDetail.profile_image}}" alt="" (click)="data.click()" class="user-img"
+                    onerror="this.src = 'assets/images/dummy-user.png'">
+                <button type="button" (click)="data.click()" class="btn btn-sm btn-primary"
+                    style="margin-top: 100px;margin-left: -35px;background-color: #20a8d8b0;">
+                    <span><i class="fa fa-camera"></i></span>
+                </button>
+                <input type="file" id="input-data" name="data" class="form-control form-control-alternative" data #data
+                    required accept=".png, .jpg, .jpeg" (change)="onFileChanged($event)" style="display: none;">
+                <div class="sidebar-menus">
+                    <span class="admin-tag" *ngIf="role == 2">{{"Label.Admin" |
+                        translate}}</span>
+                    <span class="admin-tag" *ngIf="role == 3">{{"Label.Company" | translate}} {{"Label.Admin" |
+                        translate}}</span>
+                    <span class="admin-tag" *ngIf="role == 5">{{"Label.Company" | translate}} {{"Label.Client" |
+                        translate}} {{"Label.Admin" | translate}}</span>
+                    <span class="admin-tag" *ngIf="role == 4">{{"Label.Company" | translate}} {{"Label.Employee" |
+                        translate}}</span>
+                    <span class="admin-tag" *ngIf="role == 6">{{"Label.Company" | translate}} {{"Label.Client" |
+                        translate}}</span>
+
+                    <h3 class="username">{{firstname}} {{lastname}}</h3>
+                    <div class="show-profile d-none">Show Profile</div>
+                    <ul class="menu-list">
+                        <li>
+                            <a [routerLink]="['/customer/myaccount/profile']"
+                                [routerLinkActive]="['active']">{{"ButtonLabel.MyInformation" | translate}}</a>
+                        </li>
+                        <!-- *ngIf="role == 3 || role == 2 || role == 5" -->
+                        <li *ngIf="role == 3 || role == 2 || role == 5 || role == 4 || role == 6">
+                            <a [routerLink]="['/customer/myaccount/subscriptions']"
+                                [routerLinkActive]="['active']">{{"ButtonLabel.MySubscription" | translate}}</a>
+                        </li>
+                        <li>
+                            <a [routerLink]="['/customer/myaccount/orderhistory']" [routerLinkActive]="['active']">{{"Label.Orders" | translate}} {{"ButtonLabel.History" | translate}}
+                            </a>
+                        </li>
+                        <!-- *ngIf="role != 2"-->
+                        <li *ngIf="role != 2 && role != 5 && role != 6"><!-- client Changes Above Condition is Old-->
+                            <!-- <a [routerLink]="['/customer/myaccount/corporatehistory']"
+                                [routerLinkActive]="['active']">“{{"ButtonLabel.MyCorporateLife" | translate}}”
+                                {{"ButtonLabel.History" | translate}}
+                            </a> -->
+                            <a [routerLink]="['/customer/myaccount/corporatehistory']"
+                            [routerLinkActive]="['active']">{{"ButtonLabel.MyCorporateLife" | translate}}
+                            <!-- {{"ButtonLabel.History" | translate}} -->
+                        </a>
+                        </li>
+                        <!-- <li>
+                            <a [routerLink]="['/customer/myaccount/cancelsubscription']" [routerLinkActive]="['active']">Cancel my subscription</a>
+                        </li> -->
+                        <li>
+                            <a [routerLink]="['/customer/myaccount/changepassword']"
+                                [routerLinkActive]="['active']">{{"ButtonLabel.ChangePassword" | translate}}</a>
+                        </li>
+                    </ul>
+                    <ul class="menu-list admin-menus">
+                        <li *ngIf="role == 3 || role == 5">
+                            <a [routerLink]="['/customer/myaccount/documents']"
+                                [routerLinkActive]="['active']">{{"ButtonLabel.MyDocuments" | translate}}</a>
+                        </li>
+                        <li *ngIf="role == 3 || role == 5">
+                            <a [routerLink]="['/customer/myaccount/news']"
+                                [routerLinkActive]="['active']">{{"ButtonLabel.News" | translate}}</a>
+                        </li>
+                        <li *ngIf="role == 3">
+                            <a [routerLink]="['/customer/myaccount/employees']"
+                                [routerLinkActive]="['active']">{{"ButtonLabel.Employees" | translate}}</a>
+                        </li>
+                        <li *ngIf="role == 5">
+                            <a [routerLink]="['/customer/myaccount/companyclient']"
+                                [routerLinkActive]="['active']">{{"ButtonLabel.CompanyClient" | translate}}</a>
+                        </li>
+                        <li *ngIf="role == 5 || role == 1 || role == 3">
+                            <a [routerLink]="['/customer/myaccount/ideaBox']"
+                                [routerLinkActive]="['active']">{{"ButtonLabel.IdeaBox" | translate}}</a>
+                        </li>
+                        <!-- <li *ngIf="(role == 3 || role == 2 || role == 5) && subscription_status">
+                            <a href="javascript:void(0)" (click)='CancelPlan(userModel._id)'
+                                [routerLinkActive]="['active']">{{"ButtonLabel.CancelMySubscription" | translate}}</a>
+                        </li> -->
+                        <!-- *ngIf="(role == 3 || role == 2 || role == 5) && subscription_status" -->
+                        <li *ngIf="(role == 3 || role == 2 || role == 5 || role == 4 || role == 6) && subscription_status">
+                            <a [routerLink]="['/customer/myaccount/cancelsubscription']"
+                                [routerLinkActive]="['active']">{{"ButtonLabel.CancelMySubscription" | translate}}</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="right-content-main">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</section>

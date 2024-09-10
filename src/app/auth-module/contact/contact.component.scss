@@ -1,0 +1,306 @@
+.contact-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    .side-wrapper {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 30vw;
+        height: 100vh;
+    
+        .side-graphics {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-image: url('../../../assets/images/login-graphic1.svg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position-y: bottom;
+            height: 100vh;
+            width: 100%;
+
+            .side-content {
+                max-width: 75%;
+                margin-bottom: 56px;
+                z-index: 9;
+
+                h2 {
+                    color: #fff;
+                    font-size: 28px;
+                    line-height: 35px;
+                    font-family: interstate;
+                    font-weight: 300;
+
+                    span {
+                        font-weight: bold;
+                    }
+
+                    @media (max-width: 992px) {
+                        font-size: 18px;
+                    }
+                }
+
+                .get-in-touch {
+                    font-size: 18px;
+                    color: #fff;
+
+                    @media (max-width: 992px) {
+                        font-size: 14px;
+                    }
+                }
+
+                .book-meeting-wrapper {
+                    color: #fff;
+                    .book-meeting-content {
+                        margin-bottom: 30px;
+                        font-size: 14px;
+                        line-height: 23px;
+
+                        @media (max-width: 992px) {
+                            font-size: 12px;
+                        }
+                    }
+
+                    .meeting-list {
+                        display: flex;
+                        flex-direction: column;
+                        
+                        .meeting-item {
+                            display: flex;
+                            align-items: center;
+                            color: #fff;
+                            margin-bottom: 15px;
+                            
+                            .meeting-image {
+                                position: relative;
+                                max-width: 80px;
+                                max-height: 80px;
+
+                                img {
+                                    width: 100%;
+                                    max-width: 80px;
+                                    border-radius: 50px;
+                                }
+
+                                i {
+                                    position: absolute;
+                                    right: -10px;
+                                    bottom: -2px;
+                                    background: #fff;
+                                    padding: 8px;
+                                    color: #40c8b1;
+                                    border-radius: 20px;
+
+                                    &:hover {
+                                        color: #fff;
+                                        background: #40c8b1;
+                                    }
+                                }
+                            }
+                            .meeting-person {
+                                max-width: 200px;
+                                font-size: 18px;
+                                font-weight: 900;
+                                line-height: 30px;
+                                padding-left: 26px;
+
+                                @media (max-width: 992px) {
+                                    font-size: 14px;
+                                    line-height: 25px;
+                                }
+                            }
+
+                            &:hover {
+                                color: #fff;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        @media (max-width: 768px) {
+            display: none;
+        }
+    }
+
+    .mobile-view {
+        display: none;
+
+        h2 {
+            color: #32325D;
+            font-size: 28px;
+            line-height: 35px;
+            font-family: interstate;
+            font-weight: 300;
+            text-align: center;
+
+            span {
+                font-weight: bold;
+            }
+
+            @media (max-width: 480px) {
+                font-size: 24px;
+            }
+        }
+
+        .get-in-touch {
+            font-size: 18px;
+            color: #32325D;
+            text-align: center;
+        }
+
+        .book-meeting-wrapper {
+            color: #32325D;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .book-meeting-content {
+                margin-bottom: 30px;
+                font-size: 14px;
+                line-height: 23px;
+                text-align: center;
+            }
+
+            .meeting-list {
+                display: flex;
+                flex-direction: column;
+                
+                .meeting-item {
+                    display: flex;
+                    align-items: center;
+                    color: #32325D;
+                    margin-bottom: 15px;
+                    
+                    .meeting-image {
+                        position: relative;
+                        max-width: 80px;
+                        max-height: 80px;
+
+                        img {
+                            width: 100%;
+                            max-width: 80px;
+                            border-radius: 50px;
+                        }
+
+                        i {
+                            position: absolute;
+                            right: -10px;
+                            bottom: -2px;
+                            background: #fff;
+                            padding: 8px;
+                            color: #40c8b1;
+                            border-radius: 20px;
+
+                            &:hover {
+                                color: #fff;
+                                background: #40c8b1;
+                            }
+                        }
+
+                        @media (max-width: 480px) {
+                            max-width: 60px;
+                            max-height: 60px;
+                        }
+                    }
+                    .meeting-person {
+                        max-width: 200px;
+                        font-size: 18px;
+                        font-weight: 900;
+                        line-height: 30px;
+                        padding-left: 26px;
+
+                        @media (max-width: 768px) {
+                            font-size: 14px;
+                            line-height: 25px;
+                        }
+                    }
+
+                    &:hover {
+                        color: #fff;
+                    }
+                }
+            }
+        }
+
+        @media (max-width: 768px) {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+    }
+
+    .contact-main {
+        width: 100%;
+
+        .contact-form {
+            width: 50%;
+
+            .form-control {
+                padding: 15px;
+                box-shadow: none;
+            }
+
+            .form-label {
+                font-weight: bold;
+                font-size: 15px;
+            }
+
+            select {
+                border: 2px solid #ddd !important;
+                width: 100%;
+                display: block !important;
+                -moz-border-radius: 2px;
+                -webkit-border-radius: 2px;
+                border-radius: 2px;
+                outline: none !important;
+                cursor: text !important;
+                font-size: 15px !important;
+                box-sizing: border-box !important;
+                box-shadow: none !important;
+                margin: 0 !important;
+                position: static;
+                outline: none !important;
+                background: #fff;
+                padding: 15px !important;
+            }
+
+            .submit-button {
+                button {
+                    font-size: 1em;
+                    text-transform: uppercase;
+                    color: #fff;
+                    padding: 10px 50px;
+                    background-color: #3D7DEB;
+                    border: 2px solid #3D7DEB;
+                    box-shadow: none;
+                    border-radius: 40px;
+                    box-shadow: none;
+
+                    &:hover {
+                        background-color: #ddd;
+                        border: 1px solid #ccc;
+                    }
+                }
+
+                @media (max-width: 768px) {
+                    text-align: center;
+                }
+            }
+
+            .error-msg {
+                color: #ff0000;
+                font-size: 15px;
+            }
+
+            @media (max-width: 768px) {
+                width: 100%;
+            }
+        }
+    }
+}

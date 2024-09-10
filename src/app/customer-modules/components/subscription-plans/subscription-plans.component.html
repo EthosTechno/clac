@@ -1,0 +1,39 @@
+<div class="subsc-plans-main">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4" *ngFor="let subtype of subscriptionDetail | keyvalue">
+                {{subtype.value.subscription_type | keyvalue}}
+                <div
+                    [ngClass]="subtype.value.subscription_type == 'INDIVIDUAL_USER' ? 'plan-one green' : (subtype.value.subscription_type == 'COMPANY_ADMIN' ? 'plan-one middle blue' : 'plan-one blue')">
+                    <img src={{subtype.value.image}} height="100" width="100" alt="">
+                    <span class="plan-title">{{subtype.value.title}}</span>
+                    <div class="hero-title">
+                        <h4>{{subtype.value.sub_title}}</h4>
+                    </div>
+                    <div class="plan-pricing">
+                        <span class="bold">{{subtype.value.amount}}</span>
+                        <div class="currency">
+                            <span class="symb">€ {{subtype.value.tax}}</span>
+                            <p>inc. taxes</p>
+                        </div>
+                        <span class="validity">/ {{subtype.value.type}}</span>
+                    </div>
+                    
+                    <a *ngIf="subtype.value.subscription_type == 'INDIVIDUAL_USER'" [routerLink]='["/customer/individualsubscription/",subtype.value.subscription_id]' class="subs-btn green">Sign up</a>
+                    <a *ngIf="subtype.value.subscription_type == 'COMPANY_ADMIN'" [routerLink]='["/customer/businesssubscription/",subtype.value.subscription_id]' class="subs-btn green">Sign up</a>
+                    <a *ngIf="subtype.value.subscription_type == 'COMPANY_CLIENT_ADMIN'" [routerLink]='["/customer/b2bsubscription"]' class="subs-btn green">Contact</a>
+                </div>
+            </div>    
+        </div>
+    </div>
+    <svg id="pricings-green-bg-scene" viewBox="0 0 1600 379" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="visibility: visible;">
+        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g id="HP3---Desktop---Extra-large---12-col" transform="translate(0.000000, -4966.000000)" fill="#00C8B1">
+               
+    
+                <path id="pricings-green-bg-init" d="M0,5085L1185.26596 4966 1600 5060.5 1600 5345 0 5345z" data-svg-origin="0 5100.5" transform="matrix(1,0,0,1,0,0)" style="opacity: 1;" data-original="M0,5145L1185.26596 5126 1600 5100.5 1600 5345 0 5345z"></path>
+                <path id="pricings-green-bg" style="opacity: 0;" d="M0,5085L1185.26596 4966 1600 5060.5 1600 5345 0 5345z"></path>
+            </g>
+        </g>
+    </svg>
+</div>

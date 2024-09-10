@@ -1,0 +1,99 @@
+<div class="content-block">
+    <div class="block-head">
+        <div class="left-head">
+            <h3 class="page-title">{{"ButtonLabel.MySubscription" | translate}}</h3>
+        </div>
+        <div class="right-head">
+            <button class="submit-btn" data-bs-toggle="modal" data-bs-target="#renewModal"
+                *ngIf="!subscription_status">{{"ButtonLabel.Renewmyaccount" | translate}}</button>
+        </div>
+    </div>
+    <div class="table-wrapper my-3">
+        <p-table class="order-history-table" [value]="SubscriptionSummary" [reorderableColumns]="true"
+            [showLoader]="true" #dt1 [rows]="10" [showCurrentPageReport]="true" [columnResizeMode]="'fit'" [lazy]="true" [reorderableColumns]="true" [resizableColumns]="true"
+            [autoLayout]="true">
+            <ng-template pTemplate="header">
+                <tr>
+                    <ng-container>
+                        <th>{{'Label.Name' | translate}}</th>
+                        <th>{{'Label.Amount' | translate}}</th>
+                        <th>{{'Label.startDate' | translate}}</th>
+                        <th>{{'Label.endDate' | translate}}</th>
+                        <th>{{'Label.Status' | translate}}</th>
+                    </ng-container>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-summary>
+                <tr>
+                <td><span class="text-wrap">{{summary.name}}</span></td>
+                <td><span class="text-wrap">{{summary.amount}}</span></td>
+                <td><span class="text-wrap">{{summary.start_date}}</span></td>
+                <td><span class="text-wrap">{{summary.end_date}}</span></td>
+                <td style="color: green;" *ngIf="summary.status == 'Active'">
+                    <span class="text-wrap">{{summary.user_subscription_expiry_type}}</span>
+                </td>
+                <td style="color: red;" *ngIf="summary.status == 'Inactive'">
+                    <span class="text-wrap">{{summary.user_subscription_expiry_type}}</span>
+                </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>
+
+
+<div class="modal fade" id="renewModal" tabindex="-1" aria-labelledby="RenewModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <form>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="d-flex align-items-center">
+                        <h4 class="modal-title">{{"Label.Renew" | translate}} <span>{{"Label.Subscription" | translate}}</span></h4>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" #ModalClose
+                        (click)='checkout.resetForm()'></button>
+                </div>
+                <div class="modal-body">
+                    <div class="content-block">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <div class="mb-3">
+                                        <label for="news-title" class="form-label">{{"Label.PlanDetails" | translate}}</label>
+                                        <div class="plan">
+                                            <div class="plan-detail-wrapper">
+                                                <h5>{{renewSubscription?.subscription_name}}</h5>
+                                                <h2>€ {{renewSubscription?.amount}}<span> / Yearly</span></h2>
+                                                <p class="plan-detail">{{renewSubscription?.description}} </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="mb-3">
+                                    <label for="news-title" class="form-label">{{"Label.Payment" | translate}}</label>
+                                    <!-- <app-card-payment></app-card-payment> -->
+                                    <div class="um-col-1 cus-registration-form">
+                                        <form #checkout="ngForm" (ngSubmit)="onSubmit(checkout)" class="checkout">
+                                            <div class="um-field um-field-text um-field-type_text um-field-type_source">
+                                                <div class="form-row">
+                                                    <div id="card-info" #cardInfo></div>
+                                                    <div class="red-color" id="card-errors" role="alert" *ngIf="error">
+                                                        {{ error }}</div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" value="Pay" class="btn green-btn" (click)='onSubmit(checkout)'>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

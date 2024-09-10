@@ -1,0 +1,15 @@
+export { HomeComponent } from './home/home.component';
+export { OffersComponent } from './offers/offers.component';
+export { CompanyComponent } from './company/company.component';
+export { ServicesComponent } from './services/services.component';
+export { MyAccountComponent } from './my-account/my-account.component';
+export { MyInformationComponent } from './my-information/my-information.component';
+export { MySubscriptionComponent } from './my-subscription/my-subscription.component';
+export { OrderHistoryComponent } from './order-history/order-history.component';
+export { CorporateLifeHistoryComponent } from './corporate-life-history/corporate-life-history.component';
+export { CancelMySubscriptionComponent } from './cancel-my-subscription/cancel-my-subscription.component';
+export { MyDocumentsComponent } from './my-documents/my-documents.component';
+export { NewsComponent } from './news/news.component';
+export { EmployeesComponent } from './employees/employees.component';
+export { CancelMyAccountComponent } from './cancel-my-account/cancel-my-account.component';
+export { ChangePasswordComponent } from './change-password/change-password.component';

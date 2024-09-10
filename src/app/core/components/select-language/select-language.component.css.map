@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "select-language.component.scss"
+    ],
+    "names": [],
+    "file": "select-language.component.css"
+}

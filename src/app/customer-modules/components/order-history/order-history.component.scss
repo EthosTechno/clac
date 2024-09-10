@@ -1,0 +1,241 @@
+.order-history-table{
+    width: 100%;
+
+    @media (max-width: 1199px){
+        overflow: auto;
+        display: block;
+    }
+
+    @media (max-width: 767px){
+        thead{
+            display: none;
+        }
+    }
+
+    *{
+        font-size: 14px;
+        font-family: "Overpass", sans-serif;
+
+        @media (max-width: 767px){
+            display: block;
+        }
+    }
+    .btn{
+        font-size: 15px;
+        height: 42px;
+        margin-left: 0;
+        width: 100%;
+        padding-top: 8px;
+        
+        @media (max-width: 1399px){
+            min-width: auto;
+        }
+
+        &:disabled{
+            background: #a5a5a5;
+            cursor: not-allowed;
+            pointer-events: all;
+        }
+    }
+    .service{
+        min-width: 180px;
+
+        @media (max-width: 1399px){
+            min-width: 145px;
+        }
+
+        @media (max-width: 767px){
+            min-width: 130px;
+        }
+
+        @media (max-width: 767px){
+            position: relative;
+
+            &::before{
+                content: "Service";
+                position: absolute;
+                left: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                font-weight: 800;
+                font-size: 14px;
+            }
+        }
+    }
+    .date{
+        min-width: 120px;
+
+        @media (max-width: 1399px){
+            min-width: 100px;
+        }
+
+        @media (max-width: 767px){
+            min-width: 90px;
+        }
+
+        @media (max-width: 767px){
+            position: relative;
+
+            &::before{
+                content: "Date";
+                position: absolute;
+                left: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                font-weight: 800;
+                font-size: 14px;
+            }
+        }
+    }
+    .price{
+        min-width: 120px;
+
+        @media (max-width: 1399px){
+            min-width: 100px;
+        }
+
+        @media (max-width: 767px){
+            min-width: 90px;
+        }
+
+        @media (max-width: 767px){
+            position: relative;
+
+            &::before{
+                content: "Price";
+                position: absolute;
+                left: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                font-weight: 800;
+                font-size: 14px;
+            }
+        }
+    }
+    .status{
+        min-width: 90px;
+
+        @media (max-width: 1399px){
+            min-width: 80px;
+        }
+
+        @media (max-width: 767px){
+            min-width: 70px;
+        }
+
+        @media (max-width: 767px){
+            position: relative;
+
+            &::before{
+                content: "Status";
+                position: absolute;
+                left: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                font-weight: 800;
+                font-size: 14px;
+            }
+        }
+    }
+    .reorder{
+        min-width: 200px;
+
+        @media (max-width: 1399px){
+            min-width: 170px;
+        }
+
+        @media (max-width: 767px){
+            min-width: 140px;
+        }
+    }
+    .invoice{
+        min-width: 110px;
+
+        @media (max-width: 767px){
+            min-width: 90px;
+        }
+    }
+    tr{
+
+        @media (max-width: 767px){
+
+            &:not(:last-child){
+                padding-bottom: 20px;
+                margin-bottom: 20px;
+                position: relative;
+
+                &::after{
+                    content: '';
+                    position: absolute;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    width: 50px;
+                    height: 2px;
+                    background: #00C8B1;
+                    bottom: 0;
+                }
+            }
+        }
+        
+        th{
+            vertical-align: middle;
+            padding: 14px 20px 14px 0;
+            border-bottom: 1px solid rgba(50, 50, 93, 0.2);
+            font-weight: 800;
+
+            @media (max-width: 1399px){
+                padding: 14px 14px 14px 0;
+            }
+
+            &:last-child{
+                padding-right: 0;
+            }
+
+            &.disappear{
+                opacity: 0;
+            }
+        }
+        td{
+            vertical-align: middle;
+            padding: 8px 20px 8px 0;
+            border-bottom: 1px solid rgba(50, 50, 93, 0.2);
+
+            @media (max-width: 1399px){
+                padding: 8px 14px 8px 0;
+            }   
+
+            @media (max-width: 767px){
+                padding-right: 0;
+                text-align: right;
+                padding: 10px 0px 8px 0;
+
+                &:last-child{
+                    border-bottom: none;
+                }
+            }
+
+            &:last-child{
+                padding-right: 0;
+            }
+
+            &:first-child{
+                font-weight: 800;
+            }
+
+            &.status{
+                font-weight: 800;
+            }
+        }
+        &:last-child{
+            td{
+                border-bottom: none;
+            }
+
+            @media (max-width: 767px){
+                td{
+                    border-bottom: 1px solid rgba(50, 50, 93, 0.2);
+                }
+            }
+        }
+    }
+}

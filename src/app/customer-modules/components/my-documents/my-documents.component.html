@@ -1,0 +1,125 @@
+<div class="documents-wrapper">
+    <div class="content-block">
+        <h3 class="page-title">{{"Label.Reporting" | translate}}</h3>
+
+        <ng-container *ngIf="documentModel.totalItems > 0">
+            <table class="document-table">
+                <thead>
+                    <tr>
+                        <th class="name">{{"Label.Name" | translate}}</th>
+                        <th class="download">{{"Label.Download" | translate}}</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr *ngFor="let DOC of docDetails | paginate: documentModel">
+                        <td class="name">{{DOC?.document_name}}</td>
+                        <td class="download">
+                            <a href="{{DOC?.document}}" download target="_blank">
+                              <img src="assets/images/download.png" alt="">
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+            <pagination-controls id="Reporting" (pageChange)="pageChanged($event)"></pagination-controls>
+        </ng-container>
+
+        <ng-container *ngIf="documentModel.totalItems == 0">
+            <p>No Reporting Document Records</p>
+        </ng-container>
+
+    </div>
+
+    <div class="content-block">
+        <h3 class="page-title">{{"Label.Contract" | translate}}</h3>
+
+        <ng-container *ngIf="contractModel.totalItems > 0">
+            <table class="document-table">
+                <thead>
+                    <tr>
+                        <th class="name">{{"Label.Name" | translate}}</th>
+                        <th class="date">{{"Label.Date" | translate}}</th>
+                        <th class="download">{{"Label.Download" | translate}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let DOC of docContractDetails | paginate: contractModel">
+                        <td class="name">{{DOC.document_name}}</td>
+                        <td class="date">{{DOC.date}}</td>
+                        <td class="download"><a href="{{DOC.document}}" download target="_blank"><img
+                                    src="assets/images/download.png" alt=""></a></td>
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+            <pagination-controls id="Contract" (pageChange)="pageChangedContract($event)"></pagination-controls>
+        </ng-container>
+
+        <ng-container *ngIf="contractModel.totalItems == 0">
+            <p>No Contract Document Records</p>
+        </ng-container>
+
+    </div>
+    <div class="content-block">
+        <h3 class="page-title">{{"Label.Communication" | translate}}</h3>
+
+        <ng-container *ngIf="communicationModel.totalItems > 0">
+            <table class="document-table">
+                <thead>
+                    <tr>
+                        <th class="name">{{"Label.Name" | translate}}</th>
+                        <th class="download">{{"Label.Download" | translate}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let DOC of docCommunicatioDetails | paginate: communicationModel">
+                        <td class="name">{{DOC.document_name}}</td>
+                        <td class="download"><a href="{{DOC.document}}" download target="_blank"><img
+                                    src="assets/images/download.png" alt=""></a></td>
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+            <pagination-controls id="Communication"
+                (pageChange)="pageChangedCommunication($event)"></pagination-controls>
+        </ng-container>
+
+        <ng-container *ngIf="communicationModel.totalItems == 0">
+            <p>No Communication Document Records</p>
+        </ng-container>
+
+    </div>
+
+    <div class="content-block">
+        <h3 class="page-title">{{"Label.Billing" | translate}}</h3>
+        <ng-container *ngIf="billingModel.totalItems > 0">
+            <table class="document-table">
+                <thead>
+                    <tr>
+                        <th class="name">{{"Label.Name" | translate}}</th>
+                        <th class="download">{{"Label.Download" | translate}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                    <tr *ngFor="let DOC of docBillingDetails | paginate: billingModel">
+                        <td class="name">{{DOC.document_name}}</td>
+                        <td class="download"><a href="{{DOC.document}}" download target="_blank"><img
+                                    src="assets/images/download.png" alt=""></a></td>
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+            <pagination-controls id="Billing" (pageChange)="pageChangedBilling($event)"></pagination-controls>
+        </ng-container>
+
+        <ng-container *ngIf="billingModel.totalItems == 0">
+            <p>No Bill Document Records</p>
+        </ng-container>
+
+
+    </div>
+</div>

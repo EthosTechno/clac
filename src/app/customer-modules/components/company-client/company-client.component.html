@@ -1,0 +1,200 @@
+<div class="content-block">
+    <h3 class="page-title">Company Client</h3>
+    <button type="button" class="submit-btn" style="margin-top: -50px;" data-bs-toggle="modal"
+        data-bs-target="#ClientModal">Add Client</button>
+    <div class="table-wrapper">
+        <!------------------------------------------------------------------------------------------------->
+        <br>
+        <p-table [columns]="cols" [value]="employeeDetails" class="order-history-table"
+            [rowsPerPageOptions]="[10,25,50]" [reorderableColumns]="true" [showLoader]="true" #dt1 [paginator]="true"
+            [rows]="10" [showCurrentPageReport]="true" [columnResizeMode]="'fit'" [lazy]="true"
+            (onLazyLoad)="onLazyLoad($event)" [reorderableColumns]="true" [resizableColumns]="true" [autoLayout]="true"
+            [totalRecords]="totalDocs">
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <ng-container *ngFor="let col of columns">
+                        <ng-container *ngIf="col.display">
+                            <ng-container *ngIf="col.isSortable">
+                                <th pSortableColumn="{{col.field}}">{{col.header}}
+                                    <p-sortIcon [field]="col.field"></p-sortIcon>
+                                </th>
+                            </ng-container>
+                            <ng-container *ngIf="!col.isSortable">
+                                <th>{{col.header}}</th>
+                            </ng-container>
+                        </ng-container>
+                    </ng-container>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-record let-columns="columns">
+                <tr>
+                    <ng-container *ngFor="let col of columns">
+                        <td *ngIf="col.display">
+                            <span *ngIf="col.type == 'string'" class="text-wrap">{{record[col.field]}}</span>
+                            <span *ngIf="col.type == 'bool'" class="text-wrap">{{record[col.field]}}</span>
+
+                            <span *ngIf="col.type == 'option'" class="text-wrap">{{record[col.field] ? col.true :
+                                col.false}}</span>
+
+                            <span *ngIf="col.type == 'date'" class="text-wrap">{{record[col.field] |
+                                date:'yyyy-MM-dd'}}</span>
+
+                            <span *ngIf="col.type == 'image'"><img _ngcontent-fsl-c86="" width="32"
+                                    style="vertical-align: middle;" src="{{record[col.field]}}"></span>
+                            <span *ngIf="col.type == 'image-array'"><img _ngcontent-fsl-c86="" width="32"
+                                    style="vertical-align: middle;"
+                                    src="{{record['image_url']}}{{record.image[0][col.field]}}"></span>
+                            <span *ngIf="col.type == 'price'">{{record[col.field] | currency: 'USD' : true}}</span>
+                            <span *ngIf="col.type == 'discount'">{{record[col.field]}}%</span>
+                            <span *ngIf="col.type == 'download'">
+                                <a href="{{record[col.field]}}" target="_blank" download title="Download">
+                                    <i class="fa fa-download fa-lg"></i>
+                                </a>
+                            </span>
+                            <!-- <span *ngIf="col.type == 'dropdown'">
+                                <select id="status" (change)="updateStatus(status.value,record[columns[0].field])"
+                                    [(ngModel)]="record[col.field]" class="" #status="ngModel" name="status"
+                                    style="width: auto;">
+                                    <option value="Active">Active</option>
+                                    <option value="Inactive">Inactive</option>
+                                </select>
+                            </span> -->
+                        </td>
+                    </ng-container>
+                </tr>
+            </ng-template>
+        </p-table>
+        <!------------------------------------------------------------------------------------------------>
+    </div>
+</div>
+
+
+<!----- NEWS UPDATE MODAL ------>
+<!--Compliment button Modal -->
+<div class="modal fade" id="ClientModal" tabindex="-1" aria-labelledby="complimentModalLabel" aria-hidden="false">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <form #companyClientForm="ngForm" (ngSubmit)="companyClientForm.form.valid && submit(companyClientForm.value)">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="d-flex align-items-center">
+                        <h2 class="modal-title">Company Client</h2>
+                    </div>
+                    <button type="button" class="btn-close" #CompanyModalClose data-bs-dismiss="modal" aria-label="Close" (click)="companyClientForm.resetForm()"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="content-block">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="first-name" class="form-label">First name</label>
+                                    <input type="text" id="first-name" class="form-control"
+                                        placeholder="Enter first name" name="first_name" #first_name="ngModel"
+                                        ngModel required>
+                                    <div *ngIf="companyClientForm.submitted || (first_name.invalid && (first_name.dirty && first_name.touched))"
+                                        class="fv-plugins-message-container">
+                                        <div *ngIf="first_name.errors?.['required']" class="fv-help-block">
+                                            First name is required
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="last-name" class="form-label">Last name</label>
+                                    <input type="text" id="last-name" class="form-control" placeholder="Enter last name"
+                                        name="last_name" #last_name="ngModel" ngModel
+                                        required>
+                                    <div *ngIf="companyClientForm.submitted || (last_name.invalid && (last_name.dirty && last_name.touched))"
+                                        class="fv-plugins-message-container">
+                                        <div *ngIf="last_name.errors?.['required']" class="fv-help-block">
+                                            Last name is required
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email address</label>
+                                    <input type="email" id="email" class="form-control" placeholder="Enter your email"
+                                        name="email" #email="ngModel" ngModel required
+                                        pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$">
+                                    <div *ngIf="companyClientForm.submitted || (email.invalid && (email.dirty && email.touched))"
+                                        class="fv-plugins-message-container">
+                                        <div *ngIf="email.errors?.['required']" class="fv-help-block">
+                                            Email is required
+                                        </div>
+                                        <div *ngIf="email.errors?.['pattern']" class="fv-help-block">
+                                            Please enter valid email address
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="last-name" class="form-label">User Name</label>
+                                    <input type="text" id="last-name" class="form-control" placeholder="Enter User Name"
+                                        name="user_name" #user_name="ngModel" ngModel
+                                        required>
+                                    <div *ngIf="companyClientForm.submitted || (user_name.invalid && (user_name.dirty && user_name.touched))"
+                                        class="fv-plugins-message-container">
+                                        <div *ngIf="user_name.errors?.['required']" class="fv-help-block">
+                                            User name is required
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="mb-3">
+                                    <label for="phone" class="form-label">Country Code</label>
+                                    <input type="tel" id="country_code" class="form-control" placeholder="Country Code"
+                                        name="country_code" #country_code="ngModel"
+                                        ngModel required>
+                                    <div *ngIf="companyClientForm.submitted || (country_code.invalid && (country_code.dirty && country_code.touched))"
+                                        class="fv-plugins-message-container">
+                                        <div *ngIf="country_code.errors?.['required']" class="fv-help-block">
+                                            Country code is required
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label for="mobile_no" class="form-label">Mobile No</label>
+                                    <input type="tel" id="mobile_no" class="form-control"
+                                        placeholder="Enter phone number" name="mobile_no" #mobile_no="ngModel"
+                                        ngModel required pattern="[0-9]{10,15}">
+                                    <div *ngIf="companyClientForm.submitted || (mobile_no.invalid && (mobile_no.dirty && mobile_no.touched))"
+                                        class="fv-plugins-message-container">
+                                        <div *ngIf="mobile_no.errors?.['required']" class="fv-help-block">
+                                            Mobile no is required
+                                        </div>
+                                        <div *ngIf="mobile_no.errors?.['pattern']" class="fv-help-block">
+                                            Mobile no is required
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="mb-3">
+                                    <label for="birthdate" class="form-label">D.O.B</label>
+                                    <input type="date" id="birthdate" class="form-control" max="{{bodMinDate}}"
+                                        placeholder="Enter phone number" name="birthdate" #birthdate="ngModel"
+                                        ngModel required>
+                                    <div *ngIf="companyClientForm.submitted || (birthdate.invalid && (birthdate.dirty && birthdate.touched))"
+                                        class="fv-plugins-message-container">
+                                        <div *ngIf="birthdate.errors?.['required']" class="fv-help-block">
+                                            Birthdate is required
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>                           
+                            <div class="col-12">
+                                <button type="submit" class="submit-btn">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

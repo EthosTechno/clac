@@ -1,0 +1,114 @@
+<div class="content-block">
+    <h3 class="page-title">{{"PageTitle.MyInfo" | translate}}</h3>
+    <form #myInfoForm="ngForm" (ngSubmit)="myInfoForm.form.valid && submit()">
+        <div class="row" *ngIf="userModel">
+            <div class="col-12">
+                <div class="mb-3">
+                    <label for="first-name" class="form-label">{{"FormLabel.FirstName" | translate}}</label>
+                    <input type="text" id="first-name" class="form-control" [placeholder]= "'Placeholder.FirstName' | translate"
+                        [(ngModel)]="userModel.first_name" name="firstName" #firstName="ngModel" required>
+                    <div *ngIf="myInfoForm.submitted || (firstName.invalid && (firstName.dirty || firstName.touched))"
+                        class="is-invalid fv-plugins-message-container">
+                        <div *ngIf="firstName.errors?.['required']" class="fv-help-block">
+                            {{"ErrorMessage.FirstName" | translate}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="mb-3">
+                    <label for="last-name" class="form-label">{{"FormLabel.LastName" | translate}}</label>
+                    <input type="text" id="last-name" class="form-control" [placeholder]= "'Placeholder.LastName' | translate"  name="lastName"
+                        [(ngModel)]="userModel.last_name" #lastName="ngModel" required>
+                    <div *ngIf="myInfoForm.submitted || (lastName.invalid && (lastName.dirty || lastName.touched))"
+                        class="is-invalid fv-plugins-message-container">
+                        <div *ngIf="lastName.errors?.['required']" class="fv-help-block">
+                            {{"ErrorMessage.LastName" | translate}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="mb-3">
+                    <label for="email" class="form-label">{{"FormLabel.Email-Id" | translate}}</label>
+                    <input type="email" id="email" class="form-control"[placeholder]= "'Placeholder.Email-Id' | translate" name="email"
+                        ngModel [(ngModel)]="userModel.email" #email="ngModel"
+                        pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$" required [disabled]="disabledEmail">
+                    <!-- <div class="modify">
+                        <a style="cursor: pointer;" (click)="disabledEmail = !disabledEmail">Modify my email address</a>
+                    </div> -->
+                    <div *ngIf="myInfoForm.submitted || (email.invalid && (email.dirty || email.touched))"
+                        class="is-invalid fv-plugins-message-container">
+                        <div *ngIf="email.errors?.['required']" class="fv-help-block">
+                            {{"ErrorMessage.Email-Id" | translate}}
+                        </div>
+                        <div *ngIf="email.errors?.['pattern']" class="fv-help-block">
+                            {{"ErrorMessage.Email-IdValid" | translate}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="mb-3">
+                    <label for="country_code" class="form-label">{{"FormLabel.CountyCode" | translate}}</label>
+                    <!-- <input type="tel" id="country_code" class="form-control"  [placeholder]= "'Placeholder.CountyCode' | translate"
+                        [(ngModel)]="userModel.country_code" name="disabledPhone: boolean = true;"
+                        #country_code="ngModel" required> -->
+                        <select class="form-control" name="country_code" id="country_code"  #country_code="ngModel" [(ngModel)]="userModel.country_code" required>
+                            <option value="" disabled selected>{{'Placeholder.CountyCode' | translate}}</option>
+                            <option *ngFor="let country of countries" [value]="country.dial_code">{{country.code}}</option>
+                        </select>
+                    <div *ngIf="myInfoForm.submitted || (country_code.invalid && (country_code.dirty || country_code.touched))"
+                        class="is-invalid fv-plugins-message-container">
+                        <div *ngIf="country_code.errors?.['required']" class="fv-help-block">
+                            {{"ErrorMessage.CountyCode" | translate}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="mb-3">
+                    <label for="phone" class="form-label">{{"FormLabel.Phone" | translate}}</label>
+                    <input type="tel" id="phone" class="form-control" [placeholder]= "'Placeholder.Phone' | translate"  
+                        [(ngModel)]="userModel.mobile_no" name="phone" #phone="ngModel" required>
+
+                    <div *ngIf="myInfoForm.submitted || (phone.invalid && (phone.dirty || phone.touched))"
+                        class="is-invalid fv-plugins-message-container">
+                        <div *ngIf="phone.errors?.['required']" class="fv-help-block">
+                            {{"ErrorMessage.Phone" | translate}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="mb-3">
+                    <label for="user_address" class="form-label">{{"FormLabel.Address" | translate}}</label>
+                    <input type="text" id="user_address" class="form-control" [placeholder]= "'Placeholder.Address' | translate"
+                        [(ngModel)]="userModel.user_address" name="user_address" #user_address="ngModel" required>
+                    <div *ngIf="myInfoForm.submitted || (user_address.invalid && (user_address.dirty || user_address.touched))"
+                        class="is-invalid fv-plugins-message-container">
+                        <div *ngIf="user_address.errors?.['required']" class="fv-help-block">
+                            {{"ErrorMessage.Address" | translate}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12" *ngIf="role == 3">
+                <div class="mb-3">
+                    <label for="subDomain" class="form-label">Sub Domain</label>
+                    <input type="text" id="sub-Domain" class="form-control" placeholder= "Sub Domain"
+                        [(ngModel)]="userModel.sub_domain" name="subDomain" #subDomain="ngModel" required>
+                    <div *ngIf="myInfoForm.submitted || (subDomain.invalid && (subDomain.dirty || subDomain.touched))"
+                        class="is-invalid fv-plugins-message-container">
+                        <div *ngIf="subDomain.errors?.['required']" class="fv-help-block">
+                            Sub Domain is required.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <button type="submit" class="submit-btn">{{"ButtonLabel.Save" | translate}}</button>
+            </div>
+        </div>
+    </form>
+</div>

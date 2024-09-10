@@ -1,0 +1,320 @@
+<div class="content-block">
+    <!-- <h3 class="page-title">“{{"ButtonLabel.MyCorporateLife" | translate}}” {{"ButtonLabel.History" | translate}}</h3> -->
+    <h3 class="page-title">{{"ButtonLabel.MyCorporateLife" | translate}}</h3>
+    <div class="table-wrapper">
+        <h4 class="table-title">{{"ButtonLabel.Suggestion" | translate}} {{"ButtonLabel.Box" | translate}}</h4>
+        <p-table [columns]="SuggestionHeader" class="order-history-table" [value]="SuggestionDetails"
+            [rowsPerPageOptions]="[10,25,50]" [reorderableColumns]="true" [showLoader]="true" #dt1 [paginator]="true"
+            [rows]="10" [showCurrentPageReport]="true" [columnResizeMode]="'fit'" [lazy]="true"
+            (onLazyLoad)="onSuggestionLazyLoad($event)" [reorderableColumns]="true" [resizableColumns]="true"
+            [autoLayout]="true" [totalRecords]="SuggestiontotalDocs">
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <ng-container *ngFor="let col of columns">
+                        <ng-container *ngIf="col.display">
+                            <ng-container *ngIf="col.isSortable">
+                                <th pSortableColumn="{{col.field}}">{{col.header}}
+                                    <p-sortIcon [field]="col.field"></p-sortIcon>
+                                </th>
+                            </ng-container>
+                            <ng-container *ngIf="!col.isSortable">
+                                <th>{{col.header}}</th>
+                            </ng-container>
+                        </ng-container>
+                    </ng-container>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-record let-columns="columns">
+                <tr>
+                    <ng-container *ngFor="let col of columns">
+
+                        <td *ngIf="col.display" style="width: 300px">
+                            <span *ngIf="col.type == 'string'" class="text-wrap">{{record[col.field]}}</span>
+                            <span *ngIf="col.type == 'bool'" class="text-wrap">{{record[col.field]}}</span>
+
+                            <span *ngIf="col.type == 'option'" class="text-wrap">{{record[col.field] ? col.true :
+                                col.false}}</span>
+                            <span *ngIf="col.type == 'date'" class="text-wrap">{{record[col.field]}}</span>
+
+                            <span *ngIf="col.type == 'image'"><img _ngcontent-fsl-c86="" width="32"
+                                    style="vertical-align: middle;" src="{{record[col.field]}}"></span>
+                            <span *ngIf="col.type == 'image-array'"><img _ngcontent-fsl-c86="" width="32"
+                                    style="vertical-align: middle;"
+                                    src="{{record['image_url']}}{{record.image[0][col.field]}}"></span>
+                            <span *ngIf="col.type == 'price'">{{record[col.field] | currency: 'USD' : true}}</span>
+                            <span *ngIf="col.type == 'discount'">{{record[col.field]}}%</span>
+                            <span *ngIf="col.type == 'download'">
+                                <a href="{{record[col.field]}}" target="_blank" download title="Download">
+                                    <i class="fa fa-download fa-lg"></i>
+                                </a>
+                            </span>
+                            <!-- <span *ngIf="col.type == 'link'">
+                            <a href="javascript:void(0)" title="Delete">
+                                <i class="fa fa-trash"></i>
+                            </a> &nbsp;
+                        </span> -->
+                        </td>
+                    </ng-container>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+    <div class="table-wrapper">
+        <h4 class="table-title">{{"Label.My" | translate}} {{"Label.Event" | translate}}</h4>
+        <p-table [columns]="EventHeader" class="order-history-table" [value]="EventDetail"
+            [rowsPerPageOptions]="[10,25,50]" [reorderableColumns]="true" [showLoader]="true" #dt1 [paginator]="true"
+            [rows]="10" [showCurrentPageReport]="true" [columnResizeMode]="'fit'" [lazy]="true"
+            (onLazyLoad)="onEventLazyLoad($event)" [reorderableColumns]="true" [resizableColumns]="true"
+            [autoLayout]="true" [totalRecords]="EventtotalDocs">
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <ng-container *ngFor="let col of columns">
+                        <ng-container *ngIf="col.display">
+                            <ng-container *ngIf="col.isSortable">
+                                <th pSortableColumn="{{col.field}}"> {{col.header}}
+                                    <p-sortIcon [field]="col.field"></p-sortIcon>
+                                </th>
+                            </ng-container>
+                            <ng-container *ngIf="!col.isSortable">
+                                <th>{{col.header}}</th>
+                            </ng-container>
+                        </ng-container>
+                    </ng-container>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-record let-columns="columns">
+                <tr>
+                    <ng-container *ngFor="let col of columns">
+                        <td *ngIf="col.display" style="width: 300px">
+                            <span *ngIf="col.type == 'string'" class="text-wrap">{{record[col.field]}}</span>
+                            <span *ngIf="col.type == 'bool'" class="text-wrap">{{record[col.field]}}</span>
+                            <span *ngIf="col.type == 'date'" class="text-wrap">{{record[col.field] |
+                                date:'yyyy-MM-dd'}}</span>
+                            <span *ngIf="col.type == 'link'">
+                                <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#eventModalList"
+                                    (click)='showEventDetails(record[col.field])'>
+                                    <i class="fa fa-info fa-lg"></i>
+                                </a>
+                            </span>
+                        </td>
+                    </ng-container>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+
+
+    <div class="table-wrapper" *ngIf="role == 4 || role == 6">
+        <h4 class="table-title">{{"Label.Event" | translate}} {{"Label.Participate" | translate}}</h4>
+        <p-table [columns]="ParticipateEventHeader" class="order-history-table" [value]="ParticipateEventDetail"
+            [rowsPerPageOptions]="[10,25,50]" [reorderableColumns]="true" [showLoader]="true" #dt1 [paginator]="true"
+            [rows]="10" [showCurrentPageReport]="true" [columnResizeMode]="'fit'" [lazy]="true"
+            (onLazyLoad)="onEventParticipateLazyLoad($event)" [reorderableColumns]="true" [resizableColumns]="true"
+            [autoLayout]="true" [totalRecords]="ParticipateEventtotalDocs">
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <ng-container *ngFor="let col of columns">
+                        <ng-container *ngIf="col.display">
+                            <ng-container *ngIf="col.isSortable">
+                                <th pSortableColumn="{{col.field}}">{{col.header}}
+                                    <p-sortIcon [field]="col.field"></p-sortIcon>
+                                </th>
+                            </ng-container>
+                            <ng-container *ngIf="!col.isSortable">
+                                <th>{{col.header}}</th>
+                            </ng-container>
+                        </ng-container>
+                    </ng-container>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-record let-columns="columns">
+                <tr>
+                    <ng-container *ngFor="let col of columns">
+                        <td *ngIf="col.display">
+                            <span *ngIf="col.type == 'string'" class="text-wrap">{{record[col.field]}}</span>
+                            <span *ngIf="col.type == 'bool'" class="text-wrap">{{record[col.field]}}</span>
+                            <span *ngIf="col.type == 'date'" class="text-wrap">{{record[col.field] |
+                                date:'yyyy-MM-dd'}}</span>
+                            <span *ngIf="col.type == 'dropdown'">
+                                <select id="status" (change)="updateEventStatus(status.value,record['_id'])"
+                                    [(ngModel)]="record[col.field]" class="cus-drop" #status="ngModel" name="status"
+                                    style="width: auto;">
+                                    <option value="Pending">Pending</option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                    <option value="May Be">May Be</option>
+                                </select>
+                            </span>
+                        </td>
+                    </ng-container>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+
+
+    <div class="table-wrapper">
+        <h4 class="table-title">{{"Label.Compliments" | translate}}</h4>
+        <p-table [columns]="ComplimentonHeader" class="order-history-table" [value]="ComplimentDetail"
+            [rowsPerPageOptions]="[10,25,50]" [reorderableColumns]="true" [showLoader]="true" #dt2 [paginator]="true"
+            [rows]="10" [showCurrentPageReport]="true" [columnResizeMode]="'fit'" [lazy]="true"
+            (onLazyLoad)="onComplimentLazyLoad($event)" [reorderableColumns]="true" [resizableColumns]="true"
+            [autoLayout]="true" [totalRecords]="ComplimenttotalDocs">
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <ng-container *ngFor="let col of columns">
+                        <ng-container *ngIf="col.display">
+                            <ng-container *ngIf="col.isSortable">
+                                <th pSortableColumn="{{col.field}}">{{col.header}}
+                                    <p-sortIcon [field]="col.field"></p-sortIcon>
+                                </th>
+                            </ng-container>
+                            <ng-container *ngIf="!col.isSortable">
+                                <th>{{col.header}}</th>
+                            </ng-container>
+                        </ng-container>
+                    </ng-container>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-record let-columns="columns">
+                <tr>
+                    <ng-container *ngFor="let col of columns">
+                        <td *ngIf="col.display">
+                            <span *ngIf="col.type == 'string'" class="text-wrap">{{record[col.field]}}</span>
+                            <span *ngIf="col.type == 'bool'" class="text-wrap">{{record[col.field]}}</span>
+
+                            <span *ngIf="col.type == 'option'" class="text-wrap">{{record[col.field] ? col.true :
+                                col.false}}</span>
+
+                            <span *ngIf="col.type == 'date'" class="text-wrap">{{record[col.field] |
+                                date:'yyyy-MM-dd'}}</span>
+
+                            <span *ngIf="col.type == 'image'"><img _ngcontent-fsl-c86="" width="32"
+                                    style="vertical-align: middle;" src="{{record[col.field]}}"></span>
+                            <span *ngIf="col.type == 'image-array'"><img _ngcontent-fsl-c86="" width="32"
+                                    style="vertical-align: middle;"
+                                    src="{{record['image_url']}}{{record.image[0][col.field]}}"></span>
+                            <span *ngIf="col.type == 'price'">{{record[col.field] | currency: 'USD' : true}}</span>
+                            <span *ngIf="col.type == 'discount'">{{record[col.field]}}%</span>
+                            <span *ngIf="col.type == 'download'">
+                                <a href="{{record[col.field]}}" target="_blank" download title="Download">
+                                    <i class="fa fa-download fa-lg"></i>
+                                </a>
+                            </span>
+                            <span *ngIf="col.type == 'link'">
+                                <a href="javascript:void(0)" title="Delete">
+                                    <i class="fa fa-trash"></i>
+                                </a> &nbsp;
+                            </span>
+                        </td>
+                    </ng-container>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>
+
+<!----- MODAL VIEW ----->
+
+<div class="modal fade" id="eventModalList" tabindex="-1" aria-labelledby="eventModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="d-flex align-items-center">
+                    <h2 class="modal-title">{{"Label.EventsDetails" | translate}}</h2>
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                    #closeBtnModal></button>
+            </div>
+            <div class="modal-body">
+                <div class="col-md-12">
+                    <!-- <p-table class="order-history-table" [value]="EventDetailUserList" [reorderableColumns]="true"
+                        [showLoader]="true" #dt1 [rows]="10" [showCurrentPageReport]="true" [columnResizeMode]="'fit'"
+                        [lazy]="true" [reorderableColumns]="true" [resizableColumns]="true" [autoLayout]="true">
+                        <ng-template pTemplate="header">
+                            <tr>
+                                <ng-container>
+                                    <th>Event Name</th>
+                                    <th>Event Description</th>
+                                    <th>Event date</th>
+                                    <th>Event Time</th>
+                                    <th>Invited Users</th>
+                                    <th>Participated Users</th>
+                                </ng-container>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body">
+                            <tr>
+                                <td><span class="text-wrap">{{EventDetailUserList?.event_name}}</span></td>
+                                <td><span class="text-wrap">{{EventDetailUserList?.event_description}}</span></td>
+                                <td><span class="text-wrap">{{EventDetailUserList?.event_date}}</span></td>
+                                <td><span class="text-wrap">{{EventDetailUserList?.event_time}}</span></td>
+                                <td>
+                                    <span class="text-wrap" style="height: 200px;overflow-y: scroll;">
+                                        <p *ngFor="let invited of EventDetailUserList?.invited_users">
+                                            {{invited}}
+                                        </p>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="text-wrap" style="height: 200px;overflow-y: scroll;">
+                                        <p *ngFor="let participated of EventDetailUserList?.participated_users">
+                                            {{participated}}
+                                        </p>
+                                    </span>
+                                </td>
+                            </tr>
+                        </ng-template>
+                    </p-table> -->
+
+                    <table class="table event-detail-table table-responsive">
+                        <tr>
+                            <th>{{"FormLabel.EventName" | translate}}</th>
+                            <td>{{EventDetailUserList?.event_name}}</td>
+                        </tr>
+                        <tr>
+                            <th>{{"FormLabel.EventDescription" | translate}}</th>
+                            <td>{{EventDetailUserList?.event_description}}</td>
+                        </tr>
+                        <tr>
+                            <th>{{"FormLabel.EventDate" | translate}}</th>
+                            <td>{{EventDetailUserList?.event_date}}</td>
+                        </tr>
+                        <tr>
+                            <th>{{"FormLabel.EventTime" | translate}}</th>
+                            <td>{{EventDetailUserList?.event_time}}</td>
+                        </tr>
+                        <tr>
+                            <th>{{"FormLabel.EventLocation" | translate}}</th>
+                            <td>{{EventDetailUserList?.event_location}}</td>
+                        </tr>
+                        <tr>
+                            <th>{{"FormLabel.InvitedUsers" | translate}}</th>
+                            <td>
+                                <div class="user-list">
+                                    <ul class="list">
+                                        <li *ngFor="let invited of EventDetailUserList?.invited_users">
+                                            {{invited}}
+                                        </li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>{{"FormLabel.ParticipatorUsers" | translate}}</th>
+                            <td>
+                                <div class="user-list">
+                                    <ul class="list">
+                                        <li *ngFor="let participated of EventDetailUserList?.participated_users">
+                                            {{participated}}
+                                        </li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

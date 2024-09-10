@@ -1,0 +1,10 @@
+<div class="um-col-1 cus-registration-form">
+    <form #checkout="ngForm" (ngSubmit)="onSubmit(checkout)" class="checkout">
+        <div class="um-field um-field-text um-field-type_text um-field-type_source">
+            <div class="form-row">
+                <div id="card-info" #cardInfo></div>
+                <div class="red-color" id="card-errors" role="alert" *ngIf="error">{{ error }}</div>
+            </div>
+        </div>
+    </form>                             
+</div>

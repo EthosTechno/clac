@@ -1,0 +1,155 @@
+.employee-table {
+  width: 100%;
+  font-family: "Overpass";
+  font-size: 14px;
+  margin-bottom: 50px;
+}
+
+@media (max-width: 991px) {
+  .employee-table {
+    display: block;
+    overflow: auto;
+  }
+}
+
+@media (max-width: 767px) {
+  .employee-table {
+    margin-bottom: 35px;
+  }
+}
+
+@media (max-width: 767px) {
+  .employee-table thead {
+    display: none;
+  }
+  .employee-table tbody {
+    display: block;
+  }
+}
+
+@media (max-width: 991px) {
+  .employee-table tr .first-name {
+    min-width: 150px;
+  }
+  .employee-table tr .last-name {
+    min-width: 150px;
+  }
+  .employee-table tr .emailadd {
+    min-width: 250px;
+  }
+  .employee-table tr .phonenumber {
+    min-width: 150px;
+  }
+}
+
+@media (max-width: 767px) {
+  .employee-table tr {
+    display: block;
+  }
+  .employee-table tr:not(:last-child) {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    position: relative;
+  }
+  .employee-table tr:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 2px;
+    background: #00C8B1;
+    bottom: -5px;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+  }
+  .employee-table tr .first-name {
+    position: relative;
+    padding-left: 85px;
+    min-width: auto;
+  }
+  .employee-table tr .first-name::after {
+    content: 'First name';
+    position: absolute;
+    left: 0;
+    top: 60%;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+    font-weight: 800;
+  }
+  .employee-table tr .last-name {
+    position: relative;
+    padding-left: 85px;
+    min-width: auto;
+  }
+  .employee-table tr .last-name::after {
+    content: 'Last name';
+    position: absolute;
+    left: 0;
+    top: 60%;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+    font-weight: 800;
+  }
+  .employee-table tr .emailadd {
+    position: relative;
+    padding-left: 60px;
+    word-break: break-all;
+    min-width: auto;
+  }
+  .employee-table tr .emailadd::after {
+    content: 'Email';
+    position: absolute;
+    left: 0;
+    top: 60%;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+    font-weight: 800;
+  }
+  .employee-table tr .phonenumber {
+    position: relative;
+    padding-left: 60px;
+    min-width: auto;
+  }
+  .employee-table tr .phonenumber::after {
+    content: 'Phone';
+    position: absolute;
+    left: 0;
+    top: 60%;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+    font-weight: 800;
+  }
+  .employee-table tr .delete {
+    position: relative;
+    padding-left: 60px;
+    min-width: auto;
+  }
+  .employee-table tr .delete::after {
+    content: 'Delete';
+    position: absolute;
+    left: 0;
+    top: 60%;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+    font-weight: 800;
+  }
+  .employee-table tr td {
+    display: block;
+    text-align: right;
+  }
+}
+
+.employee-table tr th, .employee-table tr td {
+  padding: 12px 15px 3px 0;
+  border-bottom: 1px solid #dedede;
+}
+
+.employee-table tr th.disappear, .employee-table tr td.disappear {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.employee-table tr th {
+  font-weight: 800;
+}
+/*# sourceMappingURL=employees.component.css.map */

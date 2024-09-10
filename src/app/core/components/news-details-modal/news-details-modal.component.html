@@ -1,0 +1,28 @@
+<!--Suggestion button Modal -->
+<div class="modal-content modal-lg">
+    <div class="modal-header">
+        <div class="d-flex flex-wrap align-items-center">
+            <h2 class="modal-title">Offer Details</h2>                    
+        </div>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeOffer()"></button>
+    </div>
+    <div class="modal-body">
+        <form action="">
+            <div class="row">
+                <div class="col-6">                           
+                   <img src="{{offerDetail?.banner_image}}" width="100%"> 
+                </div>
+                <div class="col-6">
+                   <h2>{{offerDetail?.name}}</h2>
+                   <h6>{{offerDetail?.offer_category_name}}</h6>
+                   <hr>
+                   <p>{{offerDetail?.description}}</p>
+                   <a href="{{offerDetail?.offer_button_link}}" target="_blank" class="green-btn">
+                       More Details
+                   </a>
+                </div>                     
+            </div>
+        </form>
+    </div>    
+</div>
+

@@ -1,0 +1,58 @@
+#preloader {
+  background-color: #fff;
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 2147483647;
+  width: 100%;
+  height: 100%;
+  opacity: 0.8;
+}
+
+.loader {
+  top: 30%;
+  font-size: 10px;
+  margin: 50px auto;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spinloader 2s linear infinite;
+          animation: spinloader 2s linear infinite;
+  position: relative;
+}
+
+.loader img {
+  height: 90px;
+  width: 90px;
+  -webkit-animation: spinlogo 2s linear infinite;
+          animation: spinlogo 2s linear infinite;
+}
+
+@-webkit-keyframes spinlogo {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes spinlogo {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+::ng-deep .active {
+  color: #000 !important;
+}
+/*# sourceMappingURL=app.component.css.map */

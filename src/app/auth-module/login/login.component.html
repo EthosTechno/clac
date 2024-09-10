@@ -1,0 +1,72 @@
+
+<div class="login-wrapper">
+    <div class="side-wrapper">
+        <div class="side-graphics d-flex justify-content-center">
+            <div class="d-flex flex-column justify-content-center side-content">
+                <h2 class="mb-4">{{"PageTitle.LoginTitle" | translate}}</h2>
+                <p>{{"PageTitle.LoginImgSubTitle" | translate}}</p>
+                <!-- <a [routerLink]="['/customer/newSubscription/']">{{"ButtonLabel.Subscribe" | translate}}</a> -->
+            </div>
+            <div class="side-human-graphics"></div>
+        </div>
+    </div>
+    <div class="login-form pt-4">
+        <div class="container">
+            <div class="d-flex flex-column">
+                <h1>{{"Label.YouHave" | translate}} <span>{{"Label.Signup" | translate}}</span></h1>
+                <div class="d-flex align-items-center login-content">
+                    <img src="assets/images/lighting.svg" alt="">
+                    <span>{{"Label.ConnectText" | translate}}</span>
+                </div>
+                <div class="form-container my-3">
+                    <form #loginForm="ngForm" (submit)="loginForm.form.valid && onLogin()">
+                        <div class="mb-3">
+                            <label for="email" class="form-label">{{'FormLabel.Email' | translate}} <span class="text-danger">*</span></label>
+                            <input type="email" class="form-control" id="email" 
+                            name="email"
+                            #email="ngModel"
+                            [(ngModel)]="loginObj.email"
+                            pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$"
+                            required
+                            autocomplete="off">
+                            <div *ngIf="loginForm.submitted || (email.invalid && (email.dirty || email.touched))">
+                                <div class="error-msg" *ngIf="email.errors?.['required']">
+                                    <span><i class="fas fa-caret-up"></i></span>
+                                    Please enter your email
+                                </div>
+                                <div class="error-msg" *ngIf="email.errors?.['pattern']">
+                                    <span><i class="fas fa-caret-up"></i></span>
+                                    Entered email address is not valid
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">{{"Password" | translate}}<span class="text-danger">*</span></label>
+                            <input type="password" class="form-control" id="password"
+                            name="password"
+                            #password="ngModel"
+                            [(ngModel)]="loginObj.password"
+                            required
+                            autocomplete="off">
+                            <div *ngIf="loginForm.submitted || (password.invalid && (password.dirty || password.touched))">
+                            <div class="error-msg" *ngIf="password.errors?.['required']">
+                                <span><i class="fas fa-caret-up"></i></span>
+                                Please enter your password
+                            </div>
+                        </div>
+                        </div>
+                        <!-- <div class="mb-3 form-check position-relative">
+                            <input type="checkbox" class="form-check-input" id="keepSigned">
+                            <label class="form-check-label" for="keepSigned">Keep me signed in</label>
+                        </div> -->
+                        <div class="btn-container">
+                           <button type="submit" class="btn btn-primary">{{"Login" | translate}}</button>
+                        </div>
+                    </form>
+                    <a class="mt-4" [routerLinkActive]="['active']" routerLink="/forgotpassword">{{"ButtonLabel.ForgotPasswordLink" | translate}}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

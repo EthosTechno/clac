@@ -1,0 +1,12 @@
+{
+    "status": 200,
+    "success": true,
+    "data": {
+        "title": "Wow Amazing",
+        "link": "http://www.google.com",
+        "articleText": "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum",
+        "coverPhoto": "https://media.threatpost.com/wp-content/uploads/sites/103/2022/01/10123612/library2-e1641836188118.jpg"
+    },
+    "result": true,
+    "message": ""
+}

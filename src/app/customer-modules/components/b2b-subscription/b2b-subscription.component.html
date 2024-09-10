@@ -1,0 +1,185 @@
+<div class="b2b-subscription-wrapper">
+    <div class="side-wrapper">
+        <div class="side-graphics d-flex justify-content-center">
+            <div class="d-flex flex-column justify-content-center side-content">
+                <h2 class="mb-4">You are one step away from <span>joining the Clac community!</span></h2>
+            </div>
+            <div class="side-human-graphics"></div>
+        </div>
+    </div>
+    <div class="mobile-content">
+        <div class="container">
+            <h2 class="my-4">You are one step away from <span>joining the Clac community!</span></h2>
+        </div>
+    </div>
+    <div class="subscription-stepper">
+        <div class="container">
+            <div class="stepper-main">
+                <div id="stepper1" class="bs-stepper">
+                    <form #empFrom="ngForm" (ngSubmit)="empFrom.form.valid && submit(empFrom.value)">
+                        <div class="content-wrap">
+                            <div class="row mb-4">
+                                <div class="col-md-12">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group mb-1">
+                                                <label for="first_name" class="form-label">First name<span
+                                                        class="text-danger">*</span></label>
+                                                <input class="form-control" type="text" id="first_name" ngModel
+                                                    name="first_name" #first_name="ngModel" pattern="^[a-zA-Z-. ]+$"
+                                                    required autocomplete="off"
+                                                    [ngClass]="{'is-invalid': empFrom.submitted &&  (first_name.invalid),
+                                                    'is-valid': empFrom.submitted || (first_name.valid && first_name.touched)}">
+                                                <div class="invalid-feedback"
+                                                    *ngIf="empFrom.submitted || (first_name.invalid && (first_name.dirty || first_name.touched ))">
+                                                    <div *ngIf="first_name.errors?.['required']" class="red-color">
+                                                        First Name is required.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group mb-1">
+                                                <label for="name" class="form-label">Last Name<span
+                                                        class="text-danger">*</span></label>
+                                                <input class="form-control" type="text" id="last_name" name="last_name"
+                                                    ngModel #last_name="ngModel" pattern="^[a-zA-Z ]+$" required
+                                                    autocomplete="off"
+                                                    [ngClass]="{'is-invalid':empFrom.submitted && (last_name.invalid),
+                                                'is-valid':empFrom.submitted || (last_name.valid && last_name.touched)}">
+
+                                                <div class="invalid-feedback"
+                                                    *ngIf="empFrom.submitted || (last_name.invalid && (last_name.dirty || last_name.touched ))">
+                                                    <div *ngIf="last_name.errors?.['required']" class="red-color">
+                                                        Last Name is required.
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group mb-1">
+                                                <label for="email" class="form-label"> E-mail<span
+                                                        class="text-danger">*</span></label>
+                                                <input type="email" id="email" name="email" class="form-control"
+                                                    #email="ngModel" ngModel required autocomplete="off"
+                                                    pattern="[a-zA-Z0-9.-_+]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"
+                                                    [ngClass]="{'is-invalid': empFrom.submitted && (email.invalid),
+                                                        'is-valid':empFrom.submitted || (email.valid && email.touched)}">
+                                                <div *ngIf="empFrom.submitted || (email.invalid && (email.dirty || email.touched ))"
+                                                    class="invalid-feedback">
+                                                    <div *ngIf="email.errors?.['required']" class="red-color">
+                                                        Email is required.
+                                                    </div>
+                                                    <div *ngIf="email.errors?.['pattern']" class="red-color">
+                                                        Please enter valid email.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group mb-1">
+                                                <label for="country_code" class="form-label">Country Code<span
+                                                        class="text-danger">*</span></label>
+                                                <div class="input-group ph-group">
+                                                    <input type="text" id="country_code" name="country_code"
+                                                        class="form-control" #country_code="ngModel" ngModel
+                                                        pattern="^\+?\d{0,4}$" required autocomplete="off"
+                                                        [ngClass]="{'is-invalid': empFrom.submitted && (country_code.invalid),
+                                                    'is-valid': empFrom.submitted || (country_code.valid && country_code.touched)}">
+
+                                                    <div *ngIf="empFrom.submitted || (country_code.invalid && (country_code.dirty || country_code.touched ))"
+                                                        class="invalid-feedback">
+                                                        <div *ngIf="country_code.errors?.['required']"
+                                                            class="red-color">
+                                                            Country Code is required.
+                                                        </div>
+                                                        <div *ngIf="country_code.errors?.['pattern']" class="red-color">
+                                                            Country Code is invalid.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group mb-1">
+                                                <label for="mobile_no" class="form-label">Phone Number<span
+                                                        class="text-danger">*</span></label>
+                                                <div class="input-group ph-group">
+                                                    <input type="text" id="mobile_no" name="mobile_no"
+                                                        class="form-control" #mobile_no="ngModel" ngModel
+                                                        pattern="^\+?\d{8,14}$" required autocomplete="off"
+                                                        [ngClass]="{'is-invalid': empFrom.submitted && (mobile_no.invalid),
+                                                    'is-valid': empFrom.submitted || (mobile_no.valid && mobile_no.touched)}">
+
+                                                    <div *ngIf="empFrom.submitted || (mobile_no.invalid && (mobile_no.dirty || mobile_no.touched ))"
+                                                        class="invalid-feedback">
+                                                        <div *ngIf="mobile_no.errors?.['required']" class="red-color">
+                                                            Phone Number is required.
+                                                        </div>
+                                                        <div *ngIf="mobile_no.errors?.['pattern']" class="red-color">
+                                                            Phone Number is invalid.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group mb-1">
+                                                <label for="subject" class="form-label">Purpose <span
+                                                        class="text-danger">*</span></label>
+                                                <select id="subject" class="form-control" #subject="ngModel" ngModel
+                                                    name="subject" required
+                                                    [ngClass]="{'is-invalid':empFrom.submitted && (subject.invalid),
+                                                    'is-valid': empFrom.submitted || (subject.valid && subject.touched)}">
+                                                    <option value="undefined" disabled>Select the option that suits you
+                                                    </option>
+                                                    <option value="I would like to subscribe again">I would like to
+                                                        subscribe again</option>
+                                                    <option value="I would like to join the team">I would like to join
+                                                        the team</option>
+                                                    <option value="I have an idea to share">I have an idea to share
+                                                    </option>
+                                                    <option value="I would like a demo">I would like a demo</option>
+                                                    <option value="Contact customer service">Contact customer service
+                                                    </option>
+                                                    <option value="Others">Others</option>
+                                                </select>
+                                                <div class="invalid-feedback"
+                                                    *ngIf="empFrom.submitted || (subject.invalid && (subject.dirty || subject.touched))">
+                                                    <div *ngIf="subject.errors?.['required']" class="fv-help-block">
+                                                        Please select valid purpose
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group mb-1">
+                                        <label for="name" class="form-label">Comments/questions
+                                            <span class="text-danger">*</span></label>
+                                        <textarea class="form-control" required id="description" rows="3"
+                                            name="description" ngModel #description="ngModel" name="description"
+                                            placeholder="Comments/questions"
+                                            [ngClass]="{'is-invalid':empFrom.submitted && (description.invalid),
+                                        'is-valid': empFrom.submitted || (description.valid && description.touched)}"></textarea>
+                                        <div *ngIf="empFrom.submitted || (description.invalid && (description.dirty || description.touched ))"
+                                            class="invalid-feedback">
+                                            <div *ngIf="description.errors?.['required']" class="red-color">
+                                                Comments/questions is required.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="submit-button mt-4 mb-4">
+                                    <input type="submit" class="green-btn" value="Submit">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,10 @@
+.fv-plugins-message-container {
+  margin-top: 0.25rem;
+}
+
+.fv-plugins-message-container .fv-help-block {
+  color: red;
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+/*# sourceMappingURL=styles.css.map */

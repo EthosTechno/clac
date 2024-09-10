@@ -1,0 +1,175 @@
+.subsc-plans-main{
+    padding: 180px 0 150px;
+    margin-bottom: 60px;
+
+    @media (max-width: 991px){
+        padding: 120px 0 20px;
+        margin-bottom: 0;
+    }
+    
+    .row{
+        align-items: flex-end;
+    }
+
+    .plan-one{
+        box-shadow: 6px 6px 30px rgba($color: #000000, $alpha: 0.15);
+        text-align: center;
+        padding: 40px 30px 50px;
+        border-radius: 10px;
+        position: relative;
+        border: 1px solid transparent;
+        background: #fff;
+
+        @media (max-width: 991px){
+            margin-bottom: 100px;
+        }   
+
+        &.middle{
+            padding-top: 55px;
+            min-height: 500px;
+
+            .plan-title{
+                margin-top: 30px;
+                margin-bottom: 0;
+            }
+
+            .hero-title{
+                min-height: 145px;
+                display: flex;
+                align-items: flex-end;
+
+                @media (max-width: 991px){
+                    min-height: 125px;
+                }
+
+                h4{
+                    margin-bottom: 0;
+                }
+            
+            }
+        }
+
+        img{
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+        }
+
+        &:hover{
+            box-shadow: 4px 4px 8px rgba($color: #000000, $alpha: 0.15);
+            border-color: rgba(0, 200, 177, 0.5);
+            background: #eafffd;
+
+            & > img{
+                transform: translate(-50%, -50%) scale(1.08);                
+            }
+        }
+
+        .plan-title{
+            font-size: 14px;
+            font-weight: 700;
+            display: block;
+            margin: 25px 0 20px;
+        }
+
+        h4{
+            font: 700 26px "Overpass";
+            max-width: 200px;
+            margin: auto;
+
+            @media (max-width: 767px){
+                font: 700 22px "Overpass";
+                max-width: 170px;
+            }
+            span{
+                color: #3d7deb;
+            }
+        }
+        .plan-pricing{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: left;
+            margin-top: 65px;
+
+            .bold{
+                font-weight: 900;
+                font-size: 40px;
+                line-height: 1;
+                margin-bottom: 0;
+                margin-right: 10px;
+            }
+            .currency{
+                margin-right: 15px;
+                span{
+                    line-height: 1;
+                    display: block;
+                }
+                .from{
+                    font-size: 14px;
+                    margin-bottom: 6px;
+                }
+                .symb{
+                    font-weight: 900;
+                    font-size: 17px;
+                    margin-bottom: 5px;
+                }
+                p{
+                    margin-bottom: 0;
+                    line-height: 1;
+                    font-size: 10px;
+                }
+            }
+            .validity{
+                font-weight: 900;
+                font-size: 18px;
+            }
+        }
+
+        .subs-btn{
+            margin-top: 40px;
+            display: inline-block;
+            padding: 10px 40px;
+            background: #00c8b1;
+            color: #fff;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 16px;
+            border-radius: 50px;
+            border: 2px solid #00c8b1;
+
+            &:hover{
+                background: #fff;
+                color: #00c8b1;
+            }
+        }
+        
+        &.blue{
+            &:hover{
+                border-color: rgba(61, 125, 235, 0.5);
+                background: #f4f8ff;
+            }
+            .subs-btn{
+                background: #3d7deb;
+                border-color: #3d7deb;
+
+                &:hover{
+                    background: #fff;
+                    color: #3d7deb;
+                }
+            }   
+        }
+
+    }
+}
+svg{
+    position: absolute;
+    bottom: 0;
+    z-index: -1;
+
+    @media (max-width: 991px){
+        display: none;
+    }
+}

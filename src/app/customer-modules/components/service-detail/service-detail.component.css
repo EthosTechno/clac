@@ -1,0 +1,45 @@
+.carousel .carousel-indicators {
+  margin-bottom: 0;
+  position: relative;
+}
+
+.carousel .carousel-indicators a {
+  width: 70px;
+  height: 50px;
+  text-indent: 0;
+  opacity: 1;
+}
+
+.carousel .carousel-indicators a img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.carousel .carousel-indicators a.active {
+  opacity: 0.5;
+}
+
+.carousel .carousel-indicators a.active img {
+  border: 1px solid #30c8b1;
+}
+
+.carousel .carousel-inner .carousel-item {
+  max-width: 100%;
+  max-height: 371px;
+  border: 1px solid #32325D;
+}
+
+.carousel .carousel-inner .carousel-item img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.order-details label {
+  color: #00C8B1;
+  font-weight: bold;
+}
+/*# sourceMappingURL=service-detail.component.css.map */

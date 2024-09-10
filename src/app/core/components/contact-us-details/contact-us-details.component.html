@@ -1,0 +1,97 @@
+<form #contactUsForm="ngForm" (ngSubmit)="contactUsForm.form.valid && submit()">
+    <div class="modal fade" id="moreServicess" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered more-service">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div>
+                        <h5 class="modal-title" id="exampleModalLabel">{{"ButtonLabel.ContactUs" | translate}}</h5>
+                    </div>
+                    <button type="button" class="btn-close" #closeBtn data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+
+                        <div class="col-md-6">
+                            <div class="mb-4">
+                                <label for="first_name" class="form-label">{{"FormLabel.FirstName" |translate}}
+                                </label>
+                                <input type="text" id="first_name" class="form-control"
+                                    [placeholder]="'Placeholder.FirstName' | translate" name="first_name"
+                                    #first_name="ngModel" [(ngModel)]="contactUsModel.first_name" required>
+                                <div *ngIf="contactUsForm.submitted || (first_name.invalid && (first_name.dirty && first_name.touched))"
+                                    class="fv-plugins-message-container">
+                                    <div *ngIf="first_name.errors?.['required']" class="fv-help-block">
+                                        {{'ErrorMessage.FirstName' | translate}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-4">
+                                <label for="last_name" class="form-label">{{"FormLabel.LastName" |translate}}
+                                </label>
+                                <input type="text" id="last_name" class="form-control"
+                                    [placeholder]="'Placeholder.LastName' | translate" name="last_name"
+                                    #last_name="ngModel" [(ngModel)]="contactUsModel.last_name" required>
+                                <div *ngIf="contactUsForm.submitted || (last_name.invalid && (last_name.dirty && last_name.touched))"
+                                    class="fv-plugins-message-container">
+                                    <div *ngIf="last_name.errors?.['required']" class="fv-help-block">
+                                        {{'ErrorMessage.LastName' | translate}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-4">
+                                <label for="email" class="form-label">{{"FormLabel.Email-Id" |translate}}
+                                </label>
+                                <input type="text" id="email" class="form-control"
+                                    [placeholder]="'Placeholder.Email-Id' | translate" name="email" #email="ngModel"
+                                    [(ngModel)]="contactUsModel.email" required>
+                                <div *ngIf="contactUsForm.submitted || (email.invalid && (email.dirty && email.touched))"
+                                    class="fv-plugins-message-container">
+                                    <div *ngIf="email.errors?.['required']" class="fv-help-block">
+                                        {{'ErrorMessage.Email-Id' | translate}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-4">
+                                <label for="mobile_no" class="form-label">{{"FormLabel.Mobile_No" |
+                                    translate}}</label>
+                                <input type="tel" id="mobile_no" class="form-control" [placeholder]= "'Placeholder.Mobile_No' | translate" 
+                                    name="mobile_no" #mobile_no="ngModel" [(ngModel)]="contactUsModel.phoneNumber"
+                                    required pattern="[0-9]{10,15}">
+                                <div *ngIf="contactUsForm.submitted || (mobile_no.invalid && (mobile_no.dirty && mobile_no.touched))"
+                                    class="fv-plugins-message-container">
+                                    <div *ngIf="mobile_no.errors?.['required']" class="fv-help-block">
+                                        {{"ErrorMessage.Mobile_No" | translate}}
+                                    </div>
+                                    <div *ngIf="mobile_no.errors?.['pattern']" class="fv-help-block">
+                                        {{"ErrorMessage.Mobile_NoValid" | translate}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="mb-4">
+                                <label for="message" class="form-label">Message</label>
+                                <input type="text" id="message" class="form-control" placeholder="Enter Message"
+                                    name="message" #message="ngModel" [(ngModel)]="contactUsModel.message">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12"><button type="submit" class="btn green-btn btnright">Submit</button></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,58 @@
+<svg id="Group_9623" data-name="Group 9623" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="494.509" height="900" viewBox="0 0 494.509 900">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_3354" data-name="Rectangle 3354" width="494.509" height="900" fill="none"/>
+    </clipPath>
+    <clipPath id="clip-path-3">
+      <rect id="Rectangle_3348" data-name="Rectangle 3348" width="494.503" height="900" transform="translate(0.006)" fill="none"/>
+    </clipPath>
+    <clipPath id="clip-path-5">
+      <rect id="Rectangle_3350" data-name="Rectangle 3350" width="494.502" height="900" fill="none"/>
+    </clipPath>
+    <clipPath id="clip-path-7">
+      <rect id="Rectangle_3352" data-name="Rectangle 3352" width="494.502" height="900" transform="translate(0)" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="Group_9622" data-name="Group 9622" clip-path="url(#clip-path)">
+    <g id="Group_9621" data-name="Group 9621">
+      <g id="Group_9620" data-name="Group 9620" clip-path="url(#clip-path)">
+        <path id="Path_2866" data-name="Path 2866" d="M113.444,0Q.509,370,.007,555c-.5,185,97.5,159.5,145.975,345H494.509V0" fill="#30c8b1" fill-rule="evenodd"/>
+        <g id="Group_9607" data-name="Group 9607" opacity="0">
+          <g id="Group_9606" data-name="Group 9606">
+            <g id="Group_9605" data-name="Group 9605" clip-path="url(#clip-path-3)">
+              <path id="Path_2867" data-name="Path 2867" d="M113.444,0Q.509,370,.007,555c-.5,185,97.5,159.5,145.975,345H494.509V0" fill="#30c8b1" fill-rule="evenodd"/>
+            </g>
+          </g>
+        </g>
+        <g id="Group_9610" data-name="Group 9610" opacity="0">
+          <g id="Group_9609" data-name="Group 9609">
+            <g id="Group_9608" data-name="Group 9608" clip-path="url(#clip-path-3)">
+              <path id="Path_2868" data-name="Path 2868" d="M113.444,0Q.509,370,.007,555c-.5,185,97.5,159.5,145.975,345H494.509V0" fill="#30c8b1" fill-rule="evenodd"/>
+            </g>
+          </g>
+        </g>
+        <g id="Group_9613" data-name="Group 9613" opacity="0">
+          <g id="Group_9612" data-name="Group 9612">
+            <g id="Group_9611" data-name="Group 9611" clip-path="url(#clip-path-5)">
+              <path id="Path_2869" data-name="Path 2869" d="M113.4,0C38.2,246.7.3,321.7,0,445-.5,630,97.5,714.5,146,900H494.5V0" fill="#30c8b1" fill-rule="evenodd"/>
+            </g>
+          </g>
+        </g>
+        <g id="Group_9616" data-name="Group 9616" opacity="0">
+          <g id="Group_9615" data-name="Group 9615">
+            <g id="Group_9614" data-name="Group 9614" clip-path="url(#clip-path-5)">
+              <path id="Path_2870" data-name="Path 2870" d="M113.4,0C38.2,246.7.3,211.7,0,335-.5,520,97.5,714.5,146,900H494.5V0" fill="#30c8b1" fill-rule="evenodd"/>
+            </g>
+          </g>
+        </g>
+        <g id="Group_9619" data-name="Group 9619" opacity="0">
+          <g id="Group_9618" data-name="Group 9618">
+            <g id="Group_9617" data-name="Group 9617" clip-path="url(#clip-path-7)">
+              <path id="Path_2871" data-name="Path 2871" d="M113.4,0C7,106,0,175,0,265-.5,450,114,688,146,900H494.5V0" fill="#30c8b1" fill-rule="evenodd"/>
+            </g>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

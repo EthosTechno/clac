@@ -1,0 +1,172 @@
+<div class="content-block">
+    
+    <h3 class="page-title">News</h3>
+    <button type="button" class="submit-btn" style="margin-top: -50px;" data-bs-toggle="modal"
+        data-bs-target="#newsModal" (click)="newsForm.resetForm()">Add News</button>
+
+    <!------------------------------------------------------------------------------------------------>
+    <br>
+    <p-table [columns]="cols" [value]="newsDetails" [rowsPerPageOptions]="[10,25,50]" [reorderableColumns]="true"
+        [showLoader]="true" #dt1 [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
+        [columnResizeMode]="'fit'" [lazy]="true" (onLazyLoad)="onLazyLoad($event)" [reorderableColumns]="true"
+        [resizableColumns]="true" [autoLayout]="true" [totalRecords]="totalDocs">
+        <ng-template pTemplate="header" let-columns>
+            <tr>
+                <ng-container *ngFor="let col of columns">
+                    <ng-container *ngIf="col.display">
+                        <ng-container *ngIf="col.isSortable">
+                            <th pSortableColumn="{{col.field}}">{{col.header}}
+                                <p-sortIcon [field]="col.field"></p-sortIcon>
+                            </th>
+                        </ng-container>
+                        <ng-container *ngIf="!col.isSortable">
+                            <th>{{col.header}}</th>
+                        </ng-container>
+                    </ng-container>
+                </ng-container>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-record let-columns="columns">
+            <tr>
+                <ng-container *ngFor="let col of columns">
+                    <td *ngIf="col.display">
+                        <span *ngIf="col.type == 'string'" class="text-wrap">{{record[col.field]}}</span>
+                        <span *ngIf="col.type == 'bool'" class="text-wrap">{{record[col.field]}}</span>
+
+                        <span *ngIf="col.type == 'option'" class="text-wrap">{{record[col.field] ? col.true :
+                            col.false}}</span>
+
+                        <span *ngIf="col.type == 'date'" class="text-wrap">{{record[col.field] |
+                            date:'yyyy-MM-dd'}}</span>
+
+                        <span *ngIf="col.type == 'image'"><img _ngcontent-fsl-c86="" width="32"
+                                style="vertical-align: middle;" src="{{record[col.field]}}"></span>
+                        <span *ngIf="col.type == 'image-array'"><img _ngcontent-fsl-c86="" width="32"
+                                style="vertical-align: middle;"
+                                src="{{record['image_url']}}{{record.image[0][col.field]}}"></span>
+                        <span *ngIf="col.type == 'price'">{{record[col.field] | currency: 'USD' : true}}</span>
+                        <span *ngIf="col.type == 'discount'">{{record[col.field]}}%</span>
+                        <span *ngIf="col.type == 'download'">
+                            <a href="{{record[col.field]}}" target="_blank" download title="Download">
+                                <i class="fa fa-download fa-lg"></i>
+                            </a>
+                        </span>
+                        <span *ngIf="col.type == 'link'">
+                            <a href="javascript:void(0)" title="Delete" (click)="deleteRecord(record[col.field])">
+                                <i class="fa fa-trash"></i>
+                            </a> &nbsp;
+                        </span>
+                    </td>
+                </ng-container>
+            </tr>
+        </ng-template>
+    </p-table>
+    <!------------------------------------------------------------------------------------------------>
+
+</div>
+
+
+<!----- NEWS UPDATE MODAL ------>
+<!--Compliment button Modal -->
+<div class="modal fade" id="newsModal" tabindex="-1" aria-labelledby="complimentModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+
+        <form #newsForm="ngForm" (ngSubmit)="newsForm.form.valid && submit()">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="d-flex align-items-center">
+                        <h2 class="modal-title">Add <span>News</span></h2>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <!----- add form ------>
+                    <div class="content-block">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="mb-3">
+                                    <label for="news-title" class="form-label">News Title</label>
+                                    <input type="text" id="title" class="form-control" ngModel placeholder="Title"
+                                        name="title" pattern="^[a-zA-Z ]+$" #title="ngModel"
+                                        [(ngModel)]="newsModel.title" required [ngClass]="{'is-invalid':(title.invalid && title.touched),
+                                        'is-valid':(title.valid && title.touched)}">
+
+
+                                    <div class="fv-plugins-message-container"
+                                        *ngIf="newsForm.submitted || (title.invalid && (title.dirty || title.touched))">
+                                        <div class="fv-help-block" *ngIf="title.errors?.['required']">Title is Required
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="mb-3">
+                                    <label for="add-link" class="form-label">Add Link</label>
+                                    <input type="text" id="add-link" class="form-control" placeholder="http://"
+                                        name="link" #link="ngModel" ngModel [(ngModel)]="newsModel.link" required
+                                        pattern="{{websitePattern}}">
+                                    <div class="fv-plugins-message-container"
+                                        *ngIf="newsForm.submitted || (link.invalid && (link.dirty || link.touched))">
+                                        <div class="fv-help-block" *ngIf="link.errors?.['required']">Link is Required
+                                        </div>
+                                        <div class="fv-help-block" *ngIf="link.errors?.['pattern']">Please enter valid
+                                            link</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="mb-3">
+                                    <label class="form-label">Text Of The Article</label>
+                                    <textarea class="form-control" placeholder="Text" name="article" #articale="ngModel"
+                                        ngModel [(ngModel)]="newsModel.articleText" required></textarea>
+                                    <div class="fv-plugins-message-container"
+                                        *ngIf="newsForm.submitted || (articale.invalid && (articale.dirty || articale.touched))">
+                                        <div class="fv-help-block" *ngIf="articale.errors?.['required']">Articale Text
+                                            is Required</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="row align-items-center">
+                                    <div class="col-3">
+                                        <div class="input-file">
+                                            <label class="form-label">Cover picture</label>
+                                            <div class="input-file-wrap">
+                                                <input type="file" name="image"
+                                                    class="form-control form-control-alternative" ngModel image #image
+                                                    required accept=".png,.jpg,.jpeg" (change)="onFileChanged($event)">
+
+                                            </div>
+                                        </div>
+
+                                        <div class="fv-plugins-message-container"
+                                            *ngIf="newsForm.submitted || (newsModel.image == '' && newsModel.image == null)">
+                                            <div class="fv-help-block" *ngIf="image.errors?['required']">Cover
+                                                picture is Required
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-6">
+                                        <div class="input-file">
+                                            <div *ngIf="imgShow">
+                                                <img src="{{imgShow}}" style="width: 130px;height: 130px;">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--------------------->
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" value="Publish" class="btn green-btn">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

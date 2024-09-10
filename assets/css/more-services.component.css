@@ -1,0 +1,149 @@
+.see-all {
+  max-width: 220px;
+  margin: auto;
+  padding: 40px 0 0;
+}
+@media (max-width: 1199px) {
+  .see-all {
+    padding-top: 20px;
+  }
+}
+@media (max-width: 767px) {
+  .see-all {
+    padding-top: 0px;
+    max-width: 200px;
+  }
+}
+.see-all .see-all-posts {
+  width: auto;
+  font-size: 20px;
+  font-weight: 700;
+  height: 53px;
+  padding: 5px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+}
+@media (max-width: 767px) {
+  .see-all .see-all-posts {
+    height: 48px;
+    font-size: 14px;
+  }
+}
+
+.modal-dialog {
+  max-width: 750px;
+}
+.modal-dialog .modal-content .modal-header {
+  border: none;
+  padding-top: 30px;
+  padding-left: 28px;
+  padding-right: 28px;
+}
+.modal-dialog .modal-content .modal-header .btn-close {
+  box-shadow: none !important;
+  border-radius: 50%;
+  border: 2px solid #a3a3a3;
+  font-size: 10px;
+  opacity: 0.3;
+  position: absolute;
+  top: 25px;
+  right: 30px;
+}
+.modal-dialog .modal-content .modal-header .btn-close:hover {
+  opacity: 0.7;
+}
+.modal-dialog .modal-content .modal-header p {
+  margin-bottom: 0;
+  font-size: 22px;
+}
+.modal-dialog .modal-content .modal-header h5 {
+  font-size: 24px;
+  color: #00C8B1;
+  font-family: "Overpass";
+  font-weight: 700;
+}
+.modal-dialog .modal-content .modal-body {
+  padding-left: 28px;
+  padding-right: 28px;
+}
+.modal-dialog .modal-content .modal-body label {
+  font: 500 14px "Overpass";
+  margin-bottom: 10px;
+}
+.modal-dialog .modal-content .modal-body .selection {
+  position: relative;
+}
+.modal-dialog .modal-content .modal-body .selection::after {
+  content: "";
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid #00C8B1;
+  border-bottom: 2px solid #00C8B1;
+}
+.modal-dialog .modal-content .modal-body select, .modal-dialog .modal-content .modal-body input {
+  background: #fff;
+  box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.06);
+  border-radius: 10px;
+  border: none;
+  font-size: 18px;
+  width: 100%;
+  height: 65px;
+  padding: 5px 40px 5px 20px;
+  -webkit-appearance: none;
+  outline: none;
+  border: 1px solid transparent;
+}
+.modal-dialog .modal-content .modal-body select:focus, .modal-dialog .modal-content .modal-body input:focus {
+  border-color: #00C8B1;
+}
+.modal-dialog .modal-content .modal-body .price-final {
+  padding-top: 10px;
+  font: 700 28px "Overpass";
+  color: #00C8B1;
+}
+.modal-dialog .modal-content .modal-body .second-ttl {
+  color: #00C8B1;
+  font: 700 18px "Overpass";
+  margin-top: 25px;
+}
+.modal-dialog .modal-content .modal-body textarea {
+  width: 100%;
+  height: 200px;
+  background: #fff;
+  box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.06);
+  border-radius: 10px;
+  border: none;
+  font-size: 18px;
+  outline: none;
+  border: 1px solid transparent;
+  padding: 15px 20px;
+}
+.modal-dialog .modal-content .modal-body textarea:focus {
+  border-color: #00C8B1;
+}
+.modal-dialog .modal-content .modal-body .green-btn {
+  height: 55px;
+}
+.modal-dialog .modal-content .modal-footer {
+  border-top: none;
+  padding-bottom: 30px;
+  padding-left: 28px;
+  padding-right: 28px;
+}
+.modal-dialog .modal-content .modal-footer .green-btn {
+  height: 53px;
+}
+.modal-dialog .modal-content .modal-footer .pricing label {
+  font: 500 14px "Overpass";
+  margin-bottom: 8px;
+}
+.modal-dialog .modal-content .modal-footer .pricing h3 {
+  font: 700 24px "Overpass";
+  color: #00C8B1;
+}/*# sourceMappingURL=more-services.component.css.map */

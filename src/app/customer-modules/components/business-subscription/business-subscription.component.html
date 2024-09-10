@@ -1,0 +1,579 @@
+<div class="business-subscription-wrapper">
+    <div class="side-wrapper">
+        <div class="side-graphics d-flex justify-content-center">
+            <div class="d-flex flex-column justify-content-center side-content">
+                <h2 class="mb-4">You are one step away from <span>joining the Clac community!</span></h2>
+                <div class="trust-us">
+                    <p>They trust us</p>
+                    <div class="d-flex flex-wrap brand-images">
+                        <div class="logo-line">
+                            <img src="assets/images/credit-agricole.png" alt="credit-agricole">
+                            <img src="assets/images/logo-ariane.png" alt="logo-ariane">
+                            <img src="assets/images/logo-qonto.png" alt="logo-qonto">
+                        </div>
+                        <div class="logo-line">
+                            <img src="assets/images/logo-sncf.png" alt="logo-sncf">
+                            <img src="assets/images/nike.png" alt="nike">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="side-human-graphics"></div>
+        </div>
+    </div>
+
+    <div class="mobile-content">
+        <div class="container">
+            <h2 class="my-4">You are one step away from <span>joining the Clac community!</span></h2>
+        </div>
+    </div>
+
+    <div class="subscription-stepper pt-3">
+        <div class="container">
+            <div class="stepper-main">
+                <div id="stepper1" class="bs-stepper">
+                    <div class="bs-stepper-header">
+                        <div class="step" data-target="#step-1">
+                            <button class="step-trigger">
+                                <span class="bs-stepper-label">1. Your business</span>
+                            </button>
+                        </div>
+                        <div class="step" data-target="#step-2">
+                            <button class="step-trigger"
+                                [disabled]="company_name.invalid || head_office.invalid || siren.invalid || email.invalid ||
+                            creation_date.invalid || address.invalid || vat.invalid || company_code.invalid || company_phone.invalid">
+                                <span class="bs-stepper-label">2. Your budget</span>
+                            </button>
+                        </div>
+                        <div class="step" data-target="#step-3">
+                            <button class="step-trigger"
+                                [disabled]="company_name.invalid || head_office.invalid || siren.invalid || email.invalid ||
+                            creation_date.invalid || address.invalid || vat.invalid || company_code.invalid || company_phone.invalid || numberOfEmployee.invalid">
+                                <span class="bs-stepper-label">3. Contact info</span>
+                            </button>
+                        </div>
+                        <div class="step" data-target="#step-4">
+                            <button class="step-trigger"
+                                [disabled]="company_name.invalid || head_office.invalid || siren.invalid || email.invalid ||
+                            creation_date.invalid || address.invalid || vat.invalid || company_code.invalid || company_phone.invalid || numberOfEmployee.invalid || first_name.invalid || email.invalid || user_name.invalid || birthdate.invalid ||
+                            reference_source.invalid || last_name.invalid || password.invalid || conform_password.invalid">
+                                <span class="bs-stepper-label">4. Means of payment</span>
+                            </button>
+                        </div>
+                        <div class="step" data-target="#step-5">
+                            <button class="step-trigger"
+                                [disabled]="company_name.invalid || head_office.invalid || siren.invalid || email.invalid ||
+                            creation_date.invalid || address.invalid || vat.invalid || company_code.invalid || company_phone.invalid || numberOfEmployee.invalid || first_name.invalid || email.invalid || user_name.invalid || birthdate.invalid ||
+                            reference_source.invalid || last_name.invalid || password.invalid || conform_password.invalid">
+                                <span class="bs-stepper-label">5. Confirmation</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="bs-stepper-content">
+                        <form #businessSubForm="ngForm" [mustMatch]="['password', 'conform_password']">
+                            <div id="step-1" class="content">
+                                <p class="stepper-text">Please fill in your company information for the configuration of
+                                    your Clac des Doigts Business account.</p>
+                                <div class="row mb-4">
+                                    <div class="col-6">
+                                        <div class="form-group mb-1">
+                                            <label for="company_name" class="form-label">Company Name <span
+                                                    class="text-danger">*</span></label>
+                                            <input type="text" id="company_name" name="company_name"
+                                                class="form-control" #company_name="ngModel" ngModel
+                                                pattern="^[a-zA-Z ]+$" required autocomplete="off"
+                                                [(ngModel)]="businessSubModel.company_name" [ngClass]="{'is-invalid':(company_name.invalid && company_name.touched),
+                                                'is-valid':(company_name.valid && company_name.touched)}">
+
+                                            <div class="invalid-feedback"
+                                                *ngIf="businessSubForm.submitted ||(company_name.invalid && (company_name.dirty || company_name.touched ))">
+                                                <div *ngIf="company_name.errors?.['required']" class="red-color">
+                                                    Company Name is required.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group mb-1">
+                                            <label for="creation_date" class="form-label"> Creation Date <span
+                                                    class="text-danger">*</span></label>
+                                            <input type="date" id="creation_date" name="creation_date"
+                                                class="form-control" [ngClass]="{'is-invalid':(creation_date.invalid && creation_date.touched),
+                                            'is-valid':(creation_date.valid && creation_date.touched)}"
+                                                #creation_date="ngModel" ngModel required autocomplete="off"
+                                                [(ngModel)]="businessSubModel.creation_date">
+                                            <div class="invalid-feedback"
+                                                *ngIf="businessSubForm.submitted || (creation_date.invalid && (creation_date.dirty || creation_date.touched))">
+                                                <div *ngIf="creation_date.errors?.['required']" class="fv-help-block">
+                                                    Creation Date is required
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group mb-1">
+                                            <label for="head_office" class="form-label">Head Office Address <span
+                                                    class="text-danger">*</span></label>
+                                            <input type="text" id="head_office" name="head_office" class="form-control"
+                                                #head_office="ngModel" ngModel required autocomplete="off"
+                                                [(ngModel)]="businessSubModel.head_office" [ngClass]="{'is-invalid':(head_office.invalid && head_office.touched),
+                                                'is-valid':(head_office.valid && head_office.touched)}">
+                                            <div *ngIf="businessSubForm.submitted ||(head_office.invalid && (head_office.dirty || head_office.touched ))"
+                                                class="invalid-feedback">
+                                                <div *ngIf="head_office.errors?.['required']" class="red-color">
+                                                    Head Office Name is required.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group mb-1">
+                                            <label for="address" class="form-label">Address Details<span
+                                                    class="text-danger">*</span></label>
+                                            <input type="text" id="address" name="address" class="form-control"
+                                                #address="ngModel" ngModel required autocomplete="off"
+                                                [(ngModel)]="businessSubModel.address" [ngClass]="{'is-invalid':(address.invalid && address.touched),
+                                                'is-valid':(address.valid && address.touched)}">
+                                            <div class="invalid-feedback"
+                                                *ngIf="businessSubForm.submitted ||(address.invalid && (address.dirty || address.touched ))">
+                                                <div *ngIf="address.errors?.['required']" class="red-color">
+                                                    Address is required.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group mb-1">
+                                            <label for="siren" class="form-label"> Siren Number <span
+                                                    class="text-danger">*</span></label>
+                                            <input type="number" id="siren" name="siren" class="form-control"
+                                                #siren="ngModel" ngModel required autocomplete="off"
+                                                [(ngModel)]="businessSubModel.siren" [ngClass]="{'is-invalid':(siren.invalid && siren.touched),
+                                                'is-valid':(siren.valid && siren.touched)}">
+                                            <div *ngIf="businessSubForm.submitted || (siren.invalid && (siren.dirty || siren.touched ))"
+                                                class="invalid-feedback">
+                                                <div *ngIf="siren.errors?.['required']" class="red-color">
+                                                    Siren Number is required.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group mb-1">
+                                            <label for="vat" class="form-label"> VAT Number <span
+                                                    class="text-danger">*</span></label>
+                                            <input type="text" id="vat" name="vat" class="form-control" #vat="ngModel"
+                                                ngModel required autocomplete="off" [(ngModel)]="businessSubModel.vat"
+                                                [ngClass]="{'is-invalid':(vat.invalid && vat.touched),
+                                                'is-valid':(vat.valid && vat.touched)}">
+
+                                            <div *ngIf="businessSubForm.submitted || (vat.invalid && (vat.dirty || vat.touched ))"
+                                                class="invalid-feedback">
+                                                <div *ngIf="vat.errors?.['required']" class="red-color">
+                                                    Vat Number is required.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group mb-1">
+                                            <label for="email" class="form-label"> E-mail Address<span
+                                                    class="text-danger">*</span></label>
+                                            <input type="email" id="email" name="email" class="form-control"
+                                                #email="ngModel" ngModel required autocomplete="off"
+                                                pattern="[a-zA-Z0-9.-_+]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"
+                                                [(ngModel)]="businessSubModel.email" [ngClass]="{'is-invalid':(email.invalid && email.touched),
+                                                'is-valid':(email.valid && email.touched)}">
+                                            <div *ngIf="businessSubForm.submitted ||(email.invalid && (email.dirty || email.touched ))"
+                                                class="invalid-feedback">
+                                                <div *ngIf="email.errors?.['required']" class="red-color">
+                                                    Email is required.
+                                                </div>
+                                                <div *ngIf="email.errors?.['pattern']" class="red-color">
+                                                    Please enter valid email address.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-6">
+                                        
+                                        <div class="form-group mb-1">
+                                            <label for="company_code" class="form-label"> Company Code <span
+                                                    class="text-danger">*</span></label>
+                                            <input type="text" id="company_code" name="company_code"
+                                                class="form-control" #company_code="ngModel" ngModel required
+                                                autocomplete="off" [(ngModel)]="businessSubModel.company_code"
+                                                [ngClass]="{'is-invalid':(company_code.invalid && company_code.touched),
+                                                'is-valid':(company_code.valid && company_code.touched)}">
+
+                                            <div *ngIf="businessSubForm.submitted || (company_code.invalid && (company_code.dirty || company_code.touched ))"
+                                                class="invalid-feedback">
+                                                <div *ngIf="company_code.errors?.['required']" class="red-color">
+                                                    Company Code is required.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6"></div>    
+                                    <div class="col-6">  
+                                        <div class="form-group mb-1">
+                                            <label for="company_phone" class="form-label"> Company's Phone Number <span
+                                                    class="text-danger">*</span></label>
+                                            <input type="text" min="10" id="company_phone" name="company_phone"
+                                                class="form-control" #company_phone="ngModel" ngModel required
+                                                autocomplete="off" [(ngModel)]="businessSubModel.company_phone"
+                                                [ngClass]="{'is-invalid':(company_phone.invalid && company_phone.touched),
+                                                'is-valid':(company_phone.valid && company_phone.touched)}">
+
+                                            <div *ngIf="businessSubForm.submitted || (company_phone.invalid && (company_phone.dirty || company_phone.touched ))"
+                                                class="invalid-feedback">
+                                                <div *ngIf="company_phone.errors?.['required']" class="red-color">
+                                                    Company Phone Number is required.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>  
+                                </div>
+                                <div class="line"></div>
+                                <div class="d-flex justify-content-end mt-4">
+                                    <!-- <button (click)="previous()" class="btn btn-primary"
+                                        [disabled]="company_name.valid || head_office.valid || siren.valid || email.valid ||
+                                    creation_date.valid || address.valid || vat.valid || company_code.valid || company_phone.valid">Previous</button> -->
+                                    <button (click)="next()" class="btn btn-primary"
+                                        [disabled]="company_name.invalid || head_office.invalid || siren.invalid || email.invalid ||
+                                    creation_date.invalid || address.invalid || vat.invalid || company_code.invalid || company_phone.invalid"
+                                        class="btn btn-primary">Following</button>
+                                </div>
+                            </div>
+                            <div id="step-2" class="content">
+                                <div class="row mb-4">
+                                    <div class="col-6">
+                                        <p class="budget-content">The monthly subscription is
+                                            <strong>non-binding</strong> and proportional to the number of employees.
+                                            Please enter the total number of employees of the company.
+                                        </p>
+                                        <p class="budget-content">Thanks to the simulator, calculate the amount of the
+                                            monthly subscription for all your employees.</p>
+                                    </div>
+                                    <div class="col-6">
+                                        <!-- <div class="form-group mb-1">
+                                            <label for="numberOfEmployee" class="form-label">Number of employees <span
+                                                    class="text-danger">* </span><i
+                                                    class="fa fa-question-circle help-tip" aria-hidden="true"
+                                                    data-bs-toggle="tooltip" data-bs-placement="right"
+                                                    title="All employees of the same address must have same access, so fill in the total number of employees of the company."></i></label>
+                                            <input type="text" class="form-control" id="numberOfEmployee">
+                                            <div class="error-msg">
+                                                This field is required.
+                                            </div>
+                                        </div> -->
+
+                                        <div class="form-group mb-1">
+                                            <label for="numberOfEmployee" class="form-label"> Number Of Employees <span
+                                                    class="text-danger">*</span></label>
+                                            <input type="text" id="numberOfEmployee" name="numberOfEmployee"
+                                                class="form-control" #numberOfEmployee="ngModel" ngModel required
+                                                [(ngModel)]="businessSubModel.numberOfEmployee"
+                                                (keyup)="sumEmp($event.target)" autocomplete="off" [ngClass]="{'is-invalid':(numberOfEmployee.invalid && numberOfEmployee.touched),
+                                                'is-valid':(numberOfEmployee.valid && numberOfEmployee.touched)}">
+                                            <div *ngIf="businessSubForm.submitted || (numberOfEmployee.invalid && (numberOfEmployee.dirty || numberOfEmployee.touched ))"
+                                                class="invalid-feedback">
+                                                <div *ngIf="numberOfEmployee.errors?.['required']" class="red-color">
+                                                    Number Of Employee is required.
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <label for="yourBudget" class="form-label">Your budget <span
+                                                    class="text-danger">* </span></label>
+                                            <div class="your-budget">
+                                                <p>{{basicAmount}} € / {{businessSubDetailData?.type}} excluding tax</p>
+                                                Or
+                                                <p>{{totalAmount}} € / month including tax</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="line"></div>
+                                <div class="d-flex justify-content-between mt-4">
+                                    <button (click)="previous()" class="btn btn-primary">Previous</button>
+                                    <button (click)="next()" [disabled]="numberOfEmployee.invalid"
+                                        class="btn btn-primary">Following</button>
+                                </div>
+                            </div>
+                            <div id="step-3" class="content">
+                                <p class="stepper-text">Please fill in your personal information as a representative of
+                                    the company.
+                                    These will be associated with your business account information. They may be
+                                    modified later.</p>
+                                <div class="row mb-4">
+                                    <div class="col-6">
+                                        <div class="form-group mb-1">
+                                            <label for="first_name" class="form-label">First name <span
+                                                    class="text-danger">*</span></label>
+                                            <input type="text" id="first_name" name="first_name" class="form-control"
+                                                #first_name="ngModel" ngModel pattern="^[a-zA-Z ]+$" required
+                                                autocomplete="off" [(ngModel)]="businessSubModel.first_name" [ngClass]="{'is-invalid':(first_name.invalid && first_name.touched),
+                                                'is-valid':(first_name.valid && first_name.touched)}">
+                                            <div class="invalid-feedback"
+                                                *ngIf="businessSubForm.submitted ||(first_name.invalid && (first_name.dirty || first_name.touched ))">
+                                                <div *ngIf="first_name.errors?.['required']" class="red-color">
+                                                    First Name is required.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group mb-1">
+                                            <label for="email" class="form-label"> E-mail <span
+                                                    class="text-danger">*</span></label>
+                                            <input type="email" id="email" name="email" class="form-control"
+                                                #email="ngModel" ngModel required autocomplete="off"
+                                                pattern="[a-zA-Z0-9.-_+]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"
+                                                [(ngModel)]="businessSubModel.email" [ngClass]="{'is-invalid':(email.invalid && email.touched),
+                                                'is-valid':(email.valid && email.touched)}">
+                                            <div *ngIf="businessSubForm.submitted ||(email.invalid && (email.dirty || email.touched ))"
+                                                class="invalid-feedback">
+                                                <div *ngIf="email.errors?.['required']" class="red-color">
+                                                    Email is required.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group mb-1">
+                                            <label for="user_name" class="form-label">User name <span
+                                                    class="text-danger">*</span></label>
+                                            <input type="text" id="user_name" name="user_name" class="form-control"
+                                                #user_name="ngModel" ngModel (keydown.space)="$event.preventDefault()"
+                                                pattern="^[a-zA-Z]([._-](?![._-])|[a-zA-Z0-9]){1,18}[a-zA-Z0-9]$"
+                                                required autocomplete="off" [(ngModel)]="businessSubModel.user_name"
+                                                [ngClass]="{'is-invalid':(user_name.invalid && user_name.touched),
+                                                'is-valid':(user_name.valid && user_name.touched)}">
+                                            <div *ngIf="businessSubForm.submitted ||(user_name.invalid && (user_name.dirty || user_name.touched ))"
+                                                class="invalid-feedback">
+                                                <div *ngIf="user_name.errors?.['required']" class="red-color">
+                                                    User Name is required.
+                                                </div>
+                                                <div *ngIf="user_name.errors?.['pattern']" class="red-color">
+                                                    User Name is invalid.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group mb-1">
+                                            <label for="birthdate" class="form-label"> Birth Date <span
+                                                    class="text-danger">*</span></label>
+                                            <input type="date" id="birthdate" name="birthdate" class="form-control"
+                                                [ngClass]="{'is-invalid':(birthdate.invalid && birthdate.touched),
+                                            'is-valid':(birthdate.valid && birthdate.touched)}" #birthdate="ngModel"
+                                                ngModel required autocomplete="off" max="{{bodMinDate}}"
+                                                [(ngModel)]="businessSubModel.birthdate">
+                                            <div class="invalid-feedback"
+                                                *ngIf="businessSubForm.submitted || (birthdate.invalid && (birthdate.dirty || birthdate.touched))">
+                                                <div *ngIf="birthdate.errors?.['required']" class="fv-help-block">
+                                                    Birthdate is required
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group mb-1">
+                                            <label for="reference_source" class="form-label">How did you know us? <span
+                                                    class="text-danger">*</span></label>
+                                            <select id="reference_source" class="form-control"
+                                                #reference_source="ngModel" ngModel
+                                                [(ngModel)]="businessSubModel.reference_source" name="reference_source"
+                                                required [ngClass]="{'is-invalid':(reference_source.invalid && reference_source.touched),
+                                                'is-valid':(reference_source.valid && reference_source.touched)}">
+                                                <option value="undefined" disabled>Select the option that suits you
+                                                </option>
+                                                <option value="FACEBOOK">FACEBOOK</option>
+                                                <option value="SNAPCHAT">SNAPCHAT</option>
+                                                <option value="INSTAGRAM">INSTAGRAM</option>
+                                                <option value="GOOGLE">GOOGLE</option>
+                                            </select>
+                                            <div class="invalid-feedback"
+                                                *ngIf="businessSubForm.submitted || (reference_source.invalid && (reference_source.dirty || reference_source.touched))">
+                                                <div *ngIf="reference_source.errors?.['required']"
+                                                    class="fv-help-block">
+                                                    How did you know us?
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group mb-1">
+                                            <label for="last_name" class="form-label">Last name <span
+                                                    class="text-danger">*</span></label>
+                                            <input type="text" id="last_name" name="last_name" class="form-control"
+                                                #last_name="ngModel" ngModel pattern="^[a-zA-Z ]+$" required
+                                                autocomplete="off" [(ngModel)]="businessSubModel.last_name" [ngClass]="{'is-invalid':(last_name.invalid && last_name.touched),
+                                                'is-valid':(last_name.valid && last_name.touched)}">
+                                            <div *ngIf="businessSubForm.submitted ||(last_name.invalid && (last_name.dirty || last_name.touched ))"
+                                                class="invalid-feedback">
+                                                <div *ngIf="last_name.errors?.['required']" class="red-color">
+                                                    Last Name is required.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- <div class="form-group mb-1">
+                                            <label for="password" class="form-label"> Password <span
+                                                    class="text-danger">*</span></label>
+                                            <input type="password" id="password" name="password" class="form-control"
+                                                [ngClass]="{'is-invalid':businessSubForm.submitted && (password.invalid),
+                                            'is-valid':businessSubForm.submitted || (password.valid && password.touched)}"
+                                                #password="ngModel" ngModel required autocomplete="off"
+                                                [(ngModel)]="businessSubModel.password" [ngClass]="{'is-invalid':(password.invalid && password.touched),
+                                                'is-valid':(password.valid && password.touched)}">
+                                            <div *ngIf="businessSubForm.submitted ||(password.invalid && (password.dirty || password.touched ))"
+                                                class="invalid-feedback">
+                                                <div *ngIf="password.errors?.['required']" class="red-color">
+                                                    Password is required.
+                                                </div>
+
+                                            </div>
+                                        </div> -->
+
+                                        <div class="form-group mb-1">
+                                            <label for="password" class="form-label"> Password <span
+                                                    class="text-danger">*</span></label>
+                                            <input type="password" id="password" name="password" class="form-control"
+                                                [ngClass]="{'is-invalid':(password.invalid && password.touched),
+                                            'is-valid':(password.valid && password.touched)}" #password="ngModel"
+                                                ngModel required autocomplete="off"
+                                                [(ngModel)]="businessSubModel.password">
+                                            <div *ngIf="(password.invalid && (password.dirty || password.touched ))"
+                                                class="invalid-feedback">
+                                                <div *ngIf="password.errors?.['required']" class="red-color">
+                                                    Password is required.
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group mb-1">
+                                            <label for="conform_password" class="form-label">Confirm Password <span
+                                                    class="text-danger">*</span></label>
+                                            <input type="password" id="conform_password" name="conform_password"
+                                                class="form-control" #conform_password="ngModel" ngModel required
+                                                autocomplete="off" [(ngModel)]="businessSubModel.conform_password"
+                                                [ngClass]="{'is-invalid':(conform_password.invalid && conform_password.touched),
+                                                'is-valid':(conform_password.valid && conform_password.touched)}">
+                                            <div *ngIf="businessSubForm.submitted ||(conform_password.invalid && (conform_password.dirty || conform_password.touched ))"
+                                                class="invalid-feedback">
+                                                <div *ngIf="conform_password.errors?.['required']" class="red-color">
+                                                    Confirm Password is required.
+                                                </div>
+                                                <div *ngIf="conform_password.errors?.['mustMatch']" class="red-color">
+                                                    Password and confirm password must be match
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="line"></div>
+                                <div class="d-flex justify-content-between mt-4">
+                                    <button (click)="previous()" class="btn btn-primary">Previous</button>
+                                    <button (click)="next()"
+                                        [disabled]="first_name.invalid || email.invalid || user_name.invalid || birthdate.invalid ||
+                                    reference_source.invalid || last_name.invalid || password.invalid || conform_password.invalid"
+                                        class="btn btn-primary">Following</button>
+
+                                </div>
+                            </div>
+                            <div id="step-4" class="content">
+                                <div class="row mb-4">
+                                    <div class="col-md-12">
+                                        <label class="form-label">Chosen payment method <span class="text-danger">*
+                                            </span><i class="fa fa-question-circle help-tip" aria-hidden="true"
+                                                data-toggle="tooltip" data-placement="right"
+                                                title="Please select your payment method."></i></label>
+                                        <div class="um-col-1 cus-registration-form">
+                                            <form #checkout="ngForm" (ngSubmit)="onSubmit(checkout)" class="checkout">
+                                                <div
+                                                    class="um-field um-field-text um-field-type_text um-field-type_source">
+                                                    <div class="form-row">
+                                                        <div id="card-info" #cardInfo></div>
+                                                        <div id="card-errors" role="alert" *ngIf="error">{{ error }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- <button type="submit" class="my-3 btn btn-primary">Pay $5</button> -->
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <p class="stepper-text">All your payment information is collected and stored
+                                            under high security thanks to our partner Stripe.</p>
+                                        <p class="stepper-text">Confidential data such as the 16-digit bank card number
+                                            and the CVV code are directly transmitted encrypted to the bank's server.
+                                            Clac des Doigts does not have access to this data</p>
+                                        <!-- <div class="stipe-card-types">
+                                            <img src="assets/images/stripe-card-types-1.png" alt="">
+                                        </div> -->
+                                    </div>
+                                </div>
+                                <div class="line"></div>
+                                <div class="d-flex justify-content-between mt-4">
+                                    <button (click)="previous()" class="btn btn-primary">Previous</button>
+                                    <button (click)="onSubmit(checkout)" class="btn btn-primary">Following</button>
+                                </div>
+                            </div>
+                            <div id="step-5" class="content">
+                                <div class="my-3">
+                                    <p class="m-0">That's it! thanks for your patience.</p>
+                                    <p class="m-0">When you click on "Subscribe me" your account will be created and
+                                        your data will be saved securely. Then you need to confirm your email address by
+                                        clicking on the link that we're going to send you after that.</p>
+                                </div>
+                                <div class="payment-confirmation mb-4">
+                                    <p class="m-0">{{totalAmount}}€ / {{businessSubDetailData?.type}}
+                                    </p>
+                                    <p class="m-0">Payment by: Credit card</p>
+                                </div>
+                                <div class="mb-4 form-check position-relative">
+                                    <input type="checkbox" class="form-check-input" id="userPolicy" name="userPolicy"
+                                        #userPolicy="ngModel" ngModel required>
+                                    <label class="form-check-label" for="userPolicy">I'read and I accept</label><a
+                                        href="javascript:;" class="ml-1" data-bs-toggle="modal"
+                                        data-bs-target="#userPolicyModal">the general sales & user policies</a>
+                                </div>
+                                <div class="line"></div>
+                                <div class="d-flex justify-content-between mt-4">
+                                    <button (click)="previous()" class="btn btn-primary">Previous</button>
+                                    <button (click)="next()" (click)="submit()" class="btn btn-primary"
+                                        [disabled]="userPolicy.invalid">Subscribe me</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--User policy Modal -->
+    <div class="modal fade" id="userPolicyModal" tabindex="-1" aria-labelledby="userPolicyModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>User Policies</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>User policies are as following:</p>
+                    <ol>
+                        <li>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+                            been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
+                            galley of type and scrambled it to make a type specimen book.</li>
+                        <li>It has survived not only five centuries, but also the leap into electronic typesetting,
+                            remaining essentially unchanged.</li>
+                        <li>It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
+                            passages, and more recently with desktop publishing software like Aldus PageMaker including
+                            versions of Lorem Ipsum.</li>
+                        <li>It is a long established fact that a reader will be distracted by the readable content of a
+                            page when looking at its layout.</li>
+                        <li>Contrary to popular belief, Lorem Ipsum is not simply random text.</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

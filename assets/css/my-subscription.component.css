@@ -1,0 +1,98 @@
+.cus-registration-form .um-field.um-field-text.um-field-type_text.um-field-type_source {
+  background: #EEE;
+  padding: 5px 10px 10px 10px;
+}
+
+.cus-registration-form .um-field-area {
+  position: relative;
+  word-wrap: break-word;
+}
+
+.cus-registration-form .StripeElement {
+  background-color: white;
+  height: 60px;
+  padding: 10px 12px;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  box-shadow: 0 1px 3px 0 #e6ebf1;
+  transition: box-shadow 150ms ease;
+  margin-top: 15px;
+}
+
+.cus-registration-form .um-field {
+  position: relative;
+  padding: 20px 0 0 0;
+}
+
+.plan {
+  position: relative;
+  border-style: dotted;
+  background: #B1EFE2;
+  border-color: #56C5AE;
+  color: #333 !important;
+  border-radius: 15px;
+  padding: 5px 22px;
+  transition: none !important;
+  height: 100%;
+  overflow: hidden;
+  cursor: pointer;
+}
+.plan .plan-detail-wrapper h5 {
+  padding: 10px 7px 0;
+  margin: 0;
+  font-size: 18px;
+  text-align: center;
+  transition: none !important;
+}
+.plan .plan-detail-wrapper h2 {
+  font-size: 48px;
+  text-align: center;
+}
+.plan .plan-detail-wrapper h2 span {
+  font-size: 16px;
+  transition: none !important;
+}
+.plan .plan-detail-wrapper .plan-detail {
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  transition: none !important;
+}
+.plan .plan-detail-wrapper .plan-detail-one {
+  font-size: 14px;
+  transition: none !important;
+}
+.plan .plan-detail-wrapper .plan-detail-two {
+  font-size: 14px;
+  color: #00C8B1;
+  transition: none !important;
+  font-weight: bold;
+  margin-bottom: 0;
+}
+.plan .plan-detail-wrapper .selected-offer {
+  display: none;
+  position: absolute;
+  bottom: 15px;
+  right: -100px;
+  transform: rotate(315deg);
+  -moz-transform: rotate(315deg);
+  -webkit-transform: rotate(315deg);
+  -o-transform: rotate(315deg);
+  -ms-transform: rotate(315deg);
+  background-color: white;
+  color: black;
+  border-top: 1px #dee0e0 solid;
+  border-bottom: 1px black solid;
+  font-weight: bold;
+  font-size: 11px;
+  padding: 5px;
+  text-align: center;
+  width: 250px;
+}
+@media (max-width: 768px) {
+  .plan {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+}/*# sourceMappingURL=my-subscription.component.css.map */

@@ -1,0 +1,18 @@
+{
+    "status": 200,
+    "success": true,
+    "data": {
+        "items": [
+            {
+                "firstName": "Saumil",
+                "lastName": "Jariwala",
+                "email": "saumil.cmarix@gmail.com",
+                "password": "Saumil123",
+                "phone": "+918905121454",
+                "address": "Varanasi, Janmbhumi of RAM"
+            }
+        ]
+    },
+    "result": true,
+    "message":""
+}

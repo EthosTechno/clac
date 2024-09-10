@@ -1,0 +1,29 @@
+<div class="offers-banner my-account-wrapper">
+    <div class="container">
+        <div class="offer-insider">
+            <!-- <h2 class="section-title">{{"Label.My" | translate}} {{"Label.Clac" | translate}} <span> {{"Label.Offers" | translate}} </span></h2> -->
+            <h2 class="section-title">{{"Label.MyClacOffers" | translate}} </h2>
+            <form #catSearch="ngForm" (ngSubmit)="catSearch.form.valid && submit(catSearch.value)">
+            <div class="popular-offers-wrap">
+                <div class="popular-tags">
+                    <span class="pop-title">{{"Label.Popular" | translate}} :</span>                                        
+                    <a *ngFor="let categoryPop of offerPopular" href="javascript:void(0);" class="tags">{{categoryPop?.name}}</a>                    
+                </div>
+                <div class="pop-search">
+                    <input type="text" class="search-input" [placeholder]="'Placeholder.Search' | translate"  name="search" ngModel #search="ngModel">
+                    <div class="category-dropdown">
+                        <select name="category" id="search-category" ngModel #caregory="ngModel">
+                            <option value="" disabled selected>{{"Label.Categories" | translate}}</option>
+                            <option *ngFor="let category of offerCategory" value="{{category._id}}">{{category.name}}</option>                           
+                        </select>
+                    </div>
+                    <button class="search-button" type="submit">
+                        <img src="assets/images/searchicon.svg" alt="">
+                    </button>
+                </div>
+            </div>
+            </form>
+            <img class="banner-right-img" src="assets/images/offer-baanner-right-img.png" alt="">
+        </div>
+    </div>
+</div>

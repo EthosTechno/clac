@@ -1,0 +1,372 @@
+.business-subscription-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.business-subscription-wrapper .side-wrapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 30vw;
+  height: 100vh;
+}
+.business-subscription-wrapper .side-wrapper .side-graphics {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-image: url("../../../../assets/images/login-graphic1.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-y: bottom;
+  height: 100vh;
+  width: 100%;
+}
+.business-subscription-wrapper .side-wrapper .side-graphics .side-content {
+  max-width: 75%;
+  margin-bottom: 56px;
+  z-index: 9;
+}
+.business-subscription-wrapper .side-wrapper .side-graphics .side-content h2 {
+  color: #fff;
+  font-size: 28px;
+  line-height: 35px;
+  font-family: interstate;
+  font-weight: 300;
+}
+.business-subscription-wrapper .side-wrapper .side-graphics .side-content h2 span {
+  font-weight: bold;
+}
+.business-subscription-wrapper .side-wrapper .side-graphics .side-content .trust-us p {
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.28571em;
+}
+.business-subscription-wrapper .side-wrapper .side-graphics .side-content .trust-us .brand-images .logo-line {
+  width: 76%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.business-subscription-wrapper .side-wrapper .side-graphics .side-content .trust-us .brand-images .logo-line:last-child {
+  justify-content: center;
+}
+.business-subscription-wrapper .side-wrapper .side-graphics .side-content .trust-us .brand-images .logo-line:last-child img {
+  margin-right: 26px;
+}
+.business-subscription-wrapper .side-wrapper .side-graphics .side-content .trust-us .brand-images .logo-line img {
+  width: 26%;
+  margin-bottom: 25px;
+  text-align: center;
+}
+@media (max-width: 992px) {
+  .business-subscription-wrapper .side-wrapper .side-graphics .side-content .trust-us {
+    margin-bottom: -60px;
+  }
+}
+.business-subscription-wrapper .side-wrapper .side-human-graphics {
+  position: absolute;
+  right: 0;
+  bottom: 60px;
+  background-image: url("../../../../assets/images/individual-subscription-graphic.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  width: 194px;
+  height: 325px;
+}
+@media (max-width: 992px) {
+  .business-subscription-wrapper .side-wrapper .side-human-graphics {
+    width: 169px;
+    height: 286px;
+  }
+}
+@media (max-width: 768px) {
+  .business-subscription-wrapper .side-wrapper {
+    display: none;
+  }
+}
+.business-subscription-wrapper .mobile-content {
+  display: none;
+}
+.business-subscription-wrapper .mobile-content h2 {
+  color: #32325D;
+  font-size: 28px;
+  line-height: 35px;
+  font-family: interstate;
+  font-weight: 300;
+  text-align: center;
+}
+.business-subscription-wrapper .mobile-content h2 span {
+  font-weight: bold;
+}
+@media (max-width: 768px) {
+  .business-subscription-wrapper .mobile-content {
+    display: block;
+  }
+}
+.business-subscription-wrapper .subscription-stepper {
+  width: 100%;
+}
+.business-subscription-wrapper .subscription-stepper .stepper-main {
+  width: 70%;
+}
+.business-subscription-wrapper .subscription-stepper .stepper-main .bs-stepper {
+  max-width: 620px;
+  margin: auto;
+}
+.business-subscription-wrapper .subscription-stepper .stepper-main .bs-stepper .bs-stepper-header {
+  border-bottom: 1px solid #3D7DEB;
+  padding: 0 15px;
+}
+.business-subscription-wrapper .subscription-stepper .stepper-main .bs-stepper .bs-stepper-header .step .step-trigger {
+  padding: 0;
+}
+.business-subscription-wrapper .subscription-stepper .stepper-main .bs-stepper .bs-stepper-header .step .step-trigger .bs-stepper-label {
+  color: #000;
+  padding: 3px 13px;
+  font-size: 13px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  margin: 0px;
+  font-weight: 400;
+}
+@media (max-width: 992px) {
+  .business-subscription-wrapper .subscription-stepper .stepper-main .bs-stepper .bs-stepper-header .step .step-trigger .bs-stepper-label {
+    padding: 2px 10.5px;
+  }
+}
+@media (max-width: 768px) {
+  .business-subscription-wrapper .subscription-stepper .stepper-main .bs-stepper .bs-stepper-header .step .step-trigger .bs-stepper-label {
+    width: 100%;
+    border-radius: 0;
+    border-bottom: 1px solid #3D7DEB;
+  }
+}
+.business-subscription-wrapper .subscription-stepper .stepper-main .bs-stepper .bs-stepper-header .step .step-trigger:hover {
+  background-color: #fff;
+}
+@media (max-width: 768px) {
+  .business-subscription-wrapper .subscription-stepper .stepper-main .bs-stepper .bs-stepper-header .step .step-trigger {
+    width: 100%;
+    text-align: left;
+  }
+}
+.business-subscription-wrapper .subscription-stepper .stepper-main .bs-stepper .bs-stepper-header .step.active .bs-stepper-label {
+  background-color: #3D7DEB;
+  color: #fff !important;
+}
+@media (max-width: 768px) {
+  .business-subscription-wrapper .subscription-stepper .stepper-main .bs-stepper .bs-stepper-header .step {
+    width: 100%;
+  }
+}
+@media (max-width: 768px) {
+  .business-subscription-wrapper .subscription-stepper .stepper-main .bs-stepper .bs-stepper-header {
+    flex-direction: column;
+    border-bottom: 0;
+  }
+}
+.business-subscription-wrapper .subscription-stepper .stepper-main .bs-stepper .bs-stepper-content {
+  padding: 20px;
+}
+.business-subscription-wrapper .subscription-stepper .stepper-main .bs-stepper .bs-stepper-content .content .stepper-text {
+  font-size: 17px;
+  color: #32325d;
+}
+.business-subscription-wrapper .subscription-stepper .stepper-main .bs-stepper .bs-stepper-content .content .col-6 {
+  padding: 0 5px;
+}
+@media (max-width: 768px) {
+  .business-subscription-wrapper .subscription-stepper .stepper-main .bs-stepper .bs-stepper-content .content .col-6 {
+    width: 100%;
+    padding: 5px 0;
+  }
+}
+.business-subscription-wrapper .subscription-stepper .stepper-main .bs-stepper .bs-stepper-content .content button {
+  padding: 0 30px;
+  background-color: #3D7DEB;
+  border: 2px solid #3D7DEB;
+  border-radius: 20px;
+  box-shadow: none;
+}
+.business-subscription-wrapper .subscription-stepper .stepper-main .bs-stepper .bs-stepper-content .content button:hover {
+  background-color: transparent;
+  color: #3D7DEB;
+}
+.business-subscription-wrapper .subscription-stepper .stepper-main .bs-stepper .bs-stepper-content .content .select-plan {
+  display: none;
+}
+.business-subscription-wrapper .subscription-stepper .stepper-main .bs-stepper .bs-stepper-content .content .select-plan:checked + .plan {
+  border-style: solid;
+  background: #B1EFE2;
+  border-color: #56C5AE;
+  color: #777;
+  cursor: default;
+}
+.business-subscription-wrapper .subscription-stepper .stepper-main .bs-stepper .bs-stepper-content .content .select-plan:checked + .plan .selected-offer {
+  display: block;
+}
+.business-subscription-wrapper .subscription-stepper .stepper-main .bs-stepper .bs-stepper-content .content .form-control {
+  padding: 15px;
+  padding-right: 35px;
+  box-shadow: none;
+}
+.business-subscription-wrapper .subscription-stepper .stepper-main .bs-stepper .bs-stepper-content .content .form-label {
+  font-weight: bold;
+  font-size: 15px;
+}
+.business-subscription-wrapper .subscription-stepper .stepper-main .bs-stepper .bs-stepper-content .content select {
+  width: 100%;
+  display: block !important;
+  border-radius: 2px;
+  outline: none !important;
+  cursor: text !important;
+  font-size: 15px !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+  position: static;
+  outline: none !important;
+}
+.business-subscription-wrapper .subscription-stepper .stepper-main .bs-stepper .bs-stepper-content .content .payment-confirmation {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #FFD;
+  border: 1px solid #EEE;
+  color: #666;
+  border-radius: 15px;
+  font-size: 16px;
+  text-align: center;
+}
+.business-subscription-wrapper .subscription-stepper .stepper-main .bs-stepper .bs-stepper-content .content .form-check {
+  display: flex;
+  align-items: center;
+}
+.business-subscription-wrapper .subscription-stepper .stepper-main .bs-stepper .bs-stepper-content .content .form-check input[type=checkbox] {
+  box-shadow: none;
+  width: 22px;
+  height: 22px;
+  margin-right: 5px;
+  border: 2px solid #ebebeb;
+}
+.business-subscription-wrapper .subscription-stepper .stepper-main .bs-stepper .bs-stepper-content .content .form-check input[type=checkbox]:hover {
+  border: 2px solid #bbb;
+}
+.business-subscription-wrapper .subscription-stepper .stepper-main .bs-stepper .bs-stepper-content .content .form-check .form-check-input:checked {
+  background-color: #30c8b1;
+  border-color: #30c8b1;
+}
+.business-subscription-wrapper .subscription-stepper .stepper-main .bs-stepper .bs-stepper-content .content .form-check .form-check-input:checked:hover {
+  border-color: #30c8b1;
+}
+.business-subscription-wrapper .subscription-stepper .stepper-main .bs-stepper .bs-stepper-content .content .form-check a {
+  color: #00C8B1;
+  margin-left: 3px;
+}
+.business-subscription-wrapper .subscription-stepper .stepper-main .bs-stepper .bs-stepper-content .content .budget-content {
+  color: #32325d;
+  font-size: 17px;
+  line-height: 20px;
+}
+.business-subscription-wrapper .subscription-stepper .stepper-main .bs-stepper .bs-stepper-content .content .budget-content strong {
+  color: #3D7DEB;
+}
+.business-subscription-wrapper .subscription-stepper .stepper-main .bs-stepper .bs-stepper-content .content .your-budget {
+  line-height: 1;
+  font-size: 30px;
+  padding-top: 15px;
+  color: #666;
+}
+.business-subscription-wrapper .subscription-stepper .stepper-main .bs-stepper .bs-stepper-content .content .your-budget p {
+  margin-bottom: 0;
+}
+.business-subscription-wrapper .subscription-stepper .stepper-main .bs-stepper .bs-stepper-content .content .stipe-card-types {
+  padding-top: 5px;
+}
+.business-subscription-wrapper .subscription-stepper .stepper-main .bs-stepper .bs-stepper-content .content .stipe-card-types img {
+  width: 100%;
+}
+.business-subscription-wrapper .subscription-stepper .stepper-main .bs-stepper .bs-stepper-content .content .error-msg {
+  color: #ff0000;
+  font-size: 15px;
+}
+.business-subscription-wrapper .subscription-stepper .stepper-main .bs-stepper .bs-stepper-content .content .help-tip {
+  color: #cccccc;
+  font-size: 18px;
+}
+.business-subscription-wrapper .subscription-stepper .stepper-main .bs-stepper .bs-stepper-content .content .help-tip:hover {
+  color: #56C5AE;
+  cursor: pointer;
+}
+@media (max-width: 768px) {
+  .business-subscription-wrapper .subscription-stepper .stepper-main .bs-stepper {
+    max-width: 100%;
+  }
+}
+@media (max-width: 992px) {
+  .business-subscription-wrapper .subscription-stepper .stepper-main {
+    width: 73%;
+  }
+}
+@media (max-width: 768px) {
+  .business-subscription-wrapper .subscription-stepper .stepper-main {
+    width: 100%;
+  }
+}
+.business-subscription-wrapper .modal-dialog {
+  max-width: 750px;
+}
+.business-subscription-wrapper .modal-dialog .modal-content .modal-header {
+  border: 0;
+  padding-top: 30px;
+  padding-left: 28px;
+  padding-right: 28px;
+}
+.business-subscription-wrapper .modal-dialog .modal-content .modal-header h2 {
+  font-size: 40px;
+  font-weight: 300;
+}
+.business-subscription-wrapper .modal-dialog .modal-content .modal-header .btn-close {
+  box-shadow: none !important;
+  border-radius: 50%;
+  border: 2px solid #a3a3a3;
+  font-size: 10px;
+  opacity: 0.3;
+  position: absolute;
+  top: 25px;
+  right: 30px;
+}
+.business-subscription-wrapper .modal-dialog .modal-content .modal-header .btn-close:hover {
+  opacity: 0.7;
+}
+
+.cus-registration-form .um-field.um-field-text.um-field-type_text.um-field-type_source {
+  background: #EEE;
+  padding: 5px 10px 10px 10px;
+}
+
+.cus-registration-form .um-field-area {
+  position: relative;
+  word-wrap: break-word;
+}
+
+.cus-registration-form .StripeElement {
+  background-color: white;
+  height: 60px;
+  padding: 10px 12px;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  box-shadow: 0 1px 3px 0 #e6ebf1;
+  transition: box-shadow 150ms ease;
+  margin-top: 15px;
+}
+
+.cus-registration-form .um-field {
+  position: relative;
+  padding: 20px 0 0 0;
+}/*# sourceMappingURL=business-subscription.component.css.map */

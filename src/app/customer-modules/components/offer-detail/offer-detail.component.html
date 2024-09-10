@@ -1,0 +1,78 @@
+<!--Suggestion button Modal -->
+<div class="modal-content modal-lg">
+    <div class="modal-header">
+        <div class="d-flex flex-wrap align-items-center">
+            <h2 class="modal-title">Offer Details</h2>
+        </div>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+            (click)="closeOffer()"></button>
+    </div>
+    <div class="modal-body">
+        <form action="">
+            <div class="row">
+                <div class="col-6">
+                    <img src="{{offerDetail?.banner_image}}" width="100%">
+                </div>
+                <div class="col-6">
+                    <h2>{{offerDetail?.name}}</h2>
+                    <h6>{{offerDetail?.offer_category_name}}</h6>
+                    <hr>
+                    <p>{{offerDetail?.description}}</p>
+                    <a href="//{{offerDetail?.offer_button_link}}" target="_blank" class="green-btn">
+                        More Details
+                    </a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<!-- <div class="offer-detail pt-5">
+    <div class="container">
+        <div class="row" *ngIf="offerDetail">
+            <div class="col-md-6">
+                <div id="offerCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
+                    <ng-container *ngIf="offerDetail.image?.length > 0">
+                        <div class="carousel-inner">
+                            <div class="carousel-item" *ngFor="let img of offerDetail.image; let i = index"
+                                [ngClass]="{'active': i == 0}">
+                                <img src="{{offerDetail.image_url}}{{img.image}}">
+                            </div>
+                        </div>
+
+
+                        <div class="carousel-indicators" *ngIf="offerDetail">
+                            <a *ngFor="let img of offerDetail.image; let i = index" data-bs-target="#offerCarousel"
+                                attr.data-bs-slide-to="{{i}}" [ngClass]="{'active': i == 0}" class="active"
+                                aria-current="true" aria-label="Slide 1">
+                                <img src="{{offerDetail.image_url}}{{img.image}}">
+                            </a>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="order-details">
+                    <h2>{{offerDetail.name}}</h2>
+                    <div class="category">
+                        <label for="">Category:</label>
+                        <p>{{offerDetail.offer_category_name}}</p>
+                    </div>
+                    <div class="discount">
+                        <label for="">Discount:</label>
+                        <p>Flat 15% off</p>
+                        <p>{{offerDetail.discount}}%</p>
+                    </div>
+                    <div class="category">
+                        <label for="">Description:</label>
+                        <p>{{offerDetail.description}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center mt-4">
+            <a href="" class="green-btn">ORDER</a>
+        </div>
+    </div>
+</div> -->

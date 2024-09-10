@@ -1,0 +1,287 @@
+.order-history-table {
+  width: 100%;
+}
+
+@media (max-width: 1199px) {
+  .order-history-table {
+    overflow: auto;
+    display: block;
+  }
+}
+
+@media (max-width: 767px) {
+  .order-history-table thead {
+    display: none;
+  }
+}
+
+.order-history-table * {
+  font-size: 14px;
+  font-family: "Overpass", sans-serif;
+}
+
+@media (max-width: 767px) {
+  .order-history-table * {
+    display: block;
+  }
+}
+
+.order-history-table .btn {
+  font-size: 15px;
+  height: 42px;
+  margin-left: 0;
+  width: 100%;
+  padding-top: 8px;
+}
+
+@media (max-width: 1399px) {
+  .order-history-table .btn {
+    min-width: auto;
+  }
+}
+
+.order-history-table .btn:disabled {
+  background: #a5a5a5;
+  cursor: not-allowed;
+  pointer-events: all;
+}
+
+.order-history-table .service {
+  min-width: 180px;
+}
+
+@media (max-width: 1399px) {
+  .order-history-table .service {
+    min-width: 145px;
+  }
+}
+
+@media (max-width: 767px) {
+  .order-history-table .service {
+    min-width: 130px;
+  }
+}
+
+@media (max-width: 767px) {
+  .order-history-table .service {
+    position: relative;
+  }
+  .order-history-table .service::before {
+    content: "Service";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+    font-weight: 800;
+    font-size: 14px;
+  }
+}
+
+.order-history-table .date {
+  min-width: 120px;
+}
+
+@media (max-width: 1399px) {
+  .order-history-table .date {
+    min-width: 100px;
+  }
+}
+
+@media (max-width: 767px) {
+  .order-history-table .date {
+    min-width: 90px;
+  }
+}
+
+@media (max-width: 767px) {
+  .order-history-table .date {
+    position: relative;
+  }
+  .order-history-table .date::before {
+    content: "Date";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+    font-weight: 800;
+    font-size: 14px;
+  }
+}
+
+.order-history-table .price {
+  min-width: 120px;
+}
+
+@media (max-width: 1399px) {
+  .order-history-table .price {
+    min-width: 100px;
+  }
+}
+
+@media (max-width: 767px) {
+  .order-history-table .price {
+    min-width: 90px;
+  }
+}
+
+@media (max-width: 767px) {
+  .order-history-table .price {
+    position: relative;
+  }
+  .order-history-table .price::before {
+    content: "Price";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+    font-weight: 800;
+    font-size: 14px;
+  }
+}
+
+.order-history-table .status {
+  min-width: 90px;
+}
+
+@media (max-width: 1399px) {
+  .order-history-table .status {
+    min-width: 80px;
+  }
+}
+
+@media (max-width: 767px) {
+  .order-history-table .status {
+    min-width: 70px;
+  }
+}
+
+@media (max-width: 767px) {
+  .order-history-table .status {
+    position: relative;
+  }
+  .order-history-table .status::before {
+    content: "Status";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+    font-weight: 800;
+    font-size: 14px;
+  }
+}
+
+.order-history-table .reorder {
+  min-width: 200px;
+}
+
+@media (max-width: 1399px) {
+  .order-history-table .reorder {
+    min-width: 170px;
+  }
+}
+
+@media (max-width: 767px) {
+  .order-history-table .reorder {
+    min-width: 140px;
+  }
+}
+
+.order-history-table .invoice {
+  min-width: 110px;
+}
+
+@media (max-width: 767px) {
+  .order-history-table .invoice {
+    min-width: 90px;
+  }
+}
+
+@media (max-width: 767px) {
+  .order-history-table tr:not(:last-child) {
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    position: relative;
+  }
+  .order-history-table tr:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+    width: 50px;
+    height: 2px;
+    background: #00C8B1;
+    bottom: 0;
+  }
+}
+
+.order-history-table tr th {
+  vertical-align: middle;
+  padding: 14px 20px 14px 0;
+  border-bottom: 1px solid rgba(50, 50, 93, 0.2);
+  font-weight: 800;
+}
+
+@media (max-width: 1399px) {
+  .order-history-table tr th {
+    padding: 14px 14px 14px 0;
+  }
+}
+
+.order-history-table tr th:last-child {
+  padding-right: 0;
+}
+
+.order-history-table tr th.disappear {
+  opacity: 0;
+}
+
+.order-history-table tr td {
+  vertical-align: middle;
+  padding: 8px 20px 8px 0;
+  border-bottom: 1px solid rgba(50, 50, 93, 0.2);
+}
+
+@media (max-width: 1399px) {
+  .order-history-table tr td {
+    padding: 8px 14px 8px 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .order-history-table tr td {
+    padding-right: 0;
+    text-align: right;
+    padding: 10px 0px 8px 0;
+  }
+  .order-history-table tr td:last-child {
+    border-bottom: none;
+  }
+}
+
+.order-history-table tr td:last-child {
+  padding-right: 0;
+}
+
+.order-history-table tr td:first-child {
+  font-weight: 800;
+}
+
+.order-history-table tr td.status {
+  font-weight: 800;
+}
+
+.order-history-table tr:last-child td {
+  border-bottom: none;
+}
+
+@media (max-width: 767px) {
+  .order-history-table tr:last-child td {
+    border-bottom: 1px solid rgba(50, 50, 93, 0.2);
+  }
+}
+/*# sourceMappingURL=order-history.component.css.map */

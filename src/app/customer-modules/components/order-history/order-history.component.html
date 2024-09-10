@@ -1,0 +1,124 @@
+<!-- <div class="content-block">
+    <h3 class="page-title">Order History</h3>
+    <table class="order-history-table">
+        <thead>
+            <tr>
+                <th class="service">Services</th>
+                <th class="date">Date</th>
+                <th class="price">Price</th>
+                <th class="status">Status</th>
+                <th class="disappear reorder">Reorder</th>
+                <th class="disappear invoice">Invoice</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="service">Delivery</td>
+                <td class="date">12.01.21</td>
+                <td class="price">12,00€</td>
+                <td class="status">Paid</td>
+                <td class="reorder"><button class="btn green-btn">Reorder</button></td>
+                <td class="invoice"><button class="btn blue-btn">Invoice</button></td>
+            </tr>
+            <tr>
+                <td class="service">Delivery</td>
+                <td class="date">12.01.21</td>
+                <td class="price">12,00€</td>
+                <td class="status">Paid</td>
+                <td class="reorder"><button class="btn green-btn">Reorder</button></td>
+                <td class="invoice"><button class="btn blue-btn">Invoice</button></td>
+            </tr>
+            <tr>
+                <td class="service">Delivery</td>
+                <td class="date">12.01.21</td>
+                <td class="price">12,00€</td>
+                <td class="status">Paid</td>
+                <td class="reorder"><button class="btn green-btn" disabled>Offer expired</button></td>
+                <td class="invoice"><button class="btn blue-btn">Invoice</button></td>
+            </tr>
+            <tr>
+                <td class="service">Delivery</td>
+                <td class="date">12.01.21</td>
+                <td class="price">12,00€</td>
+                <td class="status">Paid</td>
+                <td class="reorder"><button class="btn green-btn" disabled>Offer expired</button></td>
+                <td class="invoice"><button class="btn blue-btn">Invoice</button></td>
+            </tr>
+            <tr>
+                <td class="service">Delivery</td>
+                <td class="date">12.01.21</td>
+                <td class="price">12,00€</td>
+                <td class="status">Paid</td>
+                <td class="reorder"><button class="btn green-btn">Reorder</button></td>
+                <td class="invoice"><button class="btn blue-btn">Invoice</button></td>
+            </tr>
+            <tr>
+                <td class="service">Delivery</td>
+                <td class="date">12.01.21</td>
+                <td class="price">12,00€</td>
+                <td class="status">Paid</td>
+                <td class="reorder"><button class="btn green-btn">Reorder</button></td>
+                <td class="invoice"><button class="btn blue-btn">Invoice</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div> -->
+<div class="content-block">
+    <h3 class="page-title">{{"Label.Orders" | translate}} {{"ButtonLabel.History" | translate}}</h3>
+    <div class="table-wrapper">
+        <br>
+        <p-table [columns]="cols" [value]="employeeDetails" class="order-history-table"
+            [rowsPerPageOptions]="[10,25,50]" [reorderableColumns]="true" [showLoader]="true" #dt1 [paginator]="true"
+            [rows]="10" [showCurrentPageReport]="true" [columnResizeMode]="'fit'" [lazy]="true"
+            (onLazyLoad)="onLazyLoad($event)" [reorderableColumns]="true" [resizableColumns]="true" [autoLayout]="true"
+            [totalRecords]="totalDocs">
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <ng-container *ngFor="let col of columns">
+                        <ng-container *ngIf="col.display">
+                            <ng-container *ngIf="col.isSortable">
+                                <th pSortableColumn="{{col.field}}">{{col.header}}
+                                    <p-sortIcon [field]="col.field"></p-sortIcon>
+                                </th>
+                            </ng-container>
+                            <ng-container *ngIf="!col.isSortable">
+                                <th>{{col.header}}</th>
+                            </ng-container>
+                        </ng-container>
+                    </ng-container>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-record let-columns="columns">
+                <tr>
+                    <ng-container *ngFor="let col of columns; let i = index">
+                        <td *ngIf="col.display">
+                            <span *ngIf="col.type == 'string'" class="text-wrap">{{record[col.field]}}</span>
+                            <span *ngIf="col.type == 'bool'" class="text-wrap">{{record[col.field]}}</span>
+
+                            <span *ngIf="col.type == 'option'" class="text-wrap">{{record[col.field] ? col.true :
+                                col.false}}</span>
+
+                            <span *ngIf="col.type == 'date'" class="text-wrap">{{record[col.field] }}</span>
+
+                            <span *ngIf="col.type == 'image'"><img _ngcontent-fsl-c86="" width="32"
+                                    style="vertical-align: middle;" src="{{record[col.field]}}"></span>
+                            <span *ngIf="col.type == 'image-array'"><img _ngcontent-fsl-c86="" width="32"
+                                    style="vertical-align: middle;"
+                                    src="{{record['image_url']}}{{record.image[0][col.field]}}"></span>
+                            <span *ngIf="col.type == 'price'">{{record[col.field]  | currency: '€' : true}}</span>
+                            <span *ngIf="col.type == 'discount'">{{record[col.field]}}%</span>
+                            <span *ngIf="col.type == 'download'">
+                                <a href="{{record[col.field]}}" target="_blank" download title="Download">
+                                    <i class="fa fa-download fa-lg"></i>
+                                </a>
+                            </span>
+                            <span *ngIf="col.type == 'button' && col.field == '_id'" class="text-wrap" ><button class="btn green-btn" (click)="reorderInvoice(record[col.field])">Reorder</button></span>
+                            <span *ngIf="col.type == 'button' && col.field == 'invoice_pdf'" class="text-wrap" ><button class="btn blue-btn" (click)="downloadInvoice(record[col.field])" >Invoice</button></span>
+
+                        </td>
+                    </ng-container>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div> 

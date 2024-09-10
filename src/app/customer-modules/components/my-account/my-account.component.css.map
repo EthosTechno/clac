@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,mBAAmB,CAAA;EACf,KAAK,EAAE,kBAAkB;EACzB,WAAW,EAAE,IAAI;EACjB,MAAM,EAAE,IAAI;CASf;;AAPG,MAAM,EAAE,SAAS,EAAE,MAAM;EAL7B,AAAA,mBAAmB,CAAA;IAMX,KAAK,EAAE,kBAAkB;GAMhC;;;AAHG,MAAM,EAAE,SAAS,EAAE,KAAK;EAT5B,AAAA,mBAAmB,CAAA;IAUX,KAAK,EAAE,IAAI;GAElB",
+    "sources": [
+        "my-account.component.scss"
+    ],
+    "names": [],
+    "file": "my-account.component.css"
+}

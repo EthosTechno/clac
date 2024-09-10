@@ -1,0 +1,64 @@
+<!--Suggestion button Modal -->
+<div class="modal-content modal-lg order-gallery-modal">
+    <div class="modal-header">
+        <div class="d-flex flex-wrap align-items-center">
+            <h2 class="modal-title">{{"Label.OfferDetails" | translate}}</h2>
+        </div>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+            (click)="closeOffer()"></button>
+    </div>
+    <div class="modal-body">
+        <form action="">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="order-image-gallery">
+                        <swiper [spaceBetween]="10" [navigation]="true" [thumbs]="{ swiper: thumbsSwiper }"
+                            class="mainslider">                            
+                            <ng-template swiperSlide *ngFor="let img of offerDetail?.image">
+                                <div class="top-image">
+                                    <div class="thumbnail-container object-fit">
+                                        <div class="thumbnail">
+                                            <img src="{{offerDetail?.image_url}}{{img.image}}">
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-template>          
+                        </swiper>
+
+                        <swiper (swiper)="thumbsSwiper = $event" [spaceBetween]="10" [slidesPerView]="4"
+                             [watchSlidesProgress]="true" class="thumbslider" [breakpoints]="{
+                                '640': {
+                                  slidesPerView: 2
+                                },
+                                '768': {
+                                  slidesPerView: 4
+                                },
+                                '1024': {
+                                  slidesPerView: 4
+                                }
+                              }">
+                              <ng-template swiperSlide *ngFor="let imgSlider of offerDetail?.image">
+                                <div class="top-image">
+                                    <div class="thumbnail-container object-fit">
+                                        <div class="thumbnail">
+                                            <img src="{{offerDetail?.image_url}}{{imgSlider.image}}">
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-template>
+                        </swiper>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h2>{{offerDetail?.name}}</h2>
+                    <h6>{{offerDetail?.offer_category_name}}</h6>
+                    <hr>
+                    <p>{{offerDetail?.description}}</p>
+                    <a href="//{{offerDetail?.offer_button_link}}" target="_blank" class="green-btn">
+                        {{"ButtonLabel.MoreDetails" | translate}}
+                    </a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

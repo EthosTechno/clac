@@ -1,0 +1,652 @@
+<ng-container>
+    <div class="modal lg" id="offerDetails" tabindex="-1" aria-labelledby="offerDetailsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <app-offer-details-modal [offer_id]="offer_id" *ngIf="offerdetails" (closeModalPopup)="closeModalPopup()">
+            </app-offer-details-modal>
+        </div>
+    </div>
+</ng-container>
+
+
+<div class="home-main">
+    <div class="hero-banner">
+        <img src="assets/images/hero-secondary-graphic.png" class="right-most-graphic" alt="">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="hero-left">
+                        <h2>{{"Label.Your" | translate}} <span> {{"Label.MemberArea" | translate}} </span></h2>
+                        <p>{{"Label.YourConcierge" | translate}} <strong>{{"Label.9amto9pm" | translate}} </strong></p>
+                        <a href="tel:customerHomeData?.setting_homepage_contact_number"
+                            class="green-btn">{{customerHomeData?.setting_homepage_contact_number}}</a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="hero-right">
+                        <div class="ratio ratio-16x9">
+                             <!-- <iframe [src]="safeURL" allowfullscreen></iframe>  -->
+                             <iframe src="https://drive.google.com/file/d/1CNWlG25XOMAIqszLx-nL4FQFLWyvvHm8/preview" allowfullscreen></iframe>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="latest-offers">
+        <div class="container-fluid">
+            <h3 class="secondary-title">{{"Label.Latest" | translate}} <span> {{"Label.Offers" | translate}} </span>
+            </h3>
+            <div class="home-offers-slider d-flex flex-column align-items-center" *ngIf="offerData?.length > 0">
+                <div class="sliderwrap">
+                    <carousel class="mb-5" [itemsPerSlide]="offerSlideItems" [singleSlideOffset]="true" [interval]="5000"
+                    [startFromIndex]="3" [showIndicators]="false" [isAnimated]="true" [noWrap]="true">
+                        <ng-container *ngIf="offerData?.length > 4">
+                            <slide class="py-3" *ngFor="let item of offerData">
+                                <a href="javascript:void(0)" (click)="showDetails(item._id)" data-bs-toggle="modal"
+                                    data-bs-target="#offerDetails">
+                                    <div class="card border-0">
+                                        <div class="slide-card-img position-relative">
+                                            <div class="thumbnail-container object-fit">
+                                                <div class="thumbnail">
+                                                    <img class="d-block w-100" src="{{item.banner_image}}"
+                                                        alt="first slide">
+                                                </div>
+                                            </div>
+                                            <span>{{item.price}}€</span>
+                                        </div>
+                                        <div class="card-body">
+                                            <p class="card-text">{{item.name}}</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </slide>
+                        </ng-container>
+                        <ng-container *ngIf="offerData?.length <= 4">
+                            <div class="row w-100 justify-content-center">
+                                <div class="col-lg-3 col-md-6 p-0" *ngFor="let item of offerData">
+                                    <a href="javascript:void(0)" (click)="showDetails(item._id)" data-bs-toggle="modal"
+                                        data-bs-target="#offerDetails">
+                                        <div class="card border-0">
+                                            <div class="slide-card-img position-relative">
+                                                <div class="thumbnail-container object-fit">
+                                                    <div class="thumbnail">
+                                                        <img class="d-block w-100" src="{{item.banner_image}}"
+                                                            alt="first slide">
+                                                    </div>
+                                                </div>
+                                                <span>{{item.price}}€</span>
+                                            </div>
+                                            <div class="card-body">
+                                                <p class="card-text">{{item.name}}</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </ng-container>
+                    </carousel>
+                </div>
+                <a routerLink="offers" class="green-btn allbutton px-4 font-weight-bold">{{"ButtonLabel.SeemoreOffer" |
+                    translate}}</a>
+            </div>
+            <div class="home-offers-slider d-flex flex-column align-items-center" *ngIf="offerData?.length == 0">
+                <h4 style="color: #fff;">No Offers Available</h4>
+            </div>
+        </div>
+    </div>
+    <!-- *ngIf="role != 2" -->
+    <div class="corporate-life" *ngIf="role != 2 && role != 5 && role != 6"> <!-- client Changes Above Condition is Old-->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 p-0">
+                    <div class="corporate-left">
+                        <h3 class="secondary-title">{{"Label.MY" | translate}}  {{"Label.Corporates" | translate}}<span> {{"Label.Life" |
+                                translate}} </span></h3>
+                        <p>{{"Label.CorporateDesc" | translate}}</p>
+                    </div>
+                </div>
+                <div class="col-lg-9 p-0">
+                    <div class="corporate-right">
+                        <div class="button-one">
+
+                            <a href="//{{customerHomeData.setting_homepage_kitty_link}}" target="_blank"><button
+                                    class="green-btn fifty" routerLinkActive="active-link" target="_blank">
+                                    <div>
+                                        <img src="assets/images/piggy.png" alt="">
+                                    </div>
+                                    <span>{{"ButtonLabel.Create" | translate}} <strong> {{"ButtonLabel.Kity" |
+                                            translate}} </strong></span>
+                                </button></a>
+                        </div>
+                        <div class="button-one">
+                            <button class="green-btn twofive" data-bs-toggle="modal" data-bs-target="#suggestionModal"
+                                (click)="suggestionForm.resetForm()">
+                                <div>
+                                    <img src="assets/images/bulb.png" alt="">
+                                </div>
+                                <span><strong>{{"ButtonLabel.Suggestion" | translate}} </strong> {{"ButtonLabel.Box" |
+                                    translate}}</span>
+                            </button>
+                        </div>
+                        <div class="button-one">
+                            <button class="green-btn sevenfive" data-bs-toggle="modal"
+                                (click)="complimentForm.resetForm()" data-bs-target="#complimentModal">
+                                <div>
+                                    <img src="assets/images/like.png" alt="">
+                                </div>
+                                <span>{{"ButtonLabel.Send" | translate}} <strong> {{"ButtonLabel.Compliment" |
+                                        translate}} </strong></span>
+                            </button>
+                        </div>
+                        <div class="button-one">
+                            <button class="green-btn thfive" data-bs-toggle="modal" data-bs-target="#eventModal"
+                                (click)="eventForm.resetForm()">
+                                <div>
+                                    <img src="assets/images/calendar.png" alt="">
+                                </div>
+                                <span>{{"ButtonLabel.Create" | translate}} <strong> {{"ButtonLabel.AnEvent" |
+                                        translate}} </strong></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>   
+
+    <div class="clac-is">
+        <div class="container">
+            <h3 class="secondary-title">{{"Label.Clac" | translate}} <span> {{"Label.Is" | translate}} </span></h3>
+            <div class="clac-details">
+                <div class="det-one">
+                    <img src="assets/images/463-headset-customer-support-outline 1.png" alt="">
+                    <p>{{"Label.ConciergesAt" | translate}} <br /><strong> {{"Label.YourService" | translate}} </strong>
+                    </p>
+                </div>
+                <div class="det-one">
+                    <img src="assets/images/292-coin-euro-outline 1.png" alt="">
+                    <p><strong> {{"Label.No" | translate}} </strong> {{"Label.Service" | translate}} <br />
+                        {{"Label.Fee" | translate}}</p>
+                </div>
+                <div class="det-one">
+                    <img src="assets/images/28-calendar-outline 1.png" alt="">
+                    <p>{{"Label.ServiceAvailable" | translate}} <br /> <strong> {{"Label.7days" | translate}} </strong>
+                    </p>
+                </div>
+                <div class="det-one">
+                    <img src="assets/images/233-arrow-22 1.png" alt="">
+                    <p><strong> {{"Label.Limited" | translate}} <br /> </strong> {{"Label.Orders" | translate}}</p>
+                </div>
+                <div class="det-one">
+                    <img src="assets/images/1339-sale-outline 1.png" alt="">
+                    <p><strong>{{"Label.Promotional" | translate}} <br /> </strong> {{"Label.Offers" | translate}}</p>
+                </div>
+            </div>
+            <a href="javascript:void(0)" class="order-btn" data-bs-toggle="modal"
+                data-bs-target="#moreService">{{"ButtonLabel.Order" | translate}}</a>
+        </div>
+    </div>
+    <!-- *ngIf="(role == 3 || role == 5) && orderData?.length > 0 -->
+    <div class="clac-babysitter" *ngIf="(role == 3 || role == 4 || role == 5 || role == 6) && orderData?.length > 0">
+        <div class="container position-relative">
+            <div class="bg-img-shape">
+                <img src="assets/images/babysitter-shape.png" alt="">
+            </div>
+            <div class="babysitter-wrap">
+                <swiper [config]="config" class="testSwiper">
+
+                    <!----- FOROM DATA API------>
+                    <ng-template swiperSlide *ngFor="let order of orderData" [navigation]="true">
+                        <div class="inside-bbsit">
+                            <h3 class="secondary-title">{{order?.title}}</h3>
+                            <p>{{order?.description}}</p>
+                        </div>
+                    </ng-template>
+                    <!------------------------->
+
+                    <!-- <ng-template swiperSlide>
+                        <div class="inside-bbsit">
+                            <h3 class="secondary-title">{{customerHomeData?.setting_homepage_paragraph_title}}</h3>
+                            <p>{{customerHomeData?.setting_homepage_paragraph_description}}</p>
+                        </div>
+                      
+                    </ng-template>
+                    <ng-template swiperSlide>
+                        <div class="inside-bbsit">
+                            <h3 class="secondary-title">{{customerHomeData?.setting_homepage_paragraph_title}}</h3>
+                            <p>{{customerHomeData?.setting_homepage_paragraph_description}}</p>
+                        </div>
+                        
+                    </ng-template>
+                    <ng-template swiperSlide>
+                        <div class="inside-bbsit">
+                            <h3 class="secondary-title">{{customerHomeData?.setting_homepage_paragraph_title}}</h3>
+                            <p>{{customerHomeData?.setting_homepage_paragraph_description}}</p>
+                        </div>
+                
+                    </ng-template>
+                    <ng-template swiperSlide>
+                        <div class="inside-bbsit">
+                            <h3 class="secondary-title">{{customerHomeData?.setting_homepage_paragraph_title}}</h3>
+                            <p>{{customerHomeData?.setting_homepage_paragraph_description}}</p>
+                        </div>
+                      
+                    </ng-template> -->
+                </swiper>
+                <img class="babysitter-out-img" src="assets/images/offer-baanner-right-img.png" alt="">
+            </div>
+        </div>
+    </div>
+    <div class="latest-news" *ngIf="role != 2">
+        <div class="container-fluid contentwrap">
+            <div class="sliderwrap">
+                <div class="row">
+                    <div class="col-md-3 py-3">
+                        <h2 class="latest-news-heading">{{"Label.Latest" | translate}}<br /> <span>{{"Label.News" |
+                                translate}}</span></h2>
+                        <p class="latest-news-text">{{"Label.NewsDesc" | translate}}
+                        </p>
+                    </div>
+                    <div class="col-md-9">                    
+                        <carousel [itemsPerSlide]="newsSliderItems" [singleSlideOffset]="true" [interval]="3000"
+                                [startFromIndex]="3" [showIndicators]="false">
+
+                                <ng-container *ngIf="newsData?.length < 4">
+                                    <div class="row w-100 justify-content-center">
+                                        <div class="col-md-4 col-sm-6 p-0" (click)="showNewsDetails(news)"
+                                            *ngFor="let news of newsData">
+                                            <div class="card border-0" data-bs-toggle="modal" data-bs-target="#newsDetails">
+                                                <div class="thumbnail-container object-fit">
+                                                    <div class="thumbnail">
+                                                        <img class="d-block w-100" src="{{news?.image}}" alt="first slide">
+                                                    </div>
+                                                </div>
+                                                <div class="card-body d-flex flex-column align-items-start">
+                                                    <a class="green-btn" href="javascript:void(0)">{{"ButtonLabel.News" |
+                                                        translate}}</a>
+                                                    <p class="card-text">{{news?.title}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ng-container>
+
+                                <ng-container *ngIf="newsData?.length > 3">
+                                    <slide class="py-3" *ngFor="let news of newsData">
+                                        <div class="card border-0" (click)="showNewsDetails(news)" data-bs-toggle="modal"
+                                            data-bs-target="#newsDetails">
+                                            <div class="thumbnail-container object-fit">
+                                                <div class="thumbnail">
+                                                    <img class="d-block w-100" src="{{news?.image}}" alt="first slide">
+                                                </div>
+                                            </div>
+                                            <div class="card-body d-flex flex-column align-items-start">
+                                                <a class="green-btn" href="javascript:void(0)">{{"ButtonLabel.News" |
+                                                    translate}}</a>
+                                                <p class="card-text">{{news?.title}}</p>
+                                            </div>
+                                        </div>
+                                    </slide>
+                                </ng-container>
+
+                        </carousel>                    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Kitty button Modal -->
+<div class="modal fade" id="newsDetails" tabindex="-1" aria-labelledby="newsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header p-0">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="news-md-img">
+                    <div class="thumbnail-container object-fit">
+                        <div class="thumbnail">
+                            <img src="{{newDtails?.image}}" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body pt-0">
+                <div class="d-flex justify-content-between align-items-center mb-3 kitty-btns">
+                    <a href="//{{newDtails?.link}}" target="_blank" >
+                    <span class="green-btn news">{{"ButtonLabel.News" | translate}}</span>
+                </a>
+                    <!-- <a class="green-btn share" href="">S</a> -->
+                </div>
+                <div class="d-flex flex-column kitty-content">
+                    <h2>{{newDtails?.title}}</h2>
+                    <!-- <p>{{newDtails?.link}}</p> -->
+                    <p>{{newDtails?.description}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Suggestion button Modal -->
+<div class="modal fade" id="suggestionModal" tabindex="-1" aria-labelledby="suggestionModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered suggestion-modal">
+        <form #suggestionForm="ngForm"
+            (ngSubmit)="suggestionForm.form.valid && suggestionFormSubmit(suggestionForm.value)">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="suggestion-info d-flex flex-wrap align-items-center">
+                        <h2 class="modal-title"><span>{{"ButtonLabel.Suggestion" | translate}} </span>
+                            {{"ButtonLabel.Box" | translate}}</h2>
+                        <p>{{suggestionbox_tooltip}}</p>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                        #closeBtn></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="service-type mb-4">
+                                <div class="service-btn">
+                                    <input type="radio" id="serviceType1" name="suggestion_type" ngModel required
+                                        value="Admin" #suggestion_type="ngModel" [ngClass]="{'is-invalid':(suggestion_type.invalid && suggestion_type.touched),
+                                    'is-valid':(suggestion_type.valid && suggestion_type.touched)}" />
+                                    <label for="serviceType1">{{"Label.ConciergeService" | translate}}</label>
+                                </div>
+                                <div class="service-btn">
+                                    <input type="radio" #suggestion_type="ngModel" id="serviceType2"
+                                        name="suggestion_type" ngModel required value="Company" />
+                                    <label for="serviceType2">{{"Label.Corporate" | translate}}</label>
+                                </div>
+                            </div>
+                            <div class="fv-plugins-message-container"
+                                *ngIf="suggestionForm.submitted || (suggestion_type.invalid && (suggestion_type.dirty || suggestion_type.touched))">
+                                <div class="fv-help-block" *ngIf="suggestion_type.errors?.['required']">Please Select
+                                    Type
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="mb-3">
+                                <label for="title" class="form-label">{{"Label.Title" | translate}}</label>
+                                <!-- <input type="text" id="title" name="title" ngModel class="form-control" required
+                                    pattern="^[a-zA-Z ]+$" placeholder="Title..."> -->
+                                <input type="text" id="title" class="form-control" ngModel  [placeholder]= "'Label.Title' | translate"
+                                    name="title" pattern="^[a-zA-Z ]+$" #title="ngModel" required [ngClass]="{'is-invalid':(title.invalid && title.touched),
+                                    'is-valid':(title.valid && title.touched)}">
+
+                                <div class="fv-plugins-message-container"
+                                    *ngIf="suggestionForm.submitted || (title.invalid && (title.dirty || title.touched))">
+                                    <div class="fv-help-block" *ngIf="title.errors?.['required']"> {{"ErrorMessage.Title" | translate}}
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-12">
+                            <div class="mb-0">
+                                <label for="category" class="form-label">{{"Label.YourSuggestion" | translate}}</label>
+                                <textarea name="" id="description" cols="30" rows="10" name="description"
+                                    #description="ngModel" ngModel required  [placeholder]= "'Placeholder.YourSuggestion' | translate"
+                                    [ngClass]="{'is-invalid':(description.invalid && description.touched),
+                                  'is-valid':(description.valid && description.touched)}"></textarea>
+                                <div class="fv-plugins-message-container"
+                                    *ngIf="suggestionForm.submitted || (description.invalid && (description.dirty || description.touched))">
+                                    <div class="fv-help-block" *ngIf="description.errors?.['required']">{{"ErrorMessage.YourSuggestion" | translate}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" class="btn green-btn" [value]= "'ButtonLabel.SendData' | translate" >
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!--Compliment button Modal -->
+<div class="modal fade" id="complimentModal" tabindex="-1" aria-labelledby="complimentModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+
+        <form #complimentForm="ngForm" (ngSubmit)="complimentForm.form.valid && ComplimentSubmit(complimentForm.value)">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="d-flex align-items-center">
+                        <h2 class="modal-title">{{"ButtonLabel.Send" | translate}} <span> {{"ButtonLabel.Compliment" |
+                                translate}}</span></h2>
+                        <a class="info arrow" data-toggle="tooltip" data-placement="right" 
+                            title="If you want to send the compliment fill Here!"><i>i</i></a>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                        #closeBtnCom></button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="service-type mb-4">
+                                <div class="service-btn">
+                                    <input type="checkbox" id="corporate" name="corporate" />
+                                    <label for="corporate">{{"Label.Corporate" | translate}}</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="mb-3">
+                                <label for="compliment" class="form-label">{{"Label.SelectCompliment" |
+                                    translate}}</label>
+                                <div class="selection">
+                                    <select class="form-control" id="compliment_list_id" required
+                                        name="compliment_list_id" ngModel #compliment_list_id="ngModel" [ngClass]="{'is-invalid':(compliment_list_id.invalid && compliment_list_id.touched),
+                                    'is-valid':(compliment_list_id.valid && compliment_list_id.touched)}">
+                                        <option value="null" selected disabled>{{"Placeholder.SelectCompliment" | translate}}
+                                        </option>
+                                        <option *ngFor="let option of ComplimentData" value="{{option._id}}">
+                                            {{option.compliment}}</option>
+                                    </select>
+
+                                    <div class="fv-plugins-message-container" *ngIf="complimentForm.submitted">
+                                        <div class="fv-help-block" *ngIf="compliment_list_id.errors?.['required']">
+                                            {{"Placeholder.PleaseSelectCompliment" | translate}}
+                                        </div>
+                                    </div>
+                                    <!-- <div class="invalid-feedback"
+                                        *ngIf="(compliment_list_id.invalid && (compliment_list_id.dirty || compliment_list_id.touched))">
+                                        <div *ngIf="compliment_list_id.errors?.['required']" class="fv-help-block">
+                                            Please Select Your Compliment
+                                        </div>
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="mb-4">
+                                <label for="who" class="form-label">{{"Label.Towho" | translate}}</label>
+                                <ng-multiselect-dropdown id="cmplits"  [placeholder]= "'Placeholder.Towho' | translate" name="cmpList"
+                                    ngModel [settings]="dropdownSettings" [data]="empData"
+                                    (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)" required
+                                    #cmplits="ngModel" [ngClass]="{'is-invalid':(cmplits.invalid && cmplits.touched),
+                                    'is-valid':(cmplits.valid && cmplits.touched)}">
+                                </ng-multiselect-dropdown>
+                                <span *ngFor="let emil of emilList">11 {{emil}}
+                                </span>
+                                <div class="fv-plugins-message-container" *ngIf="complimentForm.submitted">
+                                    <div class="fv-help-block" *ngIf="cmplits.errors?.['required']">
+                                        {{"Placeholder.employee" | translate}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="mb-3">
+                                <label for="email" class="form-label">{{"FormLabel.OtherEmail" | translate}} </label>
+                                <input type="text" id="email" name="other_mail" ngModel class="form-control"
+                                [placeholder]= "'Placeholder.Email-Id' | translate"  #other_mail="ngModel">
+                                <!-- <div *ngIf="eventForm.submitted || (other_mail.invalid && (other_mail.dirty || other_mail.touched))"
+                                    class="is-invalid fv-plugins-message-container">
+                                    <div *ngIf="other_mail.errors?.['required']" class="fv-help-block">
+                                        Email is required.
+                                    </div>
+                                    <div *ngIf="other_mail.errors?.['pattern']" class="fv-help-block">
+                                        Please enter valid email address
+                                    </div>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" class="btn green-btn" [value]= "'ButtonLabel.SendData' | translate">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!--Event button Modal -->
+<div class="modal fade" id="eventModal" tabindex="-1" aria-labelledby="eventModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <form #eventForm="ngForm" (ngSubmit)="eventForm.form.valid && eventSubmit(eventForm.value)">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="d-flex align-items-center">
+                        <h2 class="modal-title">{{"Label.Organise" | translate}} <span>{{"ButtonLabel.AnEvent" |
+                                translate}}</span></h2>
+                        <a class="info" href="javascript:void(0)" data-toggle="tooltip" data-placement="right"
+                            [title]="'Tooltip.Title'  | translate"><i>i</i></a>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                        #closeBtnModal></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="service-type mb-4">
+                                <div class="service-btn">
+                                    <input type="checkbox" id="eventCorporate" name="eventCorporate" />
+                                    <label for="eventCorporate">{{"Label.Corporate" | translate}}</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="mb-3">
+                                <label for="compliment" class="form-label">{{"FormLabel.EventName" | translate}}</label>
+                                <input type="text" id="name" class="form-control" name="name" ngModel
+                                [placeholder]= "'Placeholder.EventName' | translate" pattern="^[a-zA-Z0-9 ]*" #name="ngModel" required
+                                    [ngClass]="{'is-invalid':(name.invalid && name.touched),
+                                    'is-valid':(name.valid && name.touched)}">
+
+                                <div class="fv-plugins-message-container"
+                                    *ngIf="eventForm.submitted || (name.invalid && (name.dirty || name.touched))">
+                                    <div class="fv-help-block" *ngIf="name.errors?.['required']">{{"ErrorMessage.EventName" | translate}}
+                                    </div>
+                                    <div class="fv-help-block" *ngIf="name.errors?.['pattern']">{{"ErrorMessage.EventNameValid" | translate}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="mb-3">
+                                <label for="eventLocation" class="form-label">{{"FormLabel.EventLocation" |
+                                    translate}}</label>
+                                <input type="text" id="location" class="form-control" name="location" ngModel
+                                [placeholder]= "'Placeholder.EventLocation' | translate" #location="ngModel" required [ngClass]="{'is-invalid':(location.invalid && location.touched),
+                                    'is-valid':(location.valid && location.touched)}">
+                                <div class="fv-plugins-message-container"
+                                    *ngIf="eventForm.submitted || (location.invalid && (location.dirty || location.touched))">
+                                    <div class="fv-help-block" *ngIf="location.errors?.['required']">{{"ErrorMessage.EventLocation" | translate}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="mb-0">
+                                <label for="category" class="form-label">{{"FormLabel.EventDescription" |
+                                    translate}}</label>
+                                <textarea name="" id="descriptions" cols="30" rows="10" name="description"
+                                    #descriptions="ngModel" ngModel required [placeholder]= "'Placeholder.EventDescription' | translate"
+                                    [ngClass]="{'is-invalid':(descriptions.invalid && descriptions.touched),
+                                  'is-valid':(descriptions.valid && descriptions.touched)}"></textarea>
+                                <div class="fv-plugins-message-container"
+                                    *ngIf="eventForm.submitted || (descriptions.invalid && (descriptions.dirty || description.touched))">
+                                    <div class="fv-help-block" *ngIf="descriptions.errors?.['required']">
+                                        {{"ErrorMessage.EventDescription" | translate}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="date" class="form-label">{{"FormLabel.EventDate" | translate}}</label>
+                                <input type="date" id="date" name="date" ngModel class="form-control" required
+                                    #date="ngModel" [ngClass]="{'is-invalid':(date.invalid && date.touched),
+                              'is-valid':(date.valid && date.touched)}">
+                                <div class="fv-plugins-message-container"
+                                    *ngIf="eventForm.submitted || (date.invalid && (date.dirty || date.touched))">
+                                    <div class="fv-help-block" *ngIf="date.errors?.['required']">{{"ErrorMessage.EventDate" | translate}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="time" class="form-label">{{"FormLabel.EventTime" | translate}}</label>
+                                <input type="time" id="time" name="time" ngModel class="form-control" required
+                                    #time="ngModel" [ngClass]="{'is-invalid':(time.invalid && time.touched),
+                              'is-valid':(time.valid && time.touched)}">
+                                <div class="fv-plugins-message-container"
+                                    *ngIf="eventForm.submitted || (time.invalid && (time.dirty || time.touched))">
+                                    <div class="fv-help-block" *ngIf="time.errors?.['required']">{{"ErrorMessage.EventTime" | translate}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="mb-4">
+                                <label for="who" class="form-label">{{"FormLabel.Guests" | translate}}</label>
+                                <ng-multiselect-dropdown id="cmpLists" [placeholder]= "'Placeholder.Guests' | translate" name="cmpList"
+                                    ngModel [(ngModel)]="cmpList" [settings]="dropdownSettings" [data]="empData"
+                                    (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)" required
+                                    #cmpLists="ngModel" [ngClass]="{'is-invalid':(cmpLists.invalid && cmpLists.touched),
+                                    'is-valid':(cmpLists.valid && cmpLists.touched)}">
+                                </ng-multiselect-dropdown>
+                                <div class="fv-plugins-message-container" *ngIf="eventForm.submitted">
+                                    <div class="fv-help-block" *ngIf="cmpLists.errors?.['required']">{{"ErrorMessage.Guests" | translate}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="mb-3">
+                                <label for="email" class="form-label">{{"FormLabel.OtherEmail" | translate}} </label>
+                                <input type="text" id="email" name="other_mail" ngModel class="form-control"
+                                [placeholder]= "'Placeholder.Email-Id' | translate"  #other_mail="ngModel">
+                                <!-- <div *ngIf="eventForm.submitted || (other_mail.invalid && (other_mail.dirty || other_mail.touched))"
+                                    class="is-invalid fv-plugins-message-container">
+                                    <div *ngIf="other_mail.errors?.['required']" class="fv-help-block">
+                                        Email is required.
+                                    </div>
+                                    <div *ngIf="other_mail.errors?.['pattern']" class="fv-help-block">
+                                        Please enter valid email address
+                                    </div>
+                                </div> -->
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" [value]= "'ButtonLabel.SendData' | translate" class="btn green-btn">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<app-service-order></app-service-order>
+<!-- <router-outlet></router-outlet> -->

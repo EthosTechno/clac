@@ -1,0 +1,41 @@
+.fv-plugins-message-container {
+    margin-top: 0.25rem;
+  
+    .fv-help-block {
+        color: red;
+        font-size: 0.9rem;
+        font-weight: 400;
+    }
+  }
+  .lang-login-drop,.account-drop{
+    .p-dropdown-trigger{
+        margin: 0 5px;
+        width: auto !important;
+        .pi{
+            font-size: 10px;
+            @media(max-width:767px){
+                font-size: 10px;
+            }
+        }
+    }
+    .p-dropdown-items-wrapper{
+        background-color: #f9f9f9;
+    }
+    .p-dropdown .p-dropdown-label{
+        padding: 7px 0 7px 10px;
+        @media(max-width:1440px){
+            padding: 6px 0 6px 10px;
+        }
+        @media(max-width:767px){
+            font-size: 14px;
+            padding: 5px 0 5px 5px;
+        }
+    }
+    .p-dropdown:not(.p-disabled).p-focus{
+        box-shadow: none;
+    }
+}
+.submit-button input[type="button"],.submit-button input[type="submit"],.submit-button input[type="reset"],.submit-button input[type="file"]::-webkit-file-upload-button,.submit-button button{
+    border-radius: 50px;
+}
+

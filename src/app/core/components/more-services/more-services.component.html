@@ -1,0 +1,51 @@
+<div class="more-services">
+    <div class="more-serv-banner">
+        <div class="container">
+            <div class="banner-wrp">
+                <img src="assets/images/more-serv-banner.png" class="decor-img" alt="">
+                <div class="ask-for">
+                    <h3>{{"Label.WhatYouCan" | translate}} <span> {{"Label.AskFor" | translate}} ? </span></h3>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span>{{"Label.Any" | translate}} <br> <strong> {{"Label.Demand" | translate}}? </strong></span>
+                        <button class="green-btn" data-bs-toggle="modal" data-bs-target="#moreService">{{"ButtonLabel.Order" | translate}}</button>
+                        <p>{{"Label.ServiceAvailable" | translate}} <br> <strong>{{"Label.From" | translate}} {{"Label.9amto9pm" | translate}}</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="more-services_main">
+        <div class="container">
+            
+            <div class="row">                
+                <div class="col-lg-4" *ngFor="let serviceModel of services">                    
+                    
+                    <div class="more-one">
+                        <img src="{{serviceModel.image}}" class="img-icon" alt="">
+                        <div class="overlay-name">
+                        <h4>{{serviceModel.name}}</h4>
+                        <ul class="cat-servs">
+                            <li *ngFor="let serviceModels of serviceModel.service"><a data-bs-toggle="modal"
+                                    data-bs-target="#moreService">{{serviceModels.name}}</a></li>
+                        </ul>
+                        </div>
+                        <img src="assets/images/right-arrow.png" alt="">
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="see-all">
+                <a *ngIf="services.length < totalRecords" role="button" (click)="getServices()"
+                    class="green-btn see-all-posts">{{"ButtonLabel.Seemore" | translate}}</a>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<app-service-order></app-service-order>

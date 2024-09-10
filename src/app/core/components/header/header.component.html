@@ -1,0 +1,173 @@
+<header class="site-header" *ngIf="!showLoginHeader">
+  <div class="container">
+    <div class="header-wrapper">
+      <div class="logo-wrapper">
+        <a *ngIf="logo" href="javascript:void(0)" routerLink="customer/home">
+          <img src="{{logo}}" alt="">
+        </a>
+        <a *ngIf="!logo" href="javascript:void(0)" routerLink="customer/home">
+          <img src="assets/images/clac-logo.png" alt="">
+        </a>
+      </div>
+      <div class="menu-wrapper">
+        <nav class="navbar navbar-expand-lg">
+          <div class="navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" [routerLinkActive]="['active']" routerLink="customer/home">{{'MenuList.Home'
+                  | translate}}</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" [routerLinkActive]="['active']" routerLink="/customer/offers">{{'MenuList.Offer' |
+                  translate}}</a>
+              </li>
+              <!-- *ngIf="role == 3 || role == 5" -->
+              <li class="nav-item" *ngIf="role == 3"><!-- client Changes Above Condition is Old-->
+                <a class="nav-link" [routerLinkActive]="['active']"
+                  routerLink="/customer/moreservices">{{'MenuList.Company' | translate}}</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" [routerLinkActive]="['active']"
+                  routerLink="/customer/services">{{'MenuList.Services' | translate}}</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" [routerLinkActive]="['active']"
+                  routerLink="customer/myaccount/profile">{{'MenuList.MyAccount' | translate}}</a>
+              </li>
+            </ul>
+            <a href="#" class="green-btn" data-bs-toggle="modal" data-bs-target="#moreService">{{'ButtonLabel.Order' |
+              translate}}</a>
+            <a href="javascript:void(0)" (click)="logout()" class="blue-btn">{{'ButtonLabel.LogOut' | translate}}</a>
+            <div class="notification-main">
+            <span (click)="notification()" *ngIf="notificationData.length > 0" >
+              <svg width="38" height="40" viewBox="0 0 38 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22.4817 34.0794C22.1514 34.2248 21.8913 34.4931 21.7587 34.8254C21.6261 35.1577 21.6319 35.5267 21.7747 35.8512C22.1746 36.7599 22.9255 37.4697 23.8623 37.8245C24.7991 38.1792 25.845 38.1498 26.7699 37.7428C27.6948 37.3358 28.423 36.5845 28.7943 35.6541C29.1656 34.7238 29.1495 33.6906 28.7496 32.7819C28.6068 32.4573 28.3386 32.2038 28.0041 32.0771C27.6695 31.9505 27.296 31.9609 26.9656 32.1063L22.4817 34.0794Z" fill="#CFCFCF"/>
+                <path d="M13.1774 5.79651C10.5615 6.95115 8.49623 9.06362 7.43445 11.6705C6.37268 14.2774 6.40115 17.1659 7.51363 19.7023L7.60258 19.9044C9.23482 23.6136 9.98177 27.7775 9.82474 32.2818C9.78863 33.2853 9.97949 34.279 10.3837 35.1917C10.5241 35.5108 10.7897 35.7593 11.1219 35.8824C11.4542 36.0056 11.8259 35.9933 12.1554 35.8483L36.0207 25.3464C36.3501 25.2014 36.6103 24.9356 36.744 24.6075C36.8776 24.2793 36.8738 23.9156 36.7334 23.5965C36.3339 22.6819 35.7307 21.8696 34.967 21.2179C31.5444 18.2966 28.9819 14.9354 27.3504 11.2278L27.2565 11.0144C26.1382 8.48041 24.0278 6.50783 21.3882 5.52959C18.7487 4.55134 15.7957 4.64734 13.1774 5.79651V5.79651Z" fill="#CFCFCF"/>
+                <circle cx="26.5" cy="8.5" r="5.5" fill="#E60000"/>
+                </svg>
+            </span>
+            <span (click)="notification()" *ngIf="notificationData.length == 0">
+              <svg width="38" height="40" viewBox="0 0 38 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22.4817 34.0795C22.1514 34.2248 21.8913 34.4932 21.7587 34.8254C21.6261 35.1577 21.6319 35.5267 21.7747 35.8512C22.1746 36.7599 22.9255 37.4697 23.8623 37.8245C24.7991 38.1792 25.845 38.1499 26.7699 37.7429C27.6948 37.3358 28.423 36.5845 28.7943 35.6542C29.1656 34.7238 29.1495 33.6906 28.7496 32.7819C28.6068 32.4574 28.3386 32.2039 28.0041 32.0772C27.6695 31.9505 27.296 31.961 26.9656 32.1063L22.4817 34.0795Z" fill="#CFCFCF"/>
+                <path d="M13.1774 5.79651C10.5615 6.95115 8.49623 9.06362 7.43445 11.6705C6.37268 14.2774 6.40115 17.1659 7.51363 19.7023L7.60258 19.9044C9.23482 23.6136 9.98177 27.7775 9.82474 32.2818C9.78863 33.2853 9.97949 34.279 10.3837 35.1917C10.5241 35.5109 10.7897 35.7593 11.1219 35.8824C11.4542 36.0056 11.8259 35.9933 12.1554 35.8483L36.0207 25.3464C36.3501 25.2014 36.6103 24.9356 36.744 24.6075C36.8776 24.2793 36.8738 23.9157 36.7334 23.5965C36.3339 22.6819 35.7307 21.8696 34.967 21.2179C31.5444 18.2966 28.9819 14.9354 27.3504 11.2278L27.2565 11.0144C26.1382 8.4804 24.0278 6.50783 21.3882 5.52959C18.7487 4.55134 15.7957 4.64734 13.1774 5.79651Z" fill="#CFCFCF"/>
+              </svg>
+                
+            </span>
+            <div class="notificationwrap notificationDisplay" id="notificationwrap" >
+              <ul>
+                <span *ngIf="notificationData.length > 0">
+                  <li *ngFor="let data of notificationData" (click)="deleteNotification(data._id)" id="notificationwrapli">
+                    <span>{{data.name}}</span>{{data.description}}
+                  </li>
+                </span>
+                <span *ngIf="notificationData.length == 0">
+                  <li id="notificationwrapli">No Offer Available</li>
+                </span>
+              </ul>
+            </div>
+          </div>
+          </div>
+        </nav>
+      </div>
+      <button class="mobile-toggler" (click)="mobileToggleClick()">
+        <span></span> <span></span> <span></span>
+      </button>
+      <div class="lang-login-drop">
+        <p-dropdown [options]="langOptions" optionLabel="label" [(ngModel)]="selectedLang"
+          (click)="changeLanguage(selectedLang.value)">
+          <ng-template pTemplate="selectedItem">
+            <div class="lang-item country-item-value" *ngIf="selectedLang">
+              <img class="lang-change-img" [src]="selectedLang.label == 'French' ? flagFr : flagEn" alt="">
+              <div class="lang-change-option-text selected-lang center">{{selectedLang.label}}</div>
+            </div>
+          </ng-template>
+          <ng-template let-country pTemplate="item">
+            <div class="lang-item">
+              <img class="lang-change-img" [src]="country.label == 'French' ? flagFr : flagEn" alt="">
+              <div class="lang-change-option-text center">{{country.label}}</div>
+            </div>
+          </ng-template>
+        </p-dropdown>
+      </div>
+
+      <div class="account-drop" *ngIf="role_count > 1">
+        <!-- <p-dropdown [options]="account" placeholder="Account" optionValue="values" optionLabel="label" [(ngModel)]="selectedAccount" (click)='getdata(values)'>
+        </p-dropdown> -->
+        <select #account="ngModel" ngModel [(ngModel)]="role" (change)='changeAccount(account.value)'>
+          <option value='3'>Company</option>
+          <option value='2'>Individual</option>
+        </select>
+      </div>
+      <a href="#" class="notification has-notification d-none"><img src="assets/images/notification-bell.svg"
+          alt=""></a>
+    </div>
+  </div>
+</header>
+<!-- <app-select-language></app-select-language> -->
+
+
+
+
+
+<!-- New Header Starts -->
+<ng-container *ngIf="showLoginHeader">
+  <header>
+    <div class="site-new-header">
+      <div class="container">
+        <div class="header-wrapper">
+          <div class="logo-wrapper">
+            <a [routerLink]="['/login']">
+              <img src="assets/images/clac-logo.png" alt="">
+            </a>
+          </div>
+          <div class="nav-menu-wrapper">
+            <nav>
+              <!-- Subscribe button will be shown on "Forgot Password", "Forgot Password Success Page" and "Contact page" -->
+              <!-- <a class="subscribe-btn" [routerLink]="['/customer/subscription-plans']">{{'ButtonLabel.Subscribe' | -->
+                <!-- translate}}</a> -->
+              <a class="login-btn" [routerLinkActive]="['active']" routerLink="login" id="translateText"
+                (mouseover)="loginMouseHover()">
+                <span [attr.data-hover]="text">{{"Login" | translate}}</span>
+              </a>
+              <div class="lang-login">
+                <a href="javascript:void(0)" (click)="changeLanguage('fr')"><img src="assets/images/fr.png" alt=""></a>
+                <a href="javascript:void(0)" (click)="changeLanguage('en')"><img src="assets/images/en.png" alt=""></a>
+              </div>
+              <span class="nav-menu">
+                <button class="hamburger" (click)="openMenu()">
+                  <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                  </span>
+                </button>
+              </span>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="main-menu">
+      <img src="assets/images/new-header-bg.svg" alt="">
+      <div class="menu-container">
+        <ul>
+          <li><a href="{{news}}" target="_blank">{{'Label.News' | translate}}</a></li>
+          <li><a href="{{FAQ}}" target="_blank">{{'MenuList.Faq' | translate}}</a></li>
+          <li><a href="{{Recruitment}}" target="_blank">{{'MenuList.Recruitment' | translate}}</a></li>
+          <li><a href="{{Contact}}" target="_blank">{{'MenuList.Contact' | translate}}</a></li>
+        </ul>
+      </div>
+      <div class="bottom-menu">
+        <div>
+          <span class="text">Notre application Android</span>
+          <span class="app"><a href=""><i class="fas fa-play"></i></a></span>
+        </div>
+        <div>
+          <span class="text">Notre application iOS</span>
+          <span class="app"><a href=""><i class="fab fa-apple"></i></a></span>
+        </div>
+      </div>
+    </div>
+  </header>
+</ng-container>
+<!-- New Header Ends -->
+
+<app-service-order></app-service-order>

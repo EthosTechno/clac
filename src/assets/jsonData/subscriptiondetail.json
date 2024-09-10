@@ -1,0 +1,20 @@
+{
+    "status": 200,
+    "success": true,
+    "data": {
+        "subsctiptionDate": "03/02/2020 09:02",
+        "renewalDate": "03/10/2021 09:10",
+        "subscriptionPaymentModel": {
+            "cardNumber": "1234567891234567",
+            "expirationDate": "0226",
+            "cardHolderName": "Saumil Jariwala",
+            "securityCode": "123"
+        },
+        "promoCodeModel": {
+            "promoCode": "ASDFG",
+            "sponsorCode": "ASDFG"
+        }
+    },
+    "result": true,
+    "message": ""
+}
